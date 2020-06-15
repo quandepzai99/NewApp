@@ -5,11 +5,12 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
-import colors from "../../../colors";
+import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import LanguageButton from "./Translate";
+import LanguageButton from "./LanguageButton";
 import { navigationRef } from "../../RootNavigation";
-import switchLanguage from "../../../I18N/selector";
+import switchLanguage from "../I18N/selector";
+import styles from "./styles/LoginScreenInputPhoneNumberStyle"
 
 // const navigationRef = React.createRef();
 

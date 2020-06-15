@@ -1,6 +1,7 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
-import colors from "../../../colors";
+import { View, TouchableOpacity, Text } from "react-native";
+import colors from "../Themes/Colors";
+import styles from "./styles/LoginScreenLanguageButtonStyle"
 
 export default function LanguageButton(props) {
   const { lang, onChangeLang } = props;

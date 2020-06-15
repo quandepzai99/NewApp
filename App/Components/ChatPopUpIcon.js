@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import colors from "../../../colors";
-import images from "../../../Common/images";
+import {View, TouchableOpacity, Image} from 'react-native';
+import styles from "./styles/LoginScreenChatPopUpIconStyle"
+import images from "../Images/images";
 import {navigationRef} from "../../RootNavigation";
 
 function navigate(name) {
@@ -23,27 +23,4 @@ export default class ChatPopUpIcon extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    bottom: -60,
-    width: 76,
-    height: 76,
-    borderRadius: 40,
-    backgroundColor: "rgba(114, 13, 93, 0.1)",
-  },
 
-  ellipse608: {
-    alignItems: 'center',
-    margin: 10,
-    borderRadius: 30,
-    backgroundColor: "#ffffff",
-    borderStyle: "solid",
-    borderWidth: 3,
-    borderColor: colors.paleGreyFour
-  },
-  chat: {
-    margin: 14
-  }
-})

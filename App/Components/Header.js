@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, ImageBackground } from "react-native";
-import images from "../../../Common/images";
-import switchLanguage from "../../../I18N/selector";
+import { Text, ImageBackground } from "react-native";
+import images from "../Images/images";
+import switchLanguage from "../I18N/selector";
+import styles from "./styles/LoginScreenHeaderStyle";
 
 export default class Header extends Component {
   render() {
