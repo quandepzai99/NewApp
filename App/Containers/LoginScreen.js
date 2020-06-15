@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, StatusBar } from "react-native";
-import Form from "./component/InputPhoneNumber";
-import Header from "./component/Header";
-import Chat from "./component/ChatPopUpIcon";
+import InputPhoneNumber from "../Components/InputPhoneNumber";
+import LoginScreenHeader from "../Components/Header";
+import ChatPopUpIcon from "../Components/ChatPopUpIcon";
 
 class index extends Component {
   constructor(props) {
@@ -22,9 +22,9 @@ class index extends Component {
           translucent={true}
           backgroundColor={"transparent"}
         />
-        <Header lang={lang} />
-        <Form onChangeLang={this.onChangeLang} lang={lang} />
-        <Chat />
+        <LoginScreenHeader lang={lang} />
+        <InputPhoneNumber onChangeLang={this.onChangeLang} lang={lang} />
+        <ChatPopUpIcon />
       </View>
     );
   }

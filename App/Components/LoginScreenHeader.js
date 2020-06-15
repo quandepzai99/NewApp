@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Text, ImageBackground } from "react-native";
 import images from "../Images/images";
-import switchLanguage from "../I18N/selector";
+import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenHeaderStyle";
 
-export default class Header extends Component {
+export default class LoginScreenHeader extends Component {
   render() {
     const { lang } = this.props;
 

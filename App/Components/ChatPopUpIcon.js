@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
 import styles from "./styles/LoginScreenChatPopUpIconStyle"
 import images from "../Images/images";
-import {navigationRef} from "../../RootNavigation";
+import {navigationRef} from "../Navigation/RootNavigation";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);

@@ -8,8 +8,8 @@ import {
 import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import LanguageButton from "./LanguageButton";
-import { navigationRef } from "../../RootNavigation";
-import switchLanguage from "../I18N/selector";
+import { navigationRef } from "../Navigation/RootNavigation";
+import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle"
 
 // const navigationRef = React.createRef();
