@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import HeaderChangePassWord from "../Components/HeaderChangePassWord";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import PinInputChange from '../Components/PinInputChange';
-import ChangePassWordStyle from '../Components/styles/ChangePassWordStyle';
-// import { navigationRef } from "../RootNavigation";
+import PinInputChange from "../Components/PinInputChange";
+import ChangePassWordStyle from "../Components/styles/ChangePassWordStyle";
+import { navigationRef } from "../Navigation/RootNavigation";
 
-// function navigate(name) {
-//   navigationRef.current && navigationRef.current.navigate(name);
-// }
+function navigate(name) {
+  navigationRef.current && navigationRef.current.navigate(name);
+}
 
 export default function ChangePassWordScreen() {
   const [isShow, setIsHidden] = useState(false);
@@ -46,8 +46,7 @@ export default function ChangePassWordScreen() {
           justifyContent: "center",
           marginTop: 26
         }}
-        // onPress={() => navigate("PinCode1")}
-      >
+        onPress={() => navigate("PinCode1")}>
         <AntDesign
           name={"left"}
           size={15}
