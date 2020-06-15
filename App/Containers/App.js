@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./LoginScreen";
 import CurrentPassWordScreen from "./CurrentPassWordScreen";
 
-import { navigationRef } from "../Navigation/RootNavigation";
+// import { navigationRef } from "../Navigation/RootNavigation";
 
 // const navigationRef = React.createRef();
 
@@ -13,11 +13,11 @@ const Stack = createStackNavigator();
 export default class App extends Component {
   render() {
     return (
-      <NavigationContainer ref={navigationRef}>
+      <NavigationContainer>
         <Stack.Navigator headerMode="none">
-          <Stack.Screen name={"Telephone"} component={LoginScreen} />
+          {/*<Stack.Screen name={"Telephone"} component={LoginScreen} />*/}
           {/*<Stack.Screen name={"PinCode"} component={PasswordScreen} />*/}
-          {/*<Stack.Screen name={"PinCode1"} component={CurrentPassWordScreen} />*/}
+          <Stack.Screen name={"PinCode1"} component={CurrentPassWordScreen} />
           {/*<Stack.Screen name={"PinCode2"} component={ChangePassword} />*/}
           {/*<Stack.Screen name={"Chats"} component={Inbox} />*/}
           {/*<Stack.Screen name={"Home"} component={Bottom} />*/}
