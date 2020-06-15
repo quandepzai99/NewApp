@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import CurrentPassWordScreen from "./CurrentPassWordScreen";
 
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
@@ -10,14 +11,10 @@ import { View } from "react-native";
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <View />;
-  }
+export default function App() {
+  return (
+    <View>
+      <CurrentPassWordScreen />
+    </View>
+  );
 }
-
-export default App;
