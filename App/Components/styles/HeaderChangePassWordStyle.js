@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import colors from "../../Themes/Colors";
+import colors from '../../Themes/Colors';
 
 const screenResetPw = StyleSheet.create({
   container: {
@@ -33,7 +33,6 @@ const screenResetPw = StyleSheet.create({
     marginRight: 16,
     paddingBottom: 25,
     paddingTop: 25,
-    marginTop: -50,
     borderRadius: 24,
     backgroundColor: "#ffffff",
     shadowColor: "rgba(22, 60, 132, 0.16)",
@@ -41,10 +40,9 @@ const screenResetPw = StyleSheet.create({
       width: 0,
       height: 3
     },
-    shadowRadius: 10,
+    shadowRadius: 20,
     shadowOpacity: 1,
-    elevation: 3,
-
+    marginTop: -50
   },
   textSuccessfullChanged: {
     marginTop: 20,
@@ -84,6 +82,7 @@ const screenResetPw = StyleSheet.create({
     color: colors.blueGrey
   },
   viewBlock2box2: {
+
     marginLeft: 16,
     marginRight: 16,
     marginTop: 24,
@@ -92,13 +91,15 @@ const screenResetPw = StyleSheet.create({
     flexDirection: "row"
   },
   textblock2box2: {
-    left: 32,
+    left : 32,
     bottom: 79,
-    position: "absolute",
+    position: 'absolute',
     textAlign: "left",
     backgroundColor: "white",
     fontSize: 15,
-    zIndex: 1
+    zIndex: 1,
+    color: colors.blueGrey
+
   },
   goBackButton: {
     fontSize: 15,
@@ -109,7 +110,7 @@ const screenResetPw = StyleSheet.create({
     lineHeight: 17,
     letterSpacing: 0,
     textAlign: "center",
-    marginLeft: -5,
+    marginLeft : -5,
     color: "grey"
   }
 });
