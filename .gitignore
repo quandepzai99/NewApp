@@ -20,11 +20,10 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+project.xcworkspace
 
 # Android/IntelliJ
 #
-build/
-.idea
 .gradle
 local.properties
 *.iml
@@ -39,7 +38,6 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
-!debug.keystore
 
 # fastlane
 #
@@ -55,5 +53,28 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-# CocoaPods
-/ios/Pods/
+#idea
+.idea
+
+#Pods
+
+/ios/Pods
+
+.env.development
+.env
+.env.dev
+.env.production
+.env.staging
+.env.prod
+android/app/dev/
+android/app/production/
+android/app/release/
+
+# react-native-config codegen
+ios/tmp.xcconfig
+
+/firebase
+/ios/GoogleService-Info.plist
+/android/app/google-services.json
+
+/android/app/src/main/assets/appcenter-config.json
