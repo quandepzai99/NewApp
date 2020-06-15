@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
-import HeaderCurrentPassword from '../Components/HeaderCurrentPassword';
-// import styles from "./Components/StyleSheet";
-// import AntDesign from "react-native-vector-icons/AntDesign";
+import HeaderCurrentPassword from "../Components/HeaderCurrentPassword";
+import StyleHeaderCurrentPassword from "../Components/styles/StyleHeaderCurrentPassword";
+import AntDesign from "react-native-vector-icons/AntDesign";
 // import PinInput from "./Components/pin-input";
 // import { navigationRef } from "../RootNavigation";
 
@@ -13,15 +13,14 @@ import HeaderCurrentPassword from '../Components/HeaderCurrentPassword';
 export default function CurrentPassWordScreen() {
   return (
     <View>
+      <StatusBar barStyle={"light-content"} />
       <HeaderCurrentPassword />
-      {/*<HeaderChangePass />*/}
-      {/*<StatusBar barStyle={"light-content"} />*/}
-      {/*<View style={styles.viewBlock2}>*/}
-      {/*  <Text style={styles.textblock2box1}>Nhập mật khẩu hiện tại</Text>*/}
-      {/*  <View style={styles.viewBlock2box1}>*/}
-      {/*    <PinInput />*/}
-      {/*  </View>*/}
-      {/*</View>*/}
+      <View style={StyleHeaderCurrentPassword.viewBlock2}>
+        <Text style={StyleHeaderCurrentPassword.textblock2box1}>Nhập mật khẩu hiện tại</Text>
+        <View style={StyleHeaderCurrentPassword.viewBlock2box1}>
+          {/*<PinInput />*/}
+        </View>
+      </View>
       {/*<TouchableOpacity*/}
       {/*  style={{*/}
       {/*    flexDirection: "row",*/}
