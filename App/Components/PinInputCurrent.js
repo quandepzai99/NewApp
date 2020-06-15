@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 12,
     borderColor: "rgb(230,236,240)",
-    borderWidth: 1
+    borderWidth: 1,
   },
   section: {
     alignItems: "center",
