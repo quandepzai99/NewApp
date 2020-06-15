@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
-// import HeaderChangePass from "./Components/Header";
+import HeaderCurrentPassword from '../Components/HeaderCurrentPassword';
 // import styles from "./Components/StyleSheet";
 // import AntDesign from "react-native-vector-icons/AntDesign";
 // import PinInput from "./Components/pin-input";
@@ -13,7 +13,7 @@ import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 export default function CurrentPassWordScreen() {
   return (
     <View>
-
+      <HeaderCurrentPassword />
       {/*<HeaderChangePass />*/}
       {/*<StatusBar barStyle={"light-content"} />*/}
       {/*<View style={styles.viewBlock2}>*/}
