@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, StatusBar } from "react-native";
 import InputPhoneNumber from "../Components/InputPhoneNumber";
-import LoginScreenHeader from "../Components/Header";
+import LoginScreenHeader from "../Components/LoginScreenHeader";
 import ChatPopUpIcon from "../Components/ChatPopUpIcon";
 
 class index extends Component {
