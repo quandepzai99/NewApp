@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
@@ -16,7 +16,9 @@ class App extends Component {
   }
 
   render() {
-    return <View />;
+    return <SafeAreaView>
+      <Text>Hi Veiler</Text>
+    </SafeAreaView>;
   }
 }
 
