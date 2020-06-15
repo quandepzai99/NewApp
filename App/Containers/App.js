@@ -1,20 +1,31 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
-import CurrentPassWordScreen from "./CurrentPassWordScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import LoginScreen from "./LoginScreen";
 
-/**
- * Provides an entry point into our application.  Both index.ios.js and index.android.js
- * call this component first.
- *
- * We create our Redux store here, put it into a provider and then bring in our
- * RootContainer.
- *
- * We separate like this to play nice with React Native's hot reloading.
- */
-export default function App() {
-  return (
-    <View>
-      <CurrentPassWordScreen />
-    </View>
-  );
+import { navigationRef } from "../Navigation/RootNavigation";
+
+
+// const navigationRef = React.createRef();
+
+const Stack = createStackNavigator();
+
+export default class App extends Component {
+  render() {
+    return (
+        <NavigationContainer ref={navigationRef}>
+          <Stack.Navigator headerMode="none">
+            <Stack.Screen name={"Telephone"} component={LoginScreen} />
+            {/*<Stack.Screen name={"PinCode"} component={PasswordScreen} />*/}
+            {/*<Stack.Screen name={"PinCode1"} component={CurrentPassword} />*/}
+            {/*<Stack.Screen name={"PinCode2"} component={ChangePassword} />*/}
+            {/*<Stack.Screen name={"Chats"} component={Inbox} />*/}
+            {/*<Stack.Screen name={"Home"} component={Bottom} />*/}
+            {/*<Stack.Screen name={"Page1"} component={Page1} />*/}
+            {/*<Stack.Screen name={"Page2"} component={Page2} />*/}
+            {/*<Stack.Screen name={"Page3"} component={Page3} />*/}
+          </Stack.Navigator>
+        </NavigationContainer>
+    );
+  }
 }
