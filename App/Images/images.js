@@ -19,10 +19,10 @@ const images = {
   logo_vinid: require("./Logos_Brand/vinId.png"),
   logo_bee: require("./Logos_Brand/appLogoBe.png"),
   logo_dienmayxanh: require("./Logos_Brand/appLogoDienMayXanh.png"),
-  frame_item: require('./product/Frame_Item.png'),
   icon_search: require("./icon-Cross/ico_Search.png"),
   cross: require("./icon-Cross/bt.png"),
   witness: require("./icon-Cross/witness.png"),
-  plus: require('./icon-Cross/plus.png')
+  plus: require('./icon-Cross/plus.png'),
+  chat: require("./icon-Cross/Chat.png"),
 };
 export default images;

@@ -5,15 +5,12 @@ import InputPassword from "../Components/PasswordScreenInputPassword";
 import ChatPopUpIcon from "../Components/ChatPopUpIcon";
 
 export default function PasswordScreen() {
-
-    return (
-      <View>
-        <StatusBar barStyle={"light-content"} />
-        <PasswordScreenHeader />
-        <InputPassword />
-        <ChatPopUpIcon />
-      </View>
-    );
-  }
-
-
+  return (
+    <View>
+      <StatusBar barStyle={"light-content"} />
+      <PasswordScreenHeader />
+      <InputPassword />
+      <ChatPopUpIcon />
+    </View>
+  );
+}
