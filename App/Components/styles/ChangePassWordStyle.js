@@ -96,7 +96,8 @@ const screenResetPw = StyleSheet.create({
     textAlign: "left",
     backgroundColor: "white",
     fontSize: 15,
-    zIndex: 1
+    zIndex: 1,
+    color: colors.blueGrey
   },
   goBackButton: {
     fontSize: 15,

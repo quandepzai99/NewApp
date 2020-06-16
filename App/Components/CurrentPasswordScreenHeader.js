@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, ImageBackground } from "react-native";
-import images from "../Images/index";
+import images from "../Images/images";
 
 export default function HeaderChangePass() {
   return (

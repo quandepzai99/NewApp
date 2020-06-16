@@ -21,6 +21,10 @@ export default class PinInput extends React.Component {
     }
   };
 
+  // continue = () => {
+  //   this.props.navigation.navigate('PinCode2');
+  // };
+
   render() {
     const { password } = this.state;
 

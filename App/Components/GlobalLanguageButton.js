@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 import colors from "../Themes/Colors";
 import styles from "./styles/LoginScreenLanguageButtonStyle";
 
-export default function LanguageButton(props) {
+export default function GlobalLanguageButton(props) {
   const { lang, onChangeLang } = props;
   const labelActiveStyle = {
     color: colors.blueGrey
