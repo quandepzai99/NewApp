@@ -54,10 +54,10 @@ const styles = StyleSheet.create({
     fontSize: (32 / 736) * Dimensions.get("screen").height,
     fontWeight: "bold",
     fontStyle: "normal",
-    lineHeight: 32,
+    lineHeight: 36,
     letterSpacing: 0,
     textAlign: "left",
-    color: colors.golden,
+    color: colors.orange,
     marginLeft: 4,
     alignItems: "center",
     justifyContent: "center"

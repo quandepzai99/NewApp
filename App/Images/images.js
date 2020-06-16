@@ -21,6 +21,7 @@ const images = {
   logo_dienmayxanh: require("./Logos_Brand/appLogoDienMayXanh.png"),
   icon_search: require("./icon-Cross/ico_Search.png"),
   cross: require("./icon-Cross/bt.png"),
-  witness: require("./icon-Cross/witness.png")
+  witness: require("./icon-Cross/witness.png"),
+  plus: require('./icon-Cross/plus.png')
 };
 export default images;
