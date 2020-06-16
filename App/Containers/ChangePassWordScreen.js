@@ -31,7 +31,9 @@ export default function ChangePassWordScreen() {
         </View>
         {isShow ? (
           <>
-            <Text style={ChangePassWordStyle.textblock2box2}>Xác nhận mật khẩu</Text>
+            <Text style={ChangePassWordStyle.textblock2box2}>
+              Xác nhận mật khẩu
+            </Text>
             <View style={ChangePassWordStyle.viewBlock2box2}>
               <PinInputChange onFulfill={() => {}} />
             </View>

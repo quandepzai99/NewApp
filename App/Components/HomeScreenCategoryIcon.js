@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import images from "../Images/images";
-import styles from "./styles/HomeScreenCategoryIconStyle"
+import styles from "./styles/HomeScreenCategoryIconStyle";
 
 export default class HomeScreenCategoryIcon extends Component {
   render() {
@@ -27,4 +27,3 @@ export default class HomeScreenCategoryIcon extends Component {
     );
   }
 }
-

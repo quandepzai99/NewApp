@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
-import colors from '../Themes/Colors';
+import colors from "../Themes/Colors";
 
 export default class PinInput extends React.Component {
   state = {

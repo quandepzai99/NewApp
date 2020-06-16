@@ -34,7 +34,8 @@ export default function HomeScreenHeader() {
             width: "100%",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: 25, backgroundColor:"red"
+            marginTop: 25,
+            backgroundColor: "red"
           }}>
           <TouchableOpacity style={styles.iconBalanceWitness}>
             <View style={styles.bigWitness}>

@@ -12,7 +12,7 @@ import ScrollableTabView, {
   ScrollableTabBar
 } from "react-native-scrollable-tab-view";
 import images from "../Images/images";
-import styles from "./styles/HomeScreenContentTabViewStyle"
+import styles from "./styles/HomeScreenContentTabViewStyle";
 const brands = [
   {
     image: images.logo_urbox,
@@ -102,4 +102,3 @@ export default function HomeScreenContentTabView() {
     </ScrollableTabView>
   );
 }
-

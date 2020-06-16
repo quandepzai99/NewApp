@@ -78,7 +78,7 @@ export default function HomeScreenFavoriteBrands() {
         horizontal={true}
         data={brands}
         renderItem={Item}
-        style={{height: (130 / 414) * Dimensions.get('screen').width}}
+        style={{ height: (130 / 414) * Dimensions.get("screen").width }}
         keyExtractor={(item, index) => index.toString()}
       />
     </View>

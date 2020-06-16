@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  StatusBar,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { StatusBar, StyleSheet, ScrollView } from "react-native";
 import HomeScreenNews from "../Components/HomeScreenNews";
 import HomeScreenCategoryIcon from "../Components/HomeScreenCategoryIcon";
 import HomeScreenHeader from "../Components/HomeScreenHeader";
