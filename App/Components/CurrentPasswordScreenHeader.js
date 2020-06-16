@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, ImageBackground } from "react-native";
 import images from "../Images/images";
 
