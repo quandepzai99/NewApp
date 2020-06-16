@@ -36,7 +36,7 @@ const tempData = [
     desc:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBx",
-    time: images.layer1
+    time: images.times
   }
 ];
 export default class HomeScreenNews extends Component {
@@ -67,17 +67,7 @@ export default class HomeScreenNews extends Component {
           <View style={styles.divider}>
             <Text style={styles.name}>{item.name}</Text>
             <Image source={item.time} style={{ left: 100 }} />
-            {/*<DataTimePicker*/}
-            {/*  value={new Date()}*/}
-            {/*  onChange={this.showDatePicker}*/}
-            {/*  mode={'date'}*/}
-            {/*  testID="dateTimePicker"*/}
-            {/*  format="DD-MM-YYYY"*/}
-            {/*/>*/}
-            <Text style={styles.name}>
-              11-06-2020
-              {/*{this.state.date}*/}
-            </Text>
+            <Text style={styles.name}>11-06-2020</Text>
           </View>
         </View>
       </TouchableOpacity>

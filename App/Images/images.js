@@ -22,7 +22,9 @@ const images = {
   icon_search: require("./icon-Cross/ico_Search.png"),
   cross: require("./icon-Cross/bt.png"),
   witness: require("./icon-Cross/witness.png"),
-  plus: require('./icon-Cross/plus.png'),
+  plus: require("./icon-Cross/plus.png"),
   chat: require("./icon-Cross/Chat.png"),
+  detail: require("./imageBG/Voucher_default.png"),
+  times: require("./icon-Cross/ico_calendar.png"),
 };
 export default images;
