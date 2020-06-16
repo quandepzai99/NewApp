@@ -26,5 +26,6 @@ const images = {
   chat: require("./icon-Cross/Chat.png"),
   detail: require("./imageBG/Voucher_default.png"),
   times: require("./icon-Cross/ico_calendar.png"),
+  frame_item: require("./product/Frame_Item.png")
 };
 export default images;
