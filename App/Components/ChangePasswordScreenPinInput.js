@@ -8,13 +8,6 @@ export default class PinInput extends React.Component {
     code: "",
     password: ""
   };
-  pinInput = React.createRef();
-
-  _checkCode = () => {
-    {
-      this.pinInput.current.shake().then(() => this.setState({ code: "" }));
-    }
-  };
 
   render() {
     const { password } = this.state;
