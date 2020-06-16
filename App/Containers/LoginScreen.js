@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StatusBar, Text } from "react-native";
+import { View, StatusBar } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
@@ -17,9 +17,16 @@ class LoginScreen extends Component {
 
     return (
       <View>
-        <StatusBar barStyle={"light-content"} translucent={true} backgroundColor={'transparent'}/>
+        <StatusBar
+          barStyle={"light-content"}
+          translucent={true}
+          backgroundColor={"transparent"}
+        />
         <LoginScreenHeader lang={lang} />
-        <LoginScreenInputPhoneNumber onChangeLang={this.onChangeLang} lang={lang} />
+        <LoginScreenInputPhoneNumber
+          onChangeLang={this.onChangeLang}
+          lang={lang}
+        />
         <GlobalChatPopUpIcon />
       </View>
     );

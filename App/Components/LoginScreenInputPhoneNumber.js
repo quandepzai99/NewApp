@@ -7,14 +7,11 @@ import { navigationRef } from "../Navigation/RootNavigation";
 import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 
-// const navigationRef = React.createRef();
-
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
 export default class LoginScreenInputPhoneNumber extends Component {
-  colorButton = ["#fff"];
   constructor(props) {
     super(props);
     this.state = {
