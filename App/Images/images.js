@@ -24,5 +24,6 @@ const images = {
   witness: require("./icon-Cross/witness.png"),
   plus: require('./icon-Cross/plus.png'),
   chat: require("./icon-Cross/Chat.png"),
+  frame_item : require("./product/Frame_Item.png")
 };
 export default images;
