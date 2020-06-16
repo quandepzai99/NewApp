@@ -12,6 +12,12 @@ const images = {
   layer1: require('./banner/Layer 1.png'),
   pro1: require('./product/iphone.png'),
   pro2: require('./product/xbox.png'),
-  pro3: require('./product/xbox.png')
+  pro3: require('./product/xbox.png'),
+  logo_urbox: require("./Logos_Brand/logoUrboxFinal1.png"),
+  logo_the_coffee_house: require("./Logos_Brand/icon.png"),
+  logo_mobifone: require("./Logos_Brand/mobifone.png"),
+  logo_vinid: require("./Logos_Brand/vinId.png"),
+  logo_bee: require("./Logos_Brand/appLogoBe.png"),
+  logo_dienmayxanh: require("./Logos_Brand/appLogoDienMayXanh.png"),
 };
 export default images;
