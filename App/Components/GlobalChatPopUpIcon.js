@@ -8,7 +8,7 @@ function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
-export default class ChatPopUpIcon extends Component {
+export default class GlobalChatPopUpIcon extends Component {
   render() {
     return (
       <View style={{ alignItems: "flex-end", marginRight: 16 }}>

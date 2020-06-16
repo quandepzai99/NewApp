@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import LanguageButton from "./LanguageButton";
+import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigationRef } from "../Navigation/RootNavigation";
 import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
@@ -49,7 +49,7 @@ export default class InputPhoneNumber extends Component {
       <View style={styles.container}>
         <View style={styles.trans}>
           <Text style={styles.text1}>{bigText}</Text>
-          <LanguageButton lang={lang} onChangeLang={onChangeLang} />
+          <GlobalLanguageButton lang={lang} onChangeLang={onChangeLang} />
         </View>
         <Text style={styles.text2}>{smallText}</Text>
         <TextInput

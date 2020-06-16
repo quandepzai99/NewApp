@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
-import HeaderCurrentPassword from "../Components/HeaderCurrentPassword";
+import HeaderCurrentPassword from "../Components/CurrentPasswordScreenHeader";
 import StyleHeaderCurrentPassword from "../Components/styles/CurrentPasswordStyle";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import PinInputCurrent from "../Components/PinInputCurrent";
+import PinInputCurrent from "../Components/CurrentPasswordScreenPinInput";
 // import { navigationRef } from "../RootNavigation";
 
 // function navigate(name) {

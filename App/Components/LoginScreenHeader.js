@@ -11,7 +11,7 @@ export default class LoginScreenHeader extends Component {
     const text = switchLanguage(lang, "AuthenticationScreenLoginText");
 
     return (
-      <ImageBackground source={images.HeaderBackground} style={{ height: 224 }}>
+      <ImageBackground source={images.backGround} style={{ height: 224 }}>
         <Text style={styles.text}>{text}</Text>
       </ImageBackground>
     );
