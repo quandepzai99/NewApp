@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import LanguageButton from "./LanguageButton";
 import { navigationRef } from "../Navigation/RootNavigation";
 import switchLanguage from "../I18n/selector";
-import styles from "./styles/LoginScreenInputPhoneNumberStyle"
+import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 
 // const navigationRef = React.createRef();
 
@@ -81,4 +76,3 @@ export default class InputPhoneNumber extends Component {
     );
   }
 }
-

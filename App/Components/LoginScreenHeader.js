@@ -17,5 +17,3 @@ export default class LoginScreenHeader extends Component {
     );
   }
 }
-
-

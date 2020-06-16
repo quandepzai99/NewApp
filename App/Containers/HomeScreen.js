@@ -6,23 +6,23 @@ import {
   ScrollView,
   SafeAreaView
 } from "react-native";
-// import News from "./Components/News";
-// import CategoryIcon from "./Components/CategoryIcon";
-// import Header from "./Components/Header";
-// import FavoriteBrands from "./Components/FavoriteBrands";
-// import ContentTabView from "./Components/ContentTabView";
-// import Product from "./Components/Product";
+import News from "./Components/HomeScreenNews";
+import CategoryIcon from "./Components/HomeScreenCategoryIcon";
+import Header from "./Components/HomeScreenHeader";
+import FavoriteBrands from "./Components/HomeScreenFavoriteBrands";
+import ContentTabView from "./Components/HomeScreenContentTabView";
+import Product from "./Components/HomeScreenProduct";
 
-export default function Class() {
+export default function HomeScreen() {
   return (
     <ScrollView>
-      {/*<StatusBar barStyle={"light-content"} />*/}
-      {/*<Header />*/}
-      {/*<CategoryIcon />*/}
-      {/*<News />*/}
-      {/*<Product />*/}
-      {/*<FavoriteBrands />*/}
-      {/*<ContentTabView />*/}
+      <StatusBar barStyle={"light-content"} />
+      <Header />
+      <CategoryIcon />
+      <News />
+      <Product />
+      <FavoriteBrands />
+      <ContentTabView />
     </ScrollView>
   );
 }

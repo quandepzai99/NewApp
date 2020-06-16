@@ -4,7 +4,7 @@ import colors from "../Themes/colors";
 import images from "../Images/images";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigationRef } from "../Navigation/RootNavigation";
-import styles from "./styles/PasswordScreenInputPasswordStyle"
+import styles from "./styles/PasswordScreenInputPasswordStyle";
 
 function navigation(name) {
   navigationRef.current && navigationRef.current.navigate(name);
@@ -53,7 +53,7 @@ export default class PasswordScreenInputPassword extends Component {
             color: "red"
           }}
           cellStyleFocused={{
-            borderColor : colors.blueGrey,
+            borderColor: colors.blueGrey
           }}
           value={code}
           maskDelay={500}
@@ -82,4 +82,3 @@ export default class PasswordScreenInputPassword extends Component {
     );
   }
 }
-
