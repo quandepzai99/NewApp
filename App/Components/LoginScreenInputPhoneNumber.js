@@ -26,9 +26,10 @@ export default class LoginScreenInputPhoneNumber extends Component {
       this.setState({
         Reds: "rgb(114, 13, 93)"
       });
-    } else {
+    }
+    if (colors.length === 0) {
       this.setState({
-        Reds: colors.blueGrey
+        Reds: colors.paleGreyFour
       });
     }
   };
