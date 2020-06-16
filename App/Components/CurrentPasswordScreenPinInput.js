@@ -11,7 +11,6 @@ function navigation(name) {
 
 export default class PinInput extends React.Component {
   state = {
-    code: "",
     password: ""
   };
 
