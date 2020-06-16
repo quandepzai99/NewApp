@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {
+  Text,
   View,
   StatusBar,
   StyleSheet,
   ScrollView,
-  SafeAreaView
 } from "react-native";
 import News from "./Components/HomeScreenNews";
 import CategoryIcon from "./Components/HomeScreenCategoryIcon";
