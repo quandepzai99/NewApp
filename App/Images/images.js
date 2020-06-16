@@ -9,7 +9,7 @@ const images = {
   icon2: require("./category/ico2.png"),
   icon3: require("./category/ico3.png"),
   icon4: require("./category/ico4.png"),
-  layer1: require("./banner/Layer 1.png"),
+  layer1: require("./banner/Layer1.png"),
   pro1: require("./product/iphone.png"),
   pro2: require("./product/xbox.png"),
   pro3: require("./product/xbox.png"),
