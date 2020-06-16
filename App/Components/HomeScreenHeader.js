@@ -16,7 +16,7 @@ export default function HomeScreenHeader() {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={images.HeaderBackground}
+        source={images.backGround}
         style={{
           width: "100%",
           height: (220 / 736) * Dimensions.get("screen").height
