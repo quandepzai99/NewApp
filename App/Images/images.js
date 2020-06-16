@@ -9,7 +9,7 @@ const images = {
   icon2: require("./category/ico2.png"),
   icon3: require("./category/ico3.png"),
   icon4: require("./category/ico4.png"),
-  layer1: require("./banner/Layer 1.png"),
+  layer1: require("./banner/Layer1.png"),
   pro1: require("./product/iphone.png"),
   pro2: require("./product/xbox.png"),
   pro3: require("./product/xbox.png"),
@@ -19,6 +19,10 @@ const images = {
   logo_vinid: require("./Logos_Brand/vinId.png"),
   logo_bee: require("./Logos_Brand/appLogoBe.png"),
   logo_dienmayxanh: require("./Logos_Brand/appLogoDienMayXanh.png"),
-  frame_item : require('./product/Frame_Item.png')
+  icon_search: require("./icon-Cross/ico_Search.png"),
+  cross: require("./icon-Cross/bt.png"),
+  witness: require("./icon-Cross/witness.png"),
+  plus: require('./icon-Cross/plus.png'),
+  chat: require("./icon-Cross/Chat.png"),
 };
 export default images;

@@ -4,11 +4,11 @@ import HeaderCurrentPassword from "../Components/CurrentPasswordScreenHeader";
 import StyleHeaderCurrentPassword from "../Components/styles/CurrentPasswordStyle";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import PinInputCurrent from "../Components/CurrentPasswordScreenPinInput";
-// import { navigationRef } from "../RootNavigation";
+import { navigationRef } from "../Navigation/RootNavigation";
 
-// function navigate(name) {
-//   navigationRef.current && navigationRef.current.navigate(name);
-// }
+function navigate(name) {
+  navigationRef.current && navigationRef.current.navigate(name);
+}
 
 export default function CurrentPassWordScreen() {
   return (
@@ -29,14 +29,14 @@ export default function CurrentPassWordScreen() {
           justifyContent: "center",
           marginTop: 26
         }}
-        // onPress={() => navigate("PinCode")}
+        onPress={() => navigate("PinCode")}
       >
         <AntDesign
           name={"left"}
           size={20}
           color={"gray"}
           style={{
-            paddingTop: 10,
+            paddingTop: 8,
             paddingBottom: 10,
             paddingLeft: 10
           }}

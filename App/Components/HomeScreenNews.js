@@ -16,7 +16,7 @@ function navigate(name, id) {
 const tempData = [
   {
     id: Page1,
-    image: images.banner1,
+    image: images.layer1,
     desc:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBox",
@@ -24,7 +24,7 @@ const tempData = [
   },
   {
     id: Page2,
-    image: images.banner1,
+    image: images.layer1,
     desc:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBo",
@@ -32,11 +32,11 @@ const tempData = [
   },
   {
     id: Page3,
-    image: images.banner1,
+    image: images.layer1,
     desc:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBx",
-    time: images.times
+    time: images.layer1
   }
 ];
 export default class HomeScreenNews extends Component {
