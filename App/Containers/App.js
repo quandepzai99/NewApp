@@ -12,12 +12,9 @@ import HomeScreenDetailPage3 from "../Components/HomeScreenDetailPage3"
 
 import { navigationRef } from "../Navigation/RootNavigation";
 
-// const navigationRef = React.createRef();
-
 const Stack = createStackNavigator();
 
-export default class App extends Component {
-  render() {
+export default function App() {
     return (
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator headerMode="none">
@@ -33,5 +30,4 @@ export default class App extends Component {
         </Stack.Navigator>
       </NavigationContainer>
     );
-  }
 }

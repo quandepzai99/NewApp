@@ -3,8 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import images from "../Images/images";
 import styles from "./styles/HomeScreenCategoryIconStyle";
 
-export default class HomeScreenCategoryIcon extends Component {
-  render() {
+export default function HomeScreenCategoryIcon() {
     return (
       <View style={styles.container}>
         <TouchableOpacity style={styles.category}>
@@ -25,5 +24,4 @@ export default class HomeScreenCategoryIcon extends Component {
         </TouchableOpacity>
       </View>
     );
-  }
 }

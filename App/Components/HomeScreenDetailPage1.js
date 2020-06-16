@@ -8,8 +8,7 @@ function navigation(name, id) {
   navigationRef.current && navigationRef.current.navigate(name, id);
 }
 
-export default class HomeScreenDetailPage1 extends Component {
-  render() {
+export default function HomeScreenDetailPage1() {
     return (
       <View style={styles.container}>
         <Image source={images.detail} />
@@ -32,5 +31,4 @@ export default class HomeScreenDetailPage1 extends Component {
         </Text>
       </View>
     );
-  }
 }

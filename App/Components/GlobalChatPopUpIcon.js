@@ -8,8 +8,7 @@ function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
-export default class GlobalChatPopUpIcon extends Component {
-  render() {
+export default function GlobalChatPopUpIcon() {
     return (
       <View style={{ alignItems: "flex-end", marginRight: 16 }}>
         <TouchableOpacity
@@ -21,5 +20,5 @@ export default class GlobalChatPopUpIcon extends Component {
         </TouchableOpacity>
       </View>
     );
-  }
+
 }
