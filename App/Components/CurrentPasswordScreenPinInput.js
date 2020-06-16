@@ -10,12 +10,11 @@ function navigation(name) {
 }
 
 export default function PinInput() {
-  const [password, SetPassword] = useState("");
-  function onTextChange(text) {
-    const navigate = text.length >= 6 ? navigation("PinCode2") : "" ;
-    // const navigate = text.length >= 6 ?
-  }
-
+  // const [password, SetPassword] = useState("");
+  // function onTextChange(text) {
+  //   const navigate = text.length >= 6 ? navigation("PinCode2") : "" ;
+  //   // const navigate = text.length >= 6 ?
+  // }
   return (
     <View style={styles.container}>
       <View style={styles.section}>
@@ -35,7 +34,6 @@ export default function PinInput() {
           cellSize={28}
           codeLength={6}
           value={password}
-          onTextChange={onTextChange}
           cellStyle={styles.cellStyle}
           autoFocus={true}
         />
