@@ -17,7 +17,7 @@ class LoginScreen extends Component {
 
     return (
       <View>
-        <StatusBar barStyle={"light-content"} translucent={true} />
+        <StatusBar barStyle={"light-content"} translucent={true} backgroundColor={'transparent'}/>
         <LoginScreenHeader lang={lang} />
         <InputPhoneNumber onChangeLang={this.onChangeLang} lang={lang} />
         <GlobalChatPopUpIcon />
