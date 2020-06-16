@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
-import HeaderChangePassWord from "../Components/HeaderChangePassWord";
+import HeaderChangePassWord from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import PinInputChange from "../Components/PinInputChange";
+import PinInputChange from "../Components/ChangePasswordScreenPinInput";
 import ChangePassWordStyle from "../Components/styles/ChangePassWordStyle";
 import { navigationRef } from "../Navigation/RootNavigation";
 
