@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigationRef } from "../Navigation/RootNavigation";
@@ -9,26 +9,13 @@ function navigation(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
-export default class PinInput extends React.Component {
-  state = {
-    code: "",
-    password: ""
-  };
-  pinInput = React.createRef();
-
-  _checkCode = () => {
-    {
-      this.pinInput.current.shake().then(() => this.setState({ code: "" }));
-    }
-  };
-
-  // continue = () => {
-  //   this.props.navigation.navigate('PinCode2');
+export default function PinInput() {
+  // state = {
+  //   code: "",
+  //   password: ""
   // };
 
-  render() {
-    const { password } = this.state;
-
+  const password = '';
     return (
       <View style={styles.container}>
         <View style={styles.section}>
@@ -48,23 +35,17 @@ export default class PinInput extends React.Component {
             cellSize={28}
             codeLength={6}
             value={password}
-            onTextChange={this.onTextChange}
+            onTextChange={onTextChange}
             cellStyle={styles.cellStyle}
             autoFocus={true}
           />
         </View>
       </View>
     );
-  }
 
-  onTextChange = text => {
-    const { onPress } = this.props;
+
+  function onTextChange(text) {
+    // const { onPress } = this.props;
     const navigate = text.length >= 6 ? navigation("PinCode2") : null;
-    this.setState(
-      {
-        password: text
-      },
-      navigate
-    );
-  };
+}
 }

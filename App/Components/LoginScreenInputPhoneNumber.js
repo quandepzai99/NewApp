@@ -14,7 +14,7 @@ function navigate(name) {
 }
 
 export default function InputPhoneNumber() {
-  const [colors, setColors] = useState('blue');
+  const [colors, setColor] = useState('blue');
   // colorButton = ["#fff"];
   // constructor(props) {
   //   super(props);
@@ -23,17 +23,13 @@ export default function InputPhoneNumber() {
   //   };
   // }
 
-  const elip = {
-    backgroundColor: 'red'
-  };
-  const elips = {
-    backgroundColor: 'blue'
-  };
-
-
   function handleKeyup(event) {
-    const mau = ["red"];
-      setColors(mau);
+    const mau = ['red']
+    if (mau.length > 0) {
+      setColor(mau);
+    } else {
+      colors: 'blue';
+    }
   }
 
   // const { lang, onChangeLang } = this.props;
