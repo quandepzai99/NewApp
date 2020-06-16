@@ -8,19 +8,19 @@ const proData = [
     image: images.pro1,
     desc: "Tay Cầm Microsoft Xbox One S (Màu…",
     price: "200.000đ",
-    plus: images.plus1
+    plus: images.plus
   },
   {
     image: images.pro2,
     desc: "Tay Cầm Microsoft Xbox One S (Màu…",
     price: "200.000đ",
-    plus: images.plus1
+    plus: images.plus
   },
   {
     image: images.pro2,
     desc: "Tay Cầm Microsoft Xbox One S (Màu…",
     price: "200.000đ",
-    plus: images.plus1
+    plus: images.plus
   }
 ];
 
