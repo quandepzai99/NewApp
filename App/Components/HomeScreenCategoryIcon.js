@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import images from "../Images/images";
-import colors from "../Themes/colors";
+import styles from "./styles/HomeScreenCategoryIconStyle"
 
 export default class HomeScreenCategoryIcon extends Component {
   render() {
@@ -28,23 +28,3 @@ export default class HomeScreenCategoryIcon extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: -50,
-    flexDirection: "row"
-  },
-  category: {
-    flex: 1,
-    marginHorizontal: 10,
-    alignItems: "center"
-  },
-  text: {
-    marginTop: 6,
-    fontSize: 12,
-    fontWeight: "500",
-    lineHeight: 16,
-    letterSpacing: 0,
-    textAlign: "center",
-    color: colors.greyishBrown
-  }
-});
