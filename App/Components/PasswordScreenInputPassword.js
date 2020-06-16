@@ -71,7 +71,7 @@ export default class PasswordScreenInputPassword extends Component {
           <TouchableOpacity
             style={styles.btSignOut}
             onPress={() => navigation("Telephone")}>
-            <Image source={images.sigleout} style={{ top: 3, right: 5 }} />
+            <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
             <Text style={styles.text3}>Đăng xuất</Text>
           </TouchableOpacity>
         </View>
