@@ -48,7 +48,6 @@ export default class PinInput extends React.Component {
   }
 
   onTextChange = text => {
-    const { onPress } = this.props;
     const navigate = text.length >= 6 ? navigation("PinCode2") : null;
     this.setState(
       {
