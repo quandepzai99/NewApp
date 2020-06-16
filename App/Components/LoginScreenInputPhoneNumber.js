@@ -13,7 +13,7 @@ function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
-export default class InputPhoneNumber extends Component {
+export default class LoginScreenInputPhoneNumber extends Component {
   colorButton = ["#fff"];
   constructor(props) {
     super(props);
