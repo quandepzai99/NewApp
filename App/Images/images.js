@@ -19,5 +19,8 @@ const images = {
   logo_vinid: require("./Logos_Brand/vinId.png"),
   logo_bee: require("./Logos_Brand/appLogoBe.png"),
   logo_dienmayxanh: require("./Logos_Brand/appLogoDienMayXanh.png"),
+  icon_search: require("./icon-Cross/ico_Search.png"),
+  cross: require("./icon-Cross/bt.png"),
+  witness: require("./icon-Cross/witness.png")
 };
 export default images;
