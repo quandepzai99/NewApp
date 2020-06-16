@@ -2,13 +2,12 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import HomeScreen from "./HomeScreen";
 import { Image, Text, View, StyleSheet } from "react-native";
-// import images from "../Common/images";
+import images from '../Images/images';
 
 const Tab = createBottomTabNavigator();
 // function Voucher() {
 //   return (
 //     <View style={styles.itemContent}>
-//       <Image source={images.icon_voucher} />
 //       <Text>Voucher</Text>
 //     </View>
 //   );
@@ -16,7 +15,6 @@ const Tab = createBottomTabNavigator();
 // function Wallet() {
 //   return (
 //     <View style={styles.itemContent}>
-//       <Image source={images.icon_wallet} />
 //       <Text>Wallet</Text>
 //     </View>
 //   );
@@ -24,21 +22,19 @@ const Tab = createBottomTabNavigator();
 // function Account() {
 //   return (
 //     <View style={styles.itemContent}>
-//       <Image source={images.icon_account} />
 //       <Text>Account</Text>
 //     </View>
 //   );
 // }
 export default function Bottom() {
-  return (
-    <View><Text>123</Text></View>
+  return ( <View />
     // <Tab.Navigator>
     //   <Tab.Screen
     //     name={"Home"}
     //     component={HomeScreen}
     //     options={{
     //       tabBarLabel: "Home",
-    //       tabBarIcon: ({}) => <Image source={images.icon_home} />
+    //       tabBarIcon: ({}) => <Image source={images.iconHome} />
     //     }}
     //   />
     //   <Tab.Screen
@@ -46,7 +42,7 @@ export default function Bottom() {
     //     component={Voucher}
     //     options={{
     //       tabBarLabel: "Voucher",
-    //       tabBarIcon: ({}) => <Image source={images.icon_voucher} />
+    //       tabBarIcon: ({}) => <Image source={images.iconVoucher} />
     //     }}
     //   />
     //   <Tab.Screen
@@ -54,7 +50,7 @@ export default function Bottom() {
     //     component={Wallet}
     //     options={{
     //       tabBarLabel: "Wallet",
-    //       tabBarIcon: ({}) => <Image source={images.icon_wallet} />
+    //       tabBarIcon: ({}) => <Image source={images.iconWallet} />
     //     }}
     //   />
     //   <Tab.Screen
@@ -62,7 +58,7 @@ export default function Bottom() {
     //     component={Account}
     //     options={{
     //       tabBarLabel: "Account",
-    //       tabBarIcon: ({}) => <Image source={images.icon_account} />
+    //       tabBarIcon: ({}) => <Image source={images.iconUser} />
     //     }}
     //   />
     // </Tab.Navigator>
