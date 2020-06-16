@@ -14,7 +14,6 @@ export default class PinInput extends React.Component {
     code: "",
     password: ""
   };
-  pinInput = React.createRef();
 
   render() {
     const { password } = this.state;
