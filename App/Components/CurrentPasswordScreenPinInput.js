@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigationRef } from "../Navigation/RootNavigation";
