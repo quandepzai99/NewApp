@@ -1,5 +1,5 @@
-import accents from 'remove-accents';
-import {XmlEntities} from 'html-entities';
+import accents from "remove-accents";
+import { XmlEntities } from "html-entities";
 const entities = new XmlEntities();
 
 export default class StringHelper {
@@ -17,8 +17,8 @@ export default class StringHelper {
 
   static normalize(text) {
     return text
-      ? accents.remove(text.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
-      : '';
+      ? accents.remove(text.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+      : "";
   }
 
   static getAlphabetCharacter(charA, charZ) {
@@ -34,12 +34,12 @@ export default class StringHelper {
   }
 
   static formatCardInput(input, hide = false) {
-    let cleaned = ('' + input).replace(/\W/g, '');
+    let cleaned = ("" + input).replace(/\W/g, "");
     let match = cleaned.match(
-      /^([a-zA-Z0-9]{4})([a-zA-Z0-9]{4})([a-zA-Z0-9]{4})([a-zA-Z0-9]+)$/,
+      /^([a-zA-Z0-9]{4})([a-zA-Z0-9]{4})([a-zA-Z0-9]{4})([a-zA-Z0-9]+)$/
     );
     if (match) {
-      return match[1] + ' ' + match[2] + ' ' + match[3] + ' ' + match[4];
+      return match[1] + " " + match[2] + " " + match[3] + " " + match[4];
     } else {
       return input;
     }
@@ -56,18 +56,18 @@ export default class StringHelper {
   static changeVietnameseAlias(alias) {
     let str = alias;
     str = str.toLowerCase();
-    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
-    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
-    str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
-    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
-    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
-    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
-    str = str.replace(/đ/g, 'd');
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
     str = str.replace(
       /!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g,
-      ' ',
+      " "
     );
-    str = str.replace(/ + /g, ' ');
+    str = str.replace(/ + /g, " ");
     str = str.trim();
     return str;
   }
@@ -75,10 +75,10 @@ export default class StringHelper {
   static stripeHTMLTags(text) {
     const regex = /(<([^>]+)>)/gi;
     const regex2 = /\r?\n|\r/g;
-    return text.replace(regex, '').replace(regex2, '');
+    return text.replace(regex, "").replace(regex2, "");
   }
 
-  static removeLineBreak(description = '') {
-    return description.replace(/(\r\n|\n|\r)/gm, '');
+  static removeLineBreak(description = "") {
+    return description.replace(/(\r\n|\n|\r)/gm, "");
   }
 }

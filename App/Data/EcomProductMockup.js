@@ -22,7 +22,7 @@ export const NoImageProduct = {
 export const Supplier = {
   title: "UrBox",
   logo: LogoUrbox,
-  note: "Lorem Ipsum",
+  note: "Lorem Ipsum"
 };
 
 export const EcomCartMockup = [

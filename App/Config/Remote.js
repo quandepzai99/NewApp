@@ -13,7 +13,6 @@ export const APP_VERSION_CODE = Config.APPLICATION_VERSION_CODE;
 export const REQUEST_TIME_OUT = 10000;
 export const PRIVATE_KEY = Config.PRIVATE_KEY;
 
-
 export const GOOGLE_API_KEY = Config.GOOGLE_API_KEY;
 export const GOOGLE_MAP_API_ENDPOINT = Config.GOOGLE_MAP_API_ENDPOINT;
 
