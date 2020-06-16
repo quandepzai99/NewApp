@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../Containers/LoginScreen";
+import PasswordScreen from '../Containers/PasswordScreen';
 import CurrentPassWordScreen from "../Containers/CurrentPassWordScreen";
 
 import { navigationRef } from "../Navigation/RootNavigation";
@@ -12,7 +13,7 @@ function AppNavigation() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator headerMode="none">
         <Stack.Screen name={"Telephone"} component={LoginScreen} />
-        {/*<Stack.Screen name={"PinCode"} component={PasswordScreen} />*/}
+        <Stack.Screen name={"PinCode"} component={PasswordScreen} />
         {/*<Stack.Screen name={"PinCode1"} component={CurrentPassWordScreen} />*/}
         {/*<Stack.Screen name={"PinCode2"} component={ChangePassword} />*/}
         {/*<Stack.Screen name={"Chats"} component={Inbox} />*/}
