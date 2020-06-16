@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image
-} from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import colors from "../Themes/Colors";
 import images from "../Images/images";
 import DataTimePicker from "@react-native-community/datetimepicker";
@@ -23,21 +17,24 @@ const tempData = [
   {
     id: Page1,
     image: images.banner1,
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBox",
     time: images.times
   },
   {
     id: Page2,
     image: images.banner1,
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBo",
     time: images.times
   },
   {
     id: Page3,
     image: images.banner1,
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry…",
     name: "UrBx",
     time: images.times
   }
@@ -116,4 +113,3 @@ export default class HomeScreenNews extends Component {
     );
   }
 }
-

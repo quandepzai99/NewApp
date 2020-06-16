@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../Containers/HomeScreen";
 import { Image, Text, View, StyleSheet } from "react-native";
-import images from '../Images/images';
+import images from "../Images/images";
 
 const Tab = createBottomTabNavigator();
 function Voucher() {

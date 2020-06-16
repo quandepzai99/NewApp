@@ -43,8 +43,7 @@ const screenResetPw = StyleSheet.create({
     },
     shadowRadius: 10,
     shadowOpacity: 1,
-    elevation: 3,
-
+    elevation: 3
   },
   textSuccessfullChanged: {
     marginTop: 20,

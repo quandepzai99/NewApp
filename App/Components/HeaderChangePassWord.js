@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, ImageBackground } from "react-native";
-import images from '../Images/images';
+import images from "../Images/images";
 
 export default class HeaderChangePass extends Component {
   render() {
@@ -27,5 +27,5 @@ export default class HeaderChangePass extends Component {
         </Text>
       </ImageBackground>
     );
-  };
+  }
 }

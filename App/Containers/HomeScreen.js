@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { StatusBar, StyleSheet, ScrollView } from "react-native";
-import News from "../Components/HomeScreenNews";
+import HomeScreenNews from "../Components/HomeScreenNews";
 import HomeScreenCategoryIcon from "../Components/HomeScreenCategoryIcon";
 import HomeScreenHeader from "../Components/HomeScreenHeader";
-import FavoriteBrands from "../Components/HomeScreenFavoriteBrands";
-import ContentTabView from "../Components/HomeScreenContentTabView";
-import Product from "../Components/HomeScreenProduct";
+import HomeScreenFavoriteBrands from "../Components/HomeScreenFavoriteBrands";
+import HomeScreenContentTabView from "../Components/HomeScreenContentTabView";
+import HomeScreenProduct from "../Components/HomeScreenProduct";
 
 export default function HomeScreen() {
   return (
@@ -13,10 +13,10 @@ export default function HomeScreen() {
       <StatusBar barStyle={"light-content"} />
       <HomeScreenHeader />
       <HomeScreenCategoryIcon />
-      {/*<News />*/}
-      {/*<Product />*/}
-      {/*<FavoriteBrands />*/}
-      {/*<ContentTabView />*/}
+      <HomeScreenNews />
+      <HomeScreenProduct />
+      <HomeScreenFavoriteBrands />
+      <HomeScreenContentTabView />
     </ScrollView>
   );
 }

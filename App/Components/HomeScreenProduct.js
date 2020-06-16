@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  TouchableOpacity,
-
-} from "react-native";
+import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import images from "../Images/images";
-import styles from "./styles/HomeScreenProductStyle"
+import styles from "./styles/HomeScreenProductStyle";
 
 const proData = [
   {
@@ -69,5 +62,3 @@ export default function HomeScreenProduct() {
     </View>
   );
 }
-
-

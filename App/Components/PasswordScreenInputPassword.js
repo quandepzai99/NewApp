@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import colors from "../Themes/colors";
+import colors from "../Themes/Colors";
 import images from "../Images/images";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigationRef } from "../Navigation/RootNavigation";
