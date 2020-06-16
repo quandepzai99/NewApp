@@ -4,7 +4,7 @@ import InputPhoneNumber from "../Components/InputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import ChatPopUpIcon from "../Components/ChatPopUpIcon";
 
-class index extends Component {
+class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,4 +40,4 @@ class index extends Component {
   };
 }
 
-export default index;
+export default LoginScreen;

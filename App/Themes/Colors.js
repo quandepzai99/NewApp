@@ -38,7 +38,11 @@ const colors = {
   paleGreyFive: "#f5f8fa",
   orange: "#f78f20",
   deepSkyBlue: "#1074FF",
-  greyBrown: "#474747"
+  greyBrown: "#474747",
+  greyishBrown: "rgb(71, 71, 71)",
+  velvet: "rgb(114, 13, 93)",
+  tangerine: "rgb(247, 143, 0)",
+  golden: "rgb(247, 190, 0)"
 };
 
 export default colors;
