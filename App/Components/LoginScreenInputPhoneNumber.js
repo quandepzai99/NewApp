@@ -1,4 +1,4 @@
-import React, {Component, useContext, useState} from 'react';
+import React, { Component, useContext, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -7,6 +7,7 @@ import { navigationRef } from "../Navigation/RootNavigation";
 import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import { color } from 'react-native-reanimated';
+import {ThemeContext} from 'react-native-elements';
 
 // const navigationRef = React.createRef();
 
@@ -16,7 +17,10 @@ function navigate(name) {
 
 export default function InputPhoneNumber() {
   // const [colors, setColor] = useState('blue');
-  const [colors, setColor] = useState('blue');
+  // const [colors, setColor] = useState('blue');
+
+
+
   // colorButton = ["#fff"];
   // constructor(props) {
   //   super(props);
@@ -25,12 +29,11 @@ export default function InputPhoneNumber() {
   //   };
   // }
   function handleKeyup(event) {
+    // console.log();
     const mau = ['red'];
-    if (mau.length > 0) {
       setColor(mau);
-    } else {
+      return;
 
-    }
   }
 
   // const { lang, onChangeLang } = this.props;
@@ -63,7 +66,7 @@ export default function InputPhoneNumber() {
           <AntDesign
             name={"arrowright"}
             size={28}
-            color={colors}
+            color={'#000'}
             style={styles.icon}
           />
         </View>
