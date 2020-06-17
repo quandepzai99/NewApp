@@ -6,7 +6,6 @@ import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import { ThemeContext } from "../Providers/ThemeProvider";
 
-const onChangeLang = () => {};
 
 const onChangeTheme = (dispatch, type, theme) => {
   dispatch({
@@ -22,7 +21,6 @@ function LoginScreen() {
   const { setTheme, state } = themeContext;
   const { theme } = state;
 
-  console.log(theme);
 
   const content = theme === "light" ? "light-content" : "dark-content";
   const newTheme = theme === "light" ? "dark" : "light";
@@ -38,7 +36,6 @@ function LoginScreen() {
       <LoginScreenInputPhoneNumber lang={lang} />
       <TouchableOpacity
         onPress={() => {
-          console.log("ON CHANGE THEME");
           setTheme(newTheme);
         }}>
         <Text>Change Theme</Text>

@@ -27,10 +27,8 @@ const mapActionsToDispatch = dispatch => {
 
 // Một async action
 const setLanguage = dispatch => (language): void => {
-  setTimeout(() => {
-    dispatch({
-      type: LanguageActions.setLanguage,
-      payload: language
-    });
-  }, 3000);
+  dispatch({
+    type: LanguageActions.setLanguage,
+    payload: language
+  });
 };
