@@ -31,8 +31,8 @@ function LoginScreen() {
         translucent={true}
         backgroundColor={"transparent"}
       />
-      <LoginScreenHeader lang={content} />
-      <LoginScreenInputPhoneNumber lang={content} />
+      <LoginScreenHeader />
+      <LoginScreenInputPhoneNumber />
       <TouchableOpacity
         onPress={() => {
           setTheme(newTheme);
