@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import colors from "../Themes/Colors";
 import images from "../Images/images";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
-import { navigationRef, withNavigation } from "../Navigation/RootNavigation";
+import { navigationRef } from "../Navigation/RootNavigation";
 import styles from "./styles/PasswordScreenInputPasswordStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 
@@ -14,13 +14,11 @@ function navigation(name) {
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-  const [code, useCode] = useState(0);
-  function changeCode() {
-    return code => useCode(code + 1);
-  }
+  const [code, useCode] = useState('');
+
   console.log("codeee", code);
   console.log("usecodeee", useCode);
-  console.log("changecodeeeee", changeCode());
+  // console.log("changecodeeeee", changeCode());
 
   // const navigate = "".length >= 6 ? navigation("Home") : null;
   return (
@@ -44,6 +42,7 @@ export default function PasswordScreenInputPassword() {
           fontSize: 20,
           color: colors.velvet
         }}
+        restrictToNumbers={true}
         textStyleFocused={{
           color: "red"
         }}
@@ -55,7 +54,8 @@ export default function PasswordScreenInputPassword() {
         password={true}
         autoFocus={true}
         codeLength={6}
-        onTextChange={changeCode}
+        onTextChange={() => useCode({ code })}
+        onFulfill={() => navigation("Home")}
       />
       <View style={styles.box}>
         <TouchableOpacity
