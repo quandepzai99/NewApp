@@ -37,10 +37,10 @@ export default class LoginScreenInputPhoneNumber extends Component {
   render() {
     const { lang, onChangeLang } = this.props;
 
-    const bigText = switchLanguage(lang, "AuthenticationScreenPhoneText");
+    const bigText = switchLanguage(lang, "LoginScreenEnterPhoneNumber");
     const smallText = switchLanguage(
       lang,
-      "AuthenticationScreenEnterPhoneNumberText"
+      "LoginScreenPhoneNumber"
     );
 
     return (

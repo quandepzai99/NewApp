@@ -4,6 +4,4 @@ export const LanguageActions = {
   setLanguage: "SET_LANGUAGE"
 };
 
-export const ButtonActions = {
-  setColorButton: "SET_COLORBUTTON"
-};
+
