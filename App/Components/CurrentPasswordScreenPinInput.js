@@ -14,8 +14,9 @@ export default function PinInput() {
   //   code: "",
   //   password: ""
   // };
+  PinInput = React.createRef();
 
-  const password = '';
+  const { password } = useState('');
     return (
       <View style={styles.container}>
         <View style={styles.section}>
@@ -47,5 +48,5 @@ export default function PinInput() {
   function onTextChange(text) {
     // const { onPress } = this.props;
     const navigate = text.length >= 6 ? navigation("PinCode2") : null;
-}
+  }
 }
