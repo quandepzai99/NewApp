@@ -17,7 +17,7 @@ const onChangeTheme = (dispatch, type, theme) => {
 function LoginScreen() {
   const languageContext = useContext(LanguageContext);
   const themeContext = useContext(ThemeContext);
-  const { lang } = languageContext.state;
+  const { language } = languageContext.state;
   const { setTheme, state } = themeContext;
   const { theme } = state;
 
@@ -32,8 +32,8 @@ function LoginScreen() {
         translucent={true}
         backgroundColor={"transparent"}
       />
-      <LoginScreenHeader lang={lang} />
-      <LoginScreenInputPhoneNumber lang={lang} />
+      <LoginScreenHeader lang={language} />
+      <LoginScreenInputPhoneNumber lang={language} />
       <TouchableOpacity
         onPress={() => {
           setTheme(newTheme);
