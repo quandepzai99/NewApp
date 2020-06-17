@@ -6,7 +6,6 @@ import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import { ThemeContext } from "../Providers/ThemeProvider";
 
-
 const onChangeTheme = (dispatch, type, theme) => {
   dispatch({
     type: type,
@@ -17,23 +16,23 @@ const onChangeTheme = (dispatch, type, theme) => {
 function LoginScreen() {
   const languageContext = useContext(LanguageContext);
   const themeContext = useContext(ThemeContext);
-  const { language } = languageContext.state;
+  const { language, content } = languageContext.state;
+
   const { setTheme, state } = themeContext;
   const { theme } = state;
 
-
-  const content = theme === "light" ? "light-content" : "dark-content";
+  const statusBarStyle = theme === "light" ? "light-content" : "dark-content";
   const newTheme = theme === "light" ? "dark" : "light";
 
   return (
     <View>
       <StatusBar
-        barStyle={content}
+        barStyle={statusBarStyle}
         translucent={true}
         backgroundColor={"transparent"}
       />
-      <LoginScreenHeader lang={language} />
-      <LoginScreenInputPhoneNumber lang={language} />
+      <LoginScreenHeader lang={content} />
+      <LoginScreenInputPhoneNumber lang={content} />
       <TouchableOpacity
         onPress={() => {
           setTheme(newTheme);

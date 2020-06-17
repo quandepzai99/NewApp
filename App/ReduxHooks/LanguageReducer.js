@@ -1,17 +1,17 @@
 import { LanguageActions } from "./LanguageActions";
+import ContentEn from "../I18n/en";
+import ContentVi from "../I18n/vi";
 
 export const initialState = {
-  language: "vi"
+  language: "vi",
+  content: ContentVi
 };
-// Reducer
-// Khi 1 action được dispatch, sẽ được chuyển đến reducer
-// VD: action SET_LANGUAGE được dispatch với data: { type: "SET_LANGUAGE", payload: "en" }
-// thì reducer sẽ tìm và thực hiện việc thay đổi state ứng với action đó, trong trường hợp
-// ở đây thì thay đổi language thành "en"
-// Reducer nên sử dụng syntax switch(action.type)
+
 export const LanguageReducer = (state, action) => {
   if (action.type === LanguageActions.setLanguage) {
-    return { ...state, language: action.payload };
+    const language = action.payload;
+    const content = language === "vi" ? ContentVi : ContentEn;
+    return { ...state, language: language, content: content };
   } else {
     return state;
   }
