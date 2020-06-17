@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import LanguageProvider from "./LanguageProvider";
+import ThemeProvider from "./ThemeProvider";
 
 // Composer
 // Một Provider phải wrap xung quanh các component thì các component mới có
@@ -21,7 +22,10 @@ const ContextProviderComposer = ({ contextProviders, children }) => {
 export default function Provider(props) {
   return (
     <ContextProviderComposer
-      contextProviders={[<LanguageProvider key="language" />]}
+      contextProviders={[
+        <LanguageProvider key="language" />,
+        <ThemeProvider key="theme" />
+      ]}
       children={props.children}
     />
   );
