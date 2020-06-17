@@ -1,76 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigationRef } from "../Navigation/RootNavigation";
-import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
+import en from "../I18n/en";
+import LoginScreenHeader from "./LoginScreenHeader";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
-export default class LoginScreenInputPhoneNumber extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Reds: colors.blueGrey
-    };
-  }
-
-  handleKeyup = event => {
-    // console.log(event.nativeEvent.text)
-    let colors = event.nativeEvent.text;
-    if (colors.length > 0) {
-      this.setState({
-        Reds: "rgb(114, 13, 93)"
-      });
-    }
-    if (colors.length === 0) {
-      this.setState({
-        Reds: colors.paleGreyFour
-      });
-    }
-  };
-
-  render() {
-    const { lang, onChangeLang } = this.props;
-
-    const bigText = switchLanguage(lang, "LoginScreenEnterPhoneNumber");
-    const smallText = switchLanguage(
-      lang,
-      "LoginScreenPhoneNumber"
-    );
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.trans}>
-          <Text style={styles.text1}>{bigText}</Text>
-          <GlobalLanguageButton lang={lang} onChangeLang={onChangeLang} />
-        </View>
-        <Text style={styles.text2}>{smallText}</Text>
-        <TextInput
-          onChange={this.handleKeyup}
-          placeholder={"0901234567"}
-          style={styles.input}
-          keyboardType="phone-pad"
-          maxLength={10}
-          autoFocus={true}
-        />
-        <TouchableOpacity
-          onPress={() => navigate("PinCode")}
-          style={[styles.ellipse529, { backgroundColor: this.state.Reds }]}>
-          <View style={styles.ellipse531}>
-            <AntDesign
-              name={"arrowright"}
-              size={28}
-              color={this.state.Reds}
-              style={styles.icon}
-            />
-          </View>
-        </TouchableOpacity>
+export default function LoginScreenInputPhoneNumber() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.trans}>
+        <Text style={styles.text1}>{en.LoginScreenHeader}</Text>
+        <GlobalLanguageButton />
       </View>
-    );
-  }
+      <Text style={styles.text2}>{en.LoginScreenHeader}</Text>
+      <TextInput
+        placeholder={"0901234567"}
+        style={styles.input}
+        keyboardType="phone-pad"
+        maxLength={10}
+        autoFocus={true}
+      />
+      <TouchableOpacity
+        onPress={() => navigate("PinCode")}
+        style={[styles.ellipse529, { backgroundColor: "red" }]}>
+        <View style={styles.ellipse531}>
+          <AntDesign
+            name={"arrowright"}
+            size={28}
+            style={styles.icon}
+          />
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
 }
