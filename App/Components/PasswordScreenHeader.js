@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, ImageBackground } from "react-native";
 import images from "../Images/images";
 import styles from "./styles/PasswordScreenHeaderStyle";
+import { LanguageContext } from "../Providers/LanguageProvider";
 
 export default function Header() {
+  const languageContext = useContext(LanguageContext);
+  const { content } = languageContext.state;
   return (
     <ImageBackground source={images.backGround} style={{ height: 224 }}>
-      <Text style={styles.text}> Chào mừng bạn quay lại UrBox</Text>
+      <Text style={styles.text}> {content.CurrentPasswordScreenHeader}</Text>
     </ImageBackground>
   );
 }

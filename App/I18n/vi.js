@@ -3,7 +3,7 @@ const vi = {
   LoginScreenEnterPhoneNumber: "Nhập số điện thoại",
   LoginScreenPhoneNumber: "Số điện thoại",
   CurrentPasswordScreenHeader: "Chào mừng bạn tở lại với UrBox",
-  CurrentPasswordScreenInputPassword: " Nhập mật  ",
+  CurrentPasswordScreenInputPassword: " Nhập mật khẩu ",
   CurrentPasswordScreenForgotPassword: "Bạn quên mật khẩu?",
   CurrentPasswordScreenSignOut: "Đăng xuất"
 };
