@@ -5,6 +5,7 @@ import styles from "./styles/LoginScreenLanguageButtonStyle";
 import  {LanguageContext} from '../Providers/LanguageProvider';
 
 export default function GlobalLanguageButton(props) {
+  const { lang, onChangeLang } = props;
   const labelActiveStyle = {
     color: colors.blueGrey
   };
