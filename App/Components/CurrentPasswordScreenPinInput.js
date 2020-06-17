@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigationRef } from "../Navigation/RootNavigation";
@@ -10,43 +10,35 @@ function navigation(name) {
 }
 
 export default function PinInput() {
-  // state = {
-  //   code: "",
-  //   password: ""
-  // };
-  PinInput = React.createRef();
-
-  const { password } = useState('');
-    return (
-      <View style={styles.container}>
-        <View style={styles.section}>
-          <SmoothPinCodeInput
-            password
-            mask=<View
-              style={{
-                width: 20,
-                height: 20,
-                borderRadius: 34,
-                backgroundColor: "rgb(114, 13, 93)"
-              }}
-            />
-            cellStyleFocused={{
-              borderColor: colors.blueGrey
+  const [onFullfillPassword, setOnFullfillPassword] = useState(null);
+  // function onTextChange(text) {
+  //   const navigate = text.length >= 6 ? navigation("PinCode2") : "" ;
+  //   // const navigate = text.length >= 6 ?
+  // }
+  return (
+    <View style={styles.container}>
+      <View style={styles.section}>
+        <SmoothPinCodeInput
+          onFulfill={navigation("PinCode1")}
+          mask=<View
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 34,
+              backgroundColor: "rgb(114, 13, 93)"
             }}
-            cellSize={28}
-            codeLength={6}
-            value={password}
-            onTextChange={onTextChange}
-            cellStyle={styles.cellStyle}
-            autoFocus={true}
           />
-        </View>
+          cellStyleFocused={{
+            borderColor: colors.blueGrey
+          }}
+          cellSize={28}
+          codeLength={6}
+          valueType={onFullfillPassword}
+          cellStyle={styles.cellStyle}
+          autoFocus={true}
+          keyboardType={"phone-pad"}
+        />
       </View>
-    );
-
-
-  function onTextChange(text) {
-    // const { onPress } = this.props;
-    const navigate = text.length >= 6 ? navigation("PinCode2") : null;
-  }
+    </View>
+  );
 }

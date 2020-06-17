@@ -1,58 +1,25 @@
-import React, { Component, useContext, useState } from 'react';
+import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import colors from "../Themes/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigationRef } from "../Navigation/RootNavigation";
-import switchLanguage from "../I18n/selector";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
-import { color } from 'react-native-reanimated';
-import {ThemeContext} from 'react-native-elements';
-
-// const navigationRef = React.createRef();
+import en from "../I18n/en";
+import LoginScreenHeader from "./LoginScreenHeader";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
-export default function InputPhoneNumber() {
-  // const [colors, setColor] = useState('blue');
-  // const [colors, setColor] = useState('blue');
-
-
-
-  // colorButton = ["#fff"];
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     Reds: colors.blueGrey
-  //   };
-  // }
-  function handleKeyup(event) {
-    // console.log();
-    const mau = ['red'];
-      setColor(mau);
-      return;
-
-  }
-
-  // const { lang, onChangeLang } = this.props;
-  //
-  // const bigText = switchLanguage(lang, "AuthenticationScreenPhoneText");
-  // const smallText = switchLanguage(
-  //   lang,
-  //   "AuthenticationScreenEnterPhoneNumberText"
-  // );
-
+export default function LoginScreenInputPhoneNumber() {
   return (
     <View style={styles.container}>
-      {/*<View style={styles.trans}>*/}
-      {/*  <Text style={styles.text1}>{bigText}</Text>*/}
-      {/*  <GlobalLanguageButton lang={lang} onChangeLang={onChangeLang} />*/}
-      {/*</View>*/}
-      {/*<Text style={styles.text2}>{smallText}</Text>*/}
+      <View style={styles.trans}>
+        <Text style={styles.text1}>{en.LoginScreenHeader}</Text>
+        <GlobalLanguageButton />
+      </View>
+      <Text style={styles.text2}>{en.LoginScreenHeader}</Text>
       <TextInput
-        onChange={handleKeyup}
         placeholder={"0901234567"}
         style={styles.input}
         keyboardType="phone-pad"
@@ -61,12 +28,11 @@ export default function InputPhoneNumber() {
       />
       <TouchableOpacity
         onPress={() => navigate("PinCode")}
-        style={[styles.ellipse529, { backgroundColor: colors }]}>
+        style={[styles.ellipse529, { backgroundColor: "red" }]}>
         <View style={styles.ellipse531}>
           <AntDesign
             name={"arrowright"}
             size={28}
-            color={'#000'}
             style={styles.icon}
           />
         </View>
