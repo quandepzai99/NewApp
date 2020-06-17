@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import colors from "../../Themes/Colors"
+import colors from "../../Themes/Colors";
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -71,6 +71,16 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: "left",
     color: colors.blueGrey
+  },
+  cellStyle: {
+    borderWidth: 1,
+    borderRadius: 24,
+    width: 28,
+    height: 28,
+    borderColor: colors.paleGreyFour,
+    backgroundColor: "#fff",
+    marginTop: 36,
+    marginLeft: 16
   }
 });
 

@@ -5,7 +5,9 @@ const en = {
   CurrentPasswordScreenHeader: "Welcome back to UrBox",
   CurrentPasswordScreenInputPassword: "Input Your Password",
   CurrentPasswordScreenForgotPassword: "Forgot Your Password?",
-  CurrentPasswordScreenSignOut: "Sign Out"
+  CurrentPasswordScreenSignOut: "Sign Out",
+  CurrentPasswordScreenFaceID : "Face ID"
+
 };
 
 export default en;

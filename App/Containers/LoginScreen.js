@@ -8,8 +8,6 @@ import { LanguageContext } from "../Providers/LanguageProvider";
 function LoginScreen() {
   const languageContext = useContext(LanguageContext);
   const { language, content } = languageContext.state;
-    console.log("langgggg",languageContext.state)
-    console.log("contenttttt",content)
   return (
     <View>
       <StatusBar

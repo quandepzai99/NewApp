@@ -5,7 +5,8 @@ const vi = {
   CurrentPasswordScreenHeader: "Chào mừng bạn tở lại với UrBox",
   CurrentPasswordScreenInputPassword: " Nhập mật khẩu ",
   CurrentPasswordScreenForgotPassword: "Bạn quên mật khẩu?",
-  CurrentPasswordScreenSignOut: "Đăng xuất"
+  CurrentPasswordScreenSignOut: "Đăng xuất",
+  CurrentPasswordScreenFaceID : "Xác định khuôn mặt"
 };
 
 export default vi;

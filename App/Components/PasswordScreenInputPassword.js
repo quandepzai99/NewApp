@@ -1,9 +1,9 @@
-import React, { Component, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import colors from "../Themes/Colors";
 import images from "../Images/images";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
-import { navigationRef } from "../Navigation/RootNavigation";
+import { navigationRef, withNavigation } from "../Navigation/RootNavigation";
 import styles from "./styles/PasswordScreenInputPasswordStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 
@@ -14,24 +14,22 @@ function navigation(name) {
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
+  const [code, useCode] = useState(0);
+  function changeCode() {
+    return code => useCode(code + 1);
+  }
+  console.log("codeee", code);
+  console.log("usecodeee", useCode);
+  console.log("changecodeeeee", changeCode());
 
-  const navigate = code.length >= 6 ? navigation("Home") : null;
+  // const navigate = "".length >= 6 ? navigation("Home") : null;
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>
         {content.CurrentPasswordScreenInputPassword}
       </Text>
       <SmoothPinCodeInput
-        cellStyle={{
-          borderWidth: 1,
-          borderRadius: 24,
-          width: 28,
-          height: 28,
-          borderColor: colors.paleGreyFour,
-          backgroundColor: "#fff",
-          marginTop: 36,
-          marginLeft: 16
-        }}
+        cellStyle={styles.cellStyle}
         mask={
           <View
             style={{
@@ -57,7 +55,7 @@ export default function PasswordScreenInputPassword() {
         password={true}
         autoFocus={true}
         codeLength={6}
-        onTextChange={code => this.setState({ code })}
+        onTextChange={changeCode}
       />
       <View style={styles.box}>
         <TouchableOpacity
@@ -77,7 +75,7 @@ export default function PasswordScreenInputPassword() {
         </TouchableOpacity>
       </View>
       <View style={styles.box2}>
-        <Text style={styles.text4}>Xác định khuôn mặt</Text>
+        <Text style={styles.text4}>{content.CurrentPasswordScreenFaceID}</Text>
       </View>
     </View>
   );
