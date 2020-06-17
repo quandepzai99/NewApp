@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import GlobalLanguageButton from "./GlobalLanguageButton";
@@ -12,6 +12,13 @@ function navigate(name) {
 }
 
 export default function LoginScreenInputPhoneNumber() {
+
+  const [colors, setColor] = useState('blue');
+
+  function handleKeyup() {
+    const newColor = ['red'];
+    setColor(newColor)
+  }
   return (
     <View style={styles.container}>
       <View style={styles.trans}>
@@ -20,6 +27,7 @@ export default function LoginScreenInputPhoneNumber() {
       </View>
       <Text style={styles.text2}>{en.LoginScreenHeader}</Text>
       <TextInput
+        onChangeText={handleKeyup}
         placeholder={"0901234567"}
         style={styles.input}
         keyboardType="phone-pad"
@@ -28,7 +36,7 @@ export default function LoginScreenInputPhoneNumber() {
       />
       <TouchableOpacity
         onPress={() => navigate("PinCode")}
-        style={[styles.ellipse529, { backgroundColor: "red" }]}>
+        style={[styles.ellipse529, { backgroundColor: colors }]}>
         <View style={styles.ellipse531}>
           <AntDesign
             name={"arrowright"}
