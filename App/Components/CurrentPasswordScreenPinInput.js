@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigationRef } from "../Navigation/RootNavigation";
@@ -10,7 +10,7 @@ function navigation(name) {
 }
 
 export default function PinInput() {
-  const [password, SetPassword] = useState("");
+  const [onFullfillPassword, setOnFullfillPassword] = useState(null);
   // function onTextChange(text) {
   //   const navigate = text.length >= 6 ? navigation("PinCode2") : "" ;
   //   // const navigate = text.length >= 6 ?
@@ -19,7 +19,7 @@ export default function PinInput() {
     <View style={styles.container}>
       <View style={styles.section}>
         <SmoothPinCodeInput
-          password
+          onFulfill={navigation("PinCode1")}
           mask=<View
             style={{
               width: 20,
@@ -33,8 +33,10 @@ export default function PinInput() {
           }}
           cellSize={28}
           codeLength={6}
+          valueType={onFullfillPassword}
           cellStyle={styles.cellStyle}
           autoFocus={true}
+          keyboardType={"phone-pad"}
         />
       </View>
     </View>
