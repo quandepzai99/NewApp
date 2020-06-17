@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Image } from "react-native";
-import styles from "./styles/LoginScreenChatPopUpIconStyle";
+import styles from "./styles/GlobalChatPopUpIconStyle";
 import images from "../Images/images";
 import { navigationRef } from "../Navigation/RootNavigation";
 
