@@ -16,5 +16,4 @@ export const LanguageReducer = (state, action) => {
     return state;
   }
 };
-
 export default initialState;
