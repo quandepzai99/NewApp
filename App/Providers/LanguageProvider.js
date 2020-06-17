@@ -1,6 +1,7 @@
 import initialState, { LanguageReducer } from "../ReduxHooks/LanguageReducer";
 import React, { createContext, useReducer } from "react";
-import { LanguageActions } from "../ReduxHooks/LanguageActions";
+import { LanguageActions, ButtonActions } from "../ReduxHooks/LanguageActions";
+import colors from "../Themes/Colors";
 
 export const LanguageContext = createContext({});
 export const LanguageProvider = LanguageContext.Provider;
@@ -21,7 +22,8 @@ export default function Wrapper(props) {
 // Map actions, return 1 object có các function đã map sẵn với dispatch
 const mapActionsToDispatch = dispatch => {
   return {
-    setLanguage: setLanguage(dispatch)
+    setLanguage: setLanguage(dispatch),
+    setBackgroundColor: setColorButton(dispatch)
   };
 };
 
@@ -31,6 +33,17 @@ const setLanguage = dispatch => (language): void => {
     dispatch({
       type: LanguageActions.setLanguage,
       payload: language
+    });
+  }, 3000);
+};
+
+const setColorButton = dispatch => (
+  buttonColor
+): colors.paleGreyFour => {
+  setTimeout(() => {
+    dispatch({
+      type: ButtonActions.setColorButton,
+      payload: buttonColor
     });
   }, 3000);
 };

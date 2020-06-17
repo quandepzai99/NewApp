@@ -4,7 +4,7 @@ import LanguageProvider from "./LanguageProvider";
 // Composer
 // Một Provider phải wrap xung quanh các component thì các component mới có
 // thể access context của Provider qua useContext()
-// Để phòng trường hợp Provider hell (VD: 
+// Để phòng trường hợp Provider hell (VD:
 // <FirstProvider>
 //   <SecondProvider>
 //     <ThirdProvider>
