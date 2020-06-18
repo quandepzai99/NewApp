@@ -1,15 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import HeaderCurrentPassword from "../Components/CurrentPasswordScreenHeader";
 import StyleHeaderCurrentPassword from "../Components/styles/CurrentPasswordStyle";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import PinInputCurrent from "../Components/CurrentPasswordScreenPinInput";
-import { navigationRef } from "../Navigation/RootNavigation";
+import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
-
-function navigate(name) {
-  navigationRef.current && navigationRef.current.navigate(name);
-}
 
 export default function CurrentPassWordScreen() {
   const languageContext = useContext(LanguageContext);

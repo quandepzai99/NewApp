@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import LanguageProvider from "./LanguageProvider";
 import ThemeProvider from "./ThemeProvider";
+import AuthProvider from "./AuthProvider";
 
 // Composer
 // Một Provider phải wrap xung quanh các component thì các component mới có
@@ -24,7 +25,8 @@ export default function Provider(props) {
     <ContextProviderComposer
       contextProviders={[
         <LanguageProvider key="language" />,
-        <ThemeProvider key="theme" />
+        <ThemeProvider key="theme" />,
+        <AuthProvider key="auth" />
       ]}
       children={props.children}
     />

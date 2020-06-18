@@ -3,13 +3,9 @@ import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import ChangePasswordScreenHeader from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import PasswordScreenInputPassword from "../Components/ChangePasswordScreenPinInput";
-import { navigationRef } from "../Navigation/RootNavigation";
+import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
-
-function navigate(name) {
-  navigationRef.current && navigationRef.current.navigate(name);
-}
 
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);

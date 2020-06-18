@@ -4,7 +4,7 @@ import colors from "../Themes/Colors";
 import styles from "./styles/GlobalLangueButtonStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 
-export default function GloabalLanguageButton() {
+export default function GlobalLanguageButton() {
   const languageContext = useContext(LanguageContext);
   const { language } = languageContext.state;
   const { setLanguage } = languageContext;

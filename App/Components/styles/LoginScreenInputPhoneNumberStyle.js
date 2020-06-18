@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     color: colors.blueGrey
   },
-  ellipse529: {
+  floatButton: {
     width: 78,
     height: 78,
     position: "absolute",

@@ -35,9 +35,9 @@ console.log("FRESH CHAT APP ID", FRESH_CHAT_APP_ID);
 console.log("FRESH CHAT APP KEY", FRESH_CHAT_APP_KEY);
 console.log("ENABLE LOG", ENABLE_LOG);
 
-if (!ENABLE_LOG) {
-  console.log = () => {};
-}
+// if (!ENABLE_LOG) {
+//   console.log = () => {};
+// }
 
 export const STATUS_OK = 200;
 export const STATUS_BAD_REQUEST = 400;

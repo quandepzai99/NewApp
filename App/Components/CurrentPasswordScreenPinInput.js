@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
-import { navigationRef } from "../Navigation/RootNavigation";
+import { navigate } from "../Navigation/RootNavigation";
 import colors from "../Themes/Colors";
 import styles from "./styles/CurrentPasswordScreenPinInputStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
-
-function navigation(name) {
-  navigationRef.current && navigationRef.current.navigate(name);
-}
 
 export default function PinInput() {
   const languageContext = useContext(LanguageContext);
@@ -38,7 +34,7 @@ export default function PinInput() {
           password={true}
           autoFocus={true}
           codeLength={6}
-          onFulfill={() => navigation("PinCode2")}
+          onFulfill={() => navigate("PinCode2")}
         />
       </View>
     </View>
