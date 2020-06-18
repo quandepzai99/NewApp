@@ -81,6 +81,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     marginTop: 36,
     marginLeft: 16
+  },
+  maskStyle: {
+    width: 17,
+    height: 17,
+    borderRadius: 25,
+    backgroundColor: colors.velvet
   }
 });
 

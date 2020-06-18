@@ -25,12 +25,7 @@ export default function PasswordScreenInputPassword() {
         cellStyle={styles.cellStyle}
         mask={
           <View
-            style={{
-              width: 17,
-              height: 17,
-              borderRadius: 25,
-              backgroundColor: colors.velvet
-            }}
+            style={styles.maskStyle}
           />
         }
         textStyle={{
