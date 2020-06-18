@@ -5,7 +5,6 @@ import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigationRef } from "../Navigation/RootNavigation";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import en from "../I18n/en";
-import LoginScreenHeader from "./LoginScreenHeader";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
@@ -16,8 +15,9 @@ export default function LoginScreenInputPhoneNumber() {
   const [colors, setColor] = useState('blue');
 
   function handleKeyup() {
+    console.log(colors)
     const newColor = ['red'];
-    setColor(newColor)
+    setColor(newColor);
   }
   return (
     <View style={styles.container}>
