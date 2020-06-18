@@ -14,13 +14,8 @@ function navigation(name) {
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-  const [code, useCode] = useState('');
+  const [code, setCode] = useState("");
 
-  console.log("codeee", code);
-  console.log("usecodeee", useCode);
-  // console.log("changecodeeeee", changeCode());
-
-  // const navigate = "".length >= 6 ? navigation("Home") : null;
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>
@@ -49,12 +44,12 @@ export default function PasswordScreenInputPassword() {
         cellStyleFocused={{
           borderColor: colors.blueGrey
         }}
+        onTextChange={setCode}
         value={code}
         maskDelay={500}
         password={true}
         autoFocus={true}
         codeLength={6}
-        onTextChange={() => useCode({ code })}
         onFulfill={() => navigation("Home")}
       />
       <View style={styles.box}>
