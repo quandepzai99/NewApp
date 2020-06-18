@@ -2,14 +2,11 @@ import React, { useContext, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import GlobalLanguageButton from "./GlobalLanguageButton";
-import { navigationRef } from "../Navigation/RootNavigation";
+import { navigate } from "../Navigation/RootNavigation";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import colors from "../Themes/Colors";
 
-function navigate(name) {
-  navigationRef.current && navigationRef.current.navigate(name);
-}
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
