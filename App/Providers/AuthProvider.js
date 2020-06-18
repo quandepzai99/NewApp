@@ -40,6 +40,7 @@ const isPhoneNumberExist = dispatch => async (
   } else {
     onFailed();
   }
+  //Nếu response trả về true thì lọc data theo các filter
 
   // dispatch({
   //   type: AuthActions.isPhoneNumberExist,
