@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import colors from "../../Themes/Colors";
 
-const screenResetPw = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     marginLeft: 16,
     marginRight: 16,
@@ -113,4 +113,4 @@ const screenResetPw = StyleSheet.create({
   }
 });
 
-export default screenResetPw;
+export default styles;
