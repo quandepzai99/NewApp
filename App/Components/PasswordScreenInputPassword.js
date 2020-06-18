@@ -19,7 +19,7 @@ export default function PasswordScreenInputPassword() {
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>
-        {content.CurrentPasswordScreenInputPassword}
+        {content.PasswordScreenInputPassword}
       </Text>
       <SmoothPinCodeInput
         cellStyle={styles.cellStyle}
@@ -52,7 +52,7 @@ export default function PasswordScreenInputPassword() {
           onPress={() => navigation("PinCode1")}
           style={{ paddingTop: 10, paddingBottom: 10 }}>
           <Text style={styles.text2}>
-            {content.CurrentPasswordScreenForgotPassword}
+            {content.PasswordScreenForgotPassword}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -60,12 +60,12 @@ export default function PasswordScreenInputPassword() {
           onPress={() => navigation("Telephone")}>
           <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
           <Text style={styles.text3}>
-            {content.CurrentPasswordScreenSignOut}
+            {content.PasswordScreenSignOut}
           </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.box2}>
-        <Text style={styles.text4}>{content.CurrentPasswordScreenFaceID}</Text>
+        <Text style={styles.text4}>{content.PasswordScreenFaceID}</Text>
       </View>
     </View>
   );

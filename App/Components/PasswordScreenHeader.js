@@ -9,7 +9,7 @@ export default function Header() {
   const { content } = languageContext.state;
   return (
     <ImageBackground source={images.backGround} style={{ height: 224 }}>
-      <Text style={styles.text}> {content.CurrentPasswordScreenHeader}</Text>
+      <Text style={styles.text}> {content.PasswordScreenHeader}</Text>
     </ImageBackground>
   );
 }
