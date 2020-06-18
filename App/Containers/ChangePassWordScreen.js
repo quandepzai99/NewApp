@@ -1,43 +1,54 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
-import HeaderChangePassWord from "../Components/ChangePasswordScreenHeader";
+import ChangePasswordScreenHeader from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import PinInputChange from "../Components/ChangePasswordScreenPinInput";
-import ChangePassWordStyle from "../Components/styles/ChangePassWordStyle";
+import PasswordScreenInputPassword from "../Components/ChangePasswordScreenPinInput";
 import { navigationRef } from "../Navigation/RootNavigation";
+import { LanguageContext } from "../Providers/LanguageProvider";
+import styles from "../Components/styles/ChangePassWordScreenStyle";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
 export default function ChangePassWordScreen() {
-  const [isShow, setIsHidden] = useState(false);
-
-  console.log("Is Hidden:", isShow);
-  console.log("Set Hidden:", setIsHidden);
+  const languageContext = useContext(LanguageContext);
+  const { content } = languageContext.state;
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isFulfill, setFulfill] = useState(false);
+  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
 
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
-      <HeaderChangePassWord />
-      <View style={ChangePassWordStyle.viewBlock2}>
-        <Text style={ChangePassWordStyle.textblock2box1}>Mật khẩu mới</Text>
-        <View style={ChangePassWordStyle.viewBlock2box1}>
-          <PinInputChange
-            onFulfill={() => {
-              setIsHidden(true);
-            }}
+      <ChangePasswordScreenHeader />
+      <View style={styles.viewBlock2}>
+        <Text style={styles.textblock2box1}>
+          {content.ChangePasswordScreenInputNewPassword}
+        </Text>
+        <View style={styles.viewBlock2box1}>
+          <PasswordScreenInputPassword
+            isFulfill={isFulfill}
+            setFulfill={setFulfill}
+            password={password}
+            setPassword={setPassword}
           />
         </View>
-        {isShow ? (
-          <>
-            <Text style={ChangePassWordStyle.textblock2box2}>
-              Xác nhận mật khẩu
+        {isFulfill ? (
+          <View>
+            <Text style={styles.textblock2box2}>
+              {content.CurrentPasswordScreenConfirmNewPassword}{" "}
             </Text>
-            <View style={ChangePassWordStyle.viewBlock2box2}>
-              <PinInputChange onFulfill={() => {}} />
+            <View style={styles.viewBlock2box2}>
+              <PasswordScreenInputPassword
+                isFulfill={isFulfillConfirmPassword}
+                setFulfill={setFulfillConfirmPassword}
+                password={confirmPassword}
+                setPassword={setConfirmPassword}
+              />
             </View>
-          </>
+          </View>
         ) : (
           <View />
         )}
@@ -51,15 +62,15 @@ export default function ChangePassWordScreen() {
         onPress={() => navigate("PinCode1")}>
         <AntDesign
           name={"left"}
-          size={15}
+          size={20}
           color={"gray"}
           style={{
-            paddingTop: 10,
+            paddingTop: 8,
             paddingBottom: 10,
             paddingLeft: 10
           }}
         />
-        <Text style={ChangePassWordStyle.goBackButton}> Quay lại</Text>
+        <Text style={styles.goBackButton}>{content.GobackButton}</Text>
       </TouchableOpacity>
     </View>
   );

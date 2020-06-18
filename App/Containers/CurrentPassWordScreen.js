@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import HeaderCurrentPassword from "../Components/CurrentPasswordScreenHeader";
 import StyleHeaderCurrentPassword from "../Components/styles/CurrentPasswordStyle";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import PinInputCurrent from "../Components/CurrentPasswordScreenPinInput";
 import { navigationRef } from "../Navigation/RootNavigation";
+import { LanguageContext } from "../Providers/LanguageProvider";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
 export default function CurrentPassWordScreen() {
+  const languageContext = useContext(LanguageContext);
+  const { content } = languageContext.state;
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
       <HeaderCurrentPassword />
       <View style={StyleHeaderCurrentPassword.viewBlock2}>
         <Text style={StyleHeaderCurrentPassword.textblock2box1}>
-          Nhập mật khẩu hiện tại
+          {content.CurrentPasswordScreenInputPassword}
         </Text>
         <View style={StyleHeaderCurrentPassword.viewBlock2box1}>
           <PinInputCurrent />
@@ -29,8 +32,7 @@ export default function CurrentPassWordScreen() {
           justifyContent: "center",
           marginTop: 26
         }}
-        onPress={() => navigate("PinCode")}
-      >
+        onPress={() => navigate("PinCode")}>
         <AntDesign
           name={"left"}
           size={20}
@@ -41,7 +43,9 @@ export default function CurrentPassWordScreen() {
             paddingLeft: 10
           }}
         />
-        <Text style={StyleHeaderCurrentPassword.goBackButton}> Quay lại</Text>
+        <Text style={StyleHeaderCurrentPassword.goBackButton}>
+          {content.GobackButton}
+        </Text>
       </TouchableOpacity>
     </View>
   );

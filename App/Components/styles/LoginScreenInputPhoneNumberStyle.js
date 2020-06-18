@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
     color: colors.blueGrey
   },
   ellipse529: {
+    width: 78,
+    height: 78,
     position: "absolute",
     justifyContent: "center",
     bottom: -40,
@@ -79,6 +81,8 @@ const styles = StyleSheet.create({
     elevation: 4
   },
   ellipse531: {
+    width: 60,
+    height: 60,
     margin: 10,
     backgroundColor: "#ffffff",
     borderRadius: 30,

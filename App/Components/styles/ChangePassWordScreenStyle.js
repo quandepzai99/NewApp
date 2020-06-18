@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import colors from "../../Themes/Colors";
 
-const screenResetPw = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     marginLeft: 16,
     marginRight: 16,
@@ -91,7 +91,7 @@ const screenResetPw = StyleSheet.create({
   },
   textblock2box2: {
     left: 32,
-    bottom: 79,
+    bottom: 54,
     position: "absolute",
     textAlign: "left",
     backgroundColor: "white",
@@ -110,7 +110,31 @@ const screenResetPw = StyleSheet.create({
     textAlign: "center",
     marginLeft: -5,
     color: "grey"
+  },
+  container1: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    borderColor: "rgb(230,236,240)",
+    borderWidth: 1
+  },
+  section: {
+    alignItems: "center",
+    margin: 16
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 8
+  },
+  cellStyle: {
+    borderRadius: 24,
+    borderColor: colors.paleGreyFour,
+    borderWidth: 1,
+    marginLeft: 12
   }
 });
 
-export default screenResetPw;
+export default styles;
