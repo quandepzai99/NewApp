@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
+import styles from "./styles/ChangePassWordScreenStyle";
 
-export default function PasswordScreenInputPassword() {
-  const [code, setCode] = useState("");
-
+export default function PasswordScreenInputPassword(props) {
+  const { password, setPassword, setFulfill } = props;
   return (
-    <View style={styles.container}>
+    <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
+          onFulfill={() => {
+            setFulfill(true);
+          }}
           password
           mask=<View
             style={{
@@ -24,8 +27,8 @@ export default function PasswordScreenInputPassword() {
           }}
           cellSize={28}
           codeLength={6}
-          value={code}
-          onTextChange={setCode}
+          value={password}
+          onTextChange={setPassword}
           cellStyle={styles.cellStyle}
           autoFocus={true}
         />
@@ -33,30 +36,3 @@ export default function PasswordScreenInputPassword() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 12,
-    borderColor: "rgb(230,236,240)",
-    borderWidth: 1
-  },
-  section: {
-    alignItems: "center",
-    margin: 16
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 8
-  },
-  cellStyle: {
-    borderRadius: 24,
-    borderColor: colors.paleGreyFour,
-    borderWidth: 1,
-    marginLeft: 12
-  }
-});

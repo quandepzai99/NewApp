@@ -3,43 +3,53 @@ import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import ChangePasswordScreenHeader from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import PasswordScreenInputPassword from "../Components/ChangePasswordScreenPinInput";
-import ChangePassWordStyle from "../Components/styles/ChangePassWordScreenStyle";
 import { navigationRef } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
+import styles from "../Components/styles/ChangePassWordScreenStyle";
 
 function navigate(name) {
   navigationRef.current && navigationRef.current.navigate(name);
 }
 
 export default function ChangePassWordScreen() {
-  const [isShow, setIsHidden] = useState(false);
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
+
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isFulfill, setFulfill] = useState(false);
+  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
 
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
       <ChangePasswordScreenHeader />
-      <View style={ChangePassWordStyle.viewBlock2}>
-        <Text style={ChangePassWordStyle.textblock2box1}>
+      <View style={styles.viewBlock2}>
+        <Text style={styles.textblock2box1}>
           {content.ChangePasswordScreenInputNewPassword}
         </Text>
-        <View style={ChangePassWordStyle.viewBlock2box1}>
+        <View style={styles.viewBlock2box1}>
           <PasswordScreenInputPassword
-            onFulfill={() => {
-              setIsHidden(true);
-            }}
+            isFulfill={isFulfill}
+            setFulfill={setFulfill}
+            password={password}
+            setPassword={setPassword}
           />
         </View>
-        {isShow ? (
-          <>
-            <Text style={ChangePassWordStyle.textblock2box2}>
+        {isFulfill ? (
+          <View>
+            <Text style={styles.textblock2box2}>
               {content.CurrentPasswordScreenConfirmNewPassword}{" "}
             </Text>
-            <View style={ChangePassWordStyle.viewBlock2box2}>
-              <PasswordScreenInputPassword onFulfill={() => {}} />
+            <View style={styles.viewBlock2box2}>
+              <PasswordScreenInputPassword
+                isFulfill={isFulfillConfirmPassword}
+                setFulfill={setFulfillConfirmPassword}
+                password={confirmPassword}
+                setPassword={setConfirmPassword}
+              />
             </View>
-          </>
+          </View>
         ) : (
           <View />
         )}
@@ -61,9 +71,7 @@ export default function ChangePassWordScreen() {
             paddingLeft: 10
           }}
         />
-        <Text style={ChangePassWordStyle.goBackButton}>
-          {content.GobackButton}
-        </Text>
+        <Text style={styles.goBackButton}>{content.GobackButton}</Text>
       </TouchableOpacity>
     </View>
   );
