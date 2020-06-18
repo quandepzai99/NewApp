@@ -14,7 +14,6 @@ function navigate(name) {
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFulfill, setFulfill] = useState(false);

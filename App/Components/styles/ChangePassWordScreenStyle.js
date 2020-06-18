@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   textblock2box2: {
     left: 32,
-    bottom: 79,
+    bottom: 60,
     position: "absolute",
     textAlign: "left",
     backgroundColor: "white",
