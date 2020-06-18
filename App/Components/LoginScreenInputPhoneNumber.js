@@ -13,14 +13,8 @@ export default function LoginScreenInputPhoneNumber() {
   const [text, setText] = useState("");
 
   const isActive = text.length >= 10;
-  const floatStyle = isActive
-    ? [
-        styles.floatButton,
-        {
-          backgroundColor: colors.velvet
-        }
-      ]
-    : styles.floatButton;
+  const floatStyle = getButtonStyle(isActive);
+  const onPress = getOnPress(isActive);
 
   return (
     <View style={styles.container}>
@@ -39,7 +33,7 @@ export default function LoginScreenInputPhoneNumber() {
         dataDetectorTypes="phoneNumber"
         keyboardType="phone-pad"
       />
-      <TouchableOpacity onPress={onPress.bind(isActive)} style={floatStyle}>
+      <TouchableOpacity onPress={onPress} style={floatStyle}>
         <View style={styles.ellipse531}>
           <AntDesign name="arrowright" size={28} style={styles.icon} />
         </View>
@@ -48,6 +42,21 @@ export default function LoginScreenInputPhoneNumber() {
   );
 }
 
-const onPress = isActive => {
-  isActive ? navigate("PinCode") : () => {};
+const getButtonStyle = isActive => {
+  return isActive
+    ? [
+        styles.floatButton,
+        {
+          backgroundColor: colors.velvet
+        }
+      ]
+    : styles.floatButton;
+};
+
+const getOnPress = isActive => {
+  return isActive
+    ? () => {
+        navigate("PinCode");
+      }
+    : () => {};
 };
