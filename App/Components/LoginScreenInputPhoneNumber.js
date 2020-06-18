@@ -42,6 +42,10 @@ export default function LoginScreenInputPhoneNumber() {
   );
 }
 
+const checkPhoneExist = (phone) => {
+
+};
+
 const getButtonStyle = isActive => {
   return isActive
     ? [
