@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { LanguageContext } from "../Providers/LanguageProvider";
@@ -9,6 +9,7 @@ import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import colors from "../Themes/Colors";
 
 import GlobalLanguageButton from "./GlobalLanguageButton";
+import { navigate } from "../Navigation/RootNavigation";
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
@@ -66,7 +67,17 @@ const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
         console.log("IS EXIST:", phone);
-        isPhoneNumberExist(phone);
+        isPhoneNumberExist(phone, onSuccess, onFailed);
       }
     : () => {};
 };
+
+const onSuccess = isExist => {
+  if (isExist) {
+    navigate("PinCode");
+  } else {
+    Alert.alert("So dien thoai nay chua ton tai");
+  }
+};
+
+const onFailed = () => {};

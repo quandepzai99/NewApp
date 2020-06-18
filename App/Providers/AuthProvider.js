@@ -2,6 +2,7 @@ import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
+import { Alert } from "react-native";
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -22,9 +23,20 @@ const mapActionsToDispatch = dispatch => {
   };
 };
 
-const isPhoneNumberExist = dispatch => async (phone): void => {
+const isPhoneNumberExist = dispatch => async (
+  phone,
+  onSuccess,
+  onFailed
+): void => {
   const response = await API.phoneCheckExist(phone);
   console.log("RESPONSE:", response);
+  if (response.status) {
+    const { data } = response;
+    const { is_exist } = data;
+    onSuccess(is_exist);
+  } else {
+    onFailed();
+  }
 
   // dispatch({
   //   type: AuthActions.isPhoneNumberExist,
