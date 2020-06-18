@@ -1,6 +1,7 @@
 import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
+import API from "../Lib/API";
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -21,9 +22,12 @@ const mapActionsToDispatch = dispatch => {
   };
 };
 
-const isPhoneNumberExist = dispatch => (phone): void => {
-  dispatch({
-    type: AuthActions.isPhoneNumberExist,
-    payload: phone
-  });
+const isPhoneNumberExist = dispatch => async (phone): void => {
+  const response = await API.phoneCheckExist(phone);
+  console.log("RESPONSE:", response);
+
+  // dispatch({
+  //   type: AuthActions.isPhoneNumberExist,
+  //   payload: phone
+  // });
 };

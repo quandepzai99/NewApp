@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as qs from "query-string";
-import perf from "@react-native-firebase/perf";
 
 import {
   API_ENDPOINT,
@@ -19,61 +18,9 @@ import {
   API_ENDPOINT_V4,
   API_ENDPOINT_V5
 } from "../Config/Remote";
-import StoreHelper from "../Common/StoreHelper";
 import TimeHelper from "../Common/TimeHelper";
-import FirebaseTrace from "../Common/FirebaseTrace";
-import FirebaseAnalytic from "../Common/FirebaseAnalytic";
-import LanguageKeySwitcher from "../Common/LanguageKeySwitcher";
-import { generateSignature } from "../Common/SignatureHelper";
 
 const traces = {};
-
-const getTrace = url => {
-  if (traces[url]) {
-    return traces[url];
-  } else {
-    return FirebaseTrace.startTrace;
-  }
-};
-
-axios.interceptors.request.use(async function(config) {
-  const httpMetric = perf().newHttpMetric(config.url, config.method);
-  config.metadata = { httpMetric };
-  await httpMetric.start();
-  return config;
-});
-
-axios.interceptors.response.use(
-  async function(response) {
-    const { httpMetric } = response.config.metadata;
-    httpMetric.putAttribute(
-      "start_time",
-      TimeHelper.formatDateTime(
-        TimeHelper.nowInTimestamp(),
-        "DD/MM/YYYY HH:mm:ss"
-      )
-    );
-    httpMetric.setHttpResponseCode(response.status);
-    httpMetric.setResponseContentType(response.headers["content-type"]);
-    await httpMetric.stop();
-
-    return response;
-  },
-  async function(error) {
-    const { httpMetric } = error.config.metadata;
-    httpMetric.putAttribute(
-      "end_time",
-      TimeHelper.formatDateTime(
-        TimeHelper.nowInTimestamp(),
-        "DD/MM/YYYY HH:mm:ss"
-      )
-    );
-    httpMetric.setHttpResponseCode(error.response.status);
-    httpMetric.setResponseContentType(error.response.headers["content-type"]);
-    await httpMetric.stop();
-    return Promise.reject(error);
-  }
-);
 
 const instance = axios.create({
   baseURL: API_ENDPOINT,
@@ -118,15 +65,11 @@ const handleError = error => {
   const lang = instance.defaults.headers.common["Lang"]
     ? instance.defaults.headers.common["Lang"]
     : "vi";
-  const message = LanguageKeySwitcher.switchConnectionError(lang);
+  const message = "";
 
   if (error.response) {
     const { status, data } = error.response;
     if (status !== 401) {
-      FirebaseAnalytic.logEvent("server_error", {
-        time: new Date().getMilliseconds(),
-        data: JSON.stringify(data)
-      });
     }
     if (status === STATUS_INTERNAL_SERVER_ERROR) {
       return {
@@ -137,7 +80,7 @@ const handleError = error => {
       };
     } else {
       if (status === STATUS_UNAUTHORIZED) {
-        StoreHelper.dispatchLogout();
+        // StoreHelper.dispatchLogout();
       }
       return {
         status: false,
@@ -162,8 +105,8 @@ const GET = (url, config = {}, params = {}) => {
     }
   });
   const queryString = qs.stringify(params);
-  const signature = generateSignature(params);
-  instance.defaults.headers.common["Signature"] = signature;
+  // const signature = generateSignature(params);
+  instance.defaults.headers.common["Signature"] = "";
   console.log(
     "START:",
     url,

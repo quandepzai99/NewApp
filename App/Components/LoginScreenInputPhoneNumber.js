@@ -1,20 +1,29 @@
 import React, { useContext, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import GlobalLanguageButton from "./GlobalLanguageButton";
-import { navigate } from "../Navigation/RootNavigation";
-import styles from "./styles/LoginScreenInputPhoneNumberStyle";
+
 import { LanguageContext } from "../Providers/LanguageProvider";
+import { AuthContext } from "../Providers/AuthProvider";
+
+import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import colors from "../Themes/Colors";
+
+import GlobalLanguageButton from "./GlobalLanguageButton";
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
+  const authContext = useContext(AuthContext);
+
   const { content } = languageContext.state;
+  const { isPhoneNumberExist } = authContext;
   const [text, setText] = useState("");
 
   const isActive = text.length >= 10;
   const floatStyle = getButtonStyle(isActive);
-  const onPress = getOnPress(isActive);
+  const onPress = getOnPress(isActive, isPhoneNumberExist, text);
+
+  console.log("IS ACTIVE", isActive);
+  console.log("ONPRESSSS", onPress);
 
   return (
     <View style={styles.container}>
@@ -42,10 +51,6 @@ export default function LoginScreenInputPhoneNumber() {
   );
 }
 
-const checkPhoneExist = (phone) => {
-
-};
-
 const getButtonStyle = isActive => {
   return isActive
     ? [
@@ -57,10 +62,11 @@ const getButtonStyle = isActive => {
     : styles.floatButton;
 };
 
-const getOnPress = isActive => {
+const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-        navigate("PinCode");
+        console.log("IS EXIST:", phone);
+        isPhoneNumberExist(phone);
       }
     : () => {};
 };
