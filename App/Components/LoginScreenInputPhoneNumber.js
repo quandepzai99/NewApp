@@ -7,12 +7,20 @@ import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import colors from "../Themes/Colors";
 
-
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-  const [changeColor, setChangeColor] = useState(false);
-  console.log("changeColorrrr", changeColor);
+  const [text, setText] = useState("");
+
+  const isActive = text.length >= 10;
+  const floatStyle = isActive
+    ? [
+        styles.floatButton,
+        {
+          backgroundColor: colors.velvet
+        }
+      ]
+    : styles.floatButton;
 
   return (
     <View style={styles.container}>
@@ -22,22 +30,24 @@ export default function LoginScreenInputPhoneNumber() {
       </View>
       <Text style={styles.text2}>{content.LoginScreenPhoneNumber}</Text>
       <TextInput
-        onChangeText={() => setChangeColor(true)}
+        onChangeText={setText}
         placeholder={"0901234567"}
         style={styles.input}
-        maxLength={10}
+        maxLength={20}
         autoFocus={true}
+        textContentType="telephoneNumber"
+        dataDetectorTypes="phoneNumber"
+        keyboardType="phone-pad"
       />
-      <TouchableOpacity
-        onPress={() => navigate("PinCode")}
-        style={
-          ([styles.ellipse529],
-          { backgroundColor: changeColor ? colors.velvet : colors.blueGrey })
-        }>
+      <TouchableOpacity onPress={onPress.bind(isActive)} style={floatStyle}>
         <View style={styles.ellipse531}>
-          <AntDesign name={"arrowright"} size={28} style={styles.icon} />
+          <AntDesign name="arrowright" size={28} style={styles.icon} />
         </View>
       </TouchableOpacity>
     </View>
   );
 }
+
+const onPress = isActive => {
+  isActive ? navigate("PinCode") : () => {};
+};
