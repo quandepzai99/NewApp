@@ -23,8 +23,7 @@ export default function LoginScreenInputPhoneNumber() {
   const floatStyle = getButtonStyle(isActive);
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
 
-  console.log("IS ACTIVE", isActive);
-  console.log("ONPRESSSS", onPress);
+  console.log("OnPress",isActive, isPhoneNumberExist, text)
 
   return (
     <View style={styles.container}>
