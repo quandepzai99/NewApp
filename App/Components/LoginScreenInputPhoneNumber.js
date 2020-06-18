@@ -2,16 +2,15 @@ import React, { useContext, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import GlobalLanguageButton from "./GlobalLanguageButton";
-import { navigationRef } from "../Navigation/RootNavigation";
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import colors from "../Themes/Colors";
+import {useNavigation} from '@react-navigation/native'
 
-function navigate(name) {
-  navigationRef.current && navigationRef.current.navigate(name);
-}
 
 export default function LoginScreenInputPhoneNumber() {
+
+  const navigation = useNavigation();
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [changeColor, setChangeColor] = useState(false);
@@ -32,7 +31,7 @@ export default function LoginScreenInputPhoneNumber() {
         autoFocus={true}
       />
       <TouchableOpacity
-        onPress={() => navigate("PinCode")}
+        onPress={() => navigation.navigate('PinCode')}
         style={
           ([styles.ellipse529],
           { backgroundColor: changeColor ? colors.velvet : colors.blueGrey })

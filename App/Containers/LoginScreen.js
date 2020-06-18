@@ -5,6 +5,7 @@ import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
 import { LanguageContext } from "../Providers/LanguageProvider";
 
+
 function LoginScreen() {
   return (
     <View>
