@@ -6,8 +6,6 @@ import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
 import { LanguageContext } from "../Providers/LanguageProvider";
 
 function LoginScreen() {
-  const languageContext = useContext(LanguageContext);
-  const { language, content } = languageContext.state;
   return (
     <View>
       <StatusBar
