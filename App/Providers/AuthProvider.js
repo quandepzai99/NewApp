@@ -29,6 +29,9 @@ const isPhoneNumberExist = dispatch => async (
   onFailed
 ): void => {
   const response = await API.phoneCheckExist(phone);
+  //await (async await) là 1 action bất đồng bộ, ở trên nếu không có await,
+  //JS sẽ làm tuần tự từ trên xuống xưới mà không chờ dữ liệu ừ thằng reponse
+  //còn ở đây là chờ cho đến khi thằng API trả dữ liệu về
   console.log("RESPONSE:", response);
   if (response.status) {
     const { data } = response;
@@ -37,6 +40,7 @@ const isPhoneNumberExist = dispatch => async (
   } else {
     onFailed();
   }
+  //Nếu response trả về true thì lọc data theo các filter
 
   // dispatch({
   //   type: AuthActions.isPhoneNumberExist,
