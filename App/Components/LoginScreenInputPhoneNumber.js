@@ -14,16 +14,14 @@ import { navigate } from "../Navigation/RootNavigation";
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
   const authContext = useContext(AuthContext);
-
   const { content } = languageContext.state;
   const { isPhoneNumberExist } = authContext;
   const [text, setText] = useState("");
-
   const isActive = text.length >= 10;
   const floatStyle = getButtonStyle(isActive);
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
 
-  console.log("OnPress",isActive, isPhoneNumberExist, text)
+  console.log("OnPress", isActive, isPhoneNumberExist, text);
 
   return (
     <View style={styles.container}>
