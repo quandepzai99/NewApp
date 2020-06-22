@@ -1,17 +1,22 @@
 import React, { useContext, useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
 import colors from "../Themes/Colors";
 import images from "../Images/images";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigate } from "../Navigation/RootNavigation";
 import styles from "./styles/PasswordScreenInputPasswordStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
-
+import { AuthProductionContext } from "../Providers/AuthProductionProvider";
 
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
+  const authProductionContext = useContext(AuthProductionContext);
   const [code, setCode] = useState("");
+  const { checkPassword } = authProductionContext;
+  const [text, setText] = useState("");
+  const isFullfilled = text.length === 6;
+  const onFullFill = getOnFullfilled(isFullfilled);
 
   return (
     <View style={styles.container}>
@@ -36,7 +41,7 @@ export default function PasswordScreenInputPassword() {
         password={true}
         autoFocus={true}
         codeLength={6}
-        onFulfill={() => navigate("Home")}
+        onFulfill={getOnFullfilled}
       />
       <View style={styles.box}>
         <TouchableOpacity
@@ -59,3 +64,20 @@ export default function PasswordScreenInputPassword() {
     </View>
   );
 }
+
+const getOnFullfilled = (isFullFilled, checkPassword, password) => {
+  return isFullFilled
+    ? () => {
+        checkPassword(password, onSuccess, onFailed);
+      }
+    : () => {};
+};
+const onSuccess = isFullFilled => {
+  if (isFullFilled) {
+    navigate("Home");
+  } else {
+    Alert.alert("toang r ban oi");
+  }
+};
+
+const onFailed = () => {};

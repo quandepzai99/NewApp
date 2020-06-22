@@ -1,14 +1,14 @@
-import { AuthProductionActions } from "./LoginActions";
+import { AuthProductionActions } from "./AuthProductionActions";
 
 export const initialState = {
-    phone: "",
+    password: "",
     isAuthenticated: false
 };
 
 export const AuthProductionReducer = (state, action) => {
     if (action.type === AuthProductionActions.isAuthenticated) {
-        const { status } = action.payload;
-        return { ...state, status: content };
+        const { password } = action.payload;
+        return { ...state, password: content };
     } else {
         return state;
     }

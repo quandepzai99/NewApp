@@ -30,7 +30,7 @@ const isAuthenticated = dispatch => async (
   onSuccess,
   onFailed
 ): void => {
-  const response = await API.passwordCheckExist(password);
+  const response = await API.login(password);
   //await (async await) là 1 action bất đồng bộ, ở trên nếu không có await,
   //JS sẽ làm tuần tự từ trên xuống xưới mà không chờ dữ liệu ừ thằng reponse
   //còn ở đây là chờ cho đến khi thằng API trả dữ liệu về
