@@ -12,7 +12,7 @@ export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const authProductionContext = useContext(AuthProductionContext);
-  const { checkPassword } = authProductionContext;
+  const { isPasswordCorrect } = authProductionContext;
   console.log("authPro", authProductionContext);
   const [text, setText] = useState("");
   const isFullfilled = text.length >= 6;
@@ -66,10 +66,10 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const getOnFullfilled = (isFullFilled, checkPassword, password) => {
+const getOnFullfilled = (isFullFilled, isPasswordCorrect, phone, password) => {
   return isFullFilled
     ? () => {
-        checkPassword(password, onSuccess, onFailed);
+        isPasswordCorrect(phone, password, onSuccess, onFailed);
       }
     : () => {};
 };
