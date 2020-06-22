@@ -12,11 +12,12 @@ export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const authProductionContext = useContext(AuthProductionContext);
-  const [code, setCode] = useState("");
   const { checkPassword } = authProductionContext;
+  console.log("authPro", {checkPassword});
   const [text, setText] = useState("");
-  const isFullfilled = text.length === 6;
+  const isFullfilled = text.length >= 6;
   const onFullFill = getOnFullfilled(isFullfilled);
+  console.log("fullfill", onFullFill);
 
   return (
     <View style={styles.container}>
@@ -35,8 +36,8 @@ export default function PasswordScreenInputPassword() {
         cellStyleFocused={{
           borderColor: colors.blueGrey
         }}
-        onTextChange={setCode}
-        value={code}
+        onTextChange={setText}
+        value={text}
         maskDelay={500}
         password={true}
         autoFocus={true}
@@ -75,6 +76,7 @@ const getOnFullfilled = (isFullFilled, checkPassword, password) => {
 const onSuccess = isFullFilled => {
   if (isFullFilled) {
     navigate("Home");
+    console.log("Is Fullfilled", isFullFilled);
   } else {
     Alert.alert("toang r ban oi");
   }

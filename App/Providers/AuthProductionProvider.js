@@ -26,6 +26,7 @@ const mapActionsToDispatch = dispatch => {
 };
 
 const isAuthenticated = dispatch => async (
+  phone,
   password,
   onSuccess,
   onFailed
