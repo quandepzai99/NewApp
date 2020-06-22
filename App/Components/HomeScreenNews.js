@@ -39,21 +39,12 @@ const tempData = [
     time: images.times
   }
 ];
-export default class HomeScreenNews extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isVisible: false,
-      showListVisible: false,
-      date: new Date()
-    };
-  }
-
+export default function HomeScreenNews() {
   // toggleListModal = (id) => {
   //   this.props.navigation.navigate(id)
   // }
 
-  _renderItem = ({ item }) => {
+  function renderItem ({item}) {
     return (
       <TouchableOpacity
         style={styles.btnBanner}
@@ -72,9 +63,9 @@ export default class HomeScreenNews extends Component {
         </View>
       </TouchableOpacity>
     );
-  };
+  }
 
-  render() {
+  {
     // const { isVisible } = this.state
     return (
       <View style={styles.container}>
@@ -92,7 +83,7 @@ export default class HomeScreenNews extends Component {
         <View style={{ height: 300 }}>
           <FlatList
             data={tempData}
-            renderItem={this._renderItem}
+            renderItem={renderItem}
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={item => item.name}
