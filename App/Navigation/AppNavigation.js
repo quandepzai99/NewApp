@@ -8,9 +8,8 @@ import LoginScreen from "../Containers/LoginScreen";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import HomeScreenDetailPage1 from "../Components/HomeScreenDetailPage1";
 
-import { navigationRef } from "../Navigation/RootNavigation";
-const Stack = createStackNavigator();
 
+const Stack = createStackNavigator();
 
 function AppNavigation() {
 
