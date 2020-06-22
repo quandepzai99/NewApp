@@ -16,6 +16,7 @@ export default function LoginScreenInputPhoneNumber() {
   const authContext = useContext(AuthContext);
   const { content } = languageContext.state;
   const { isPhoneNumberExist } = authContext;
+  console.log("isPNE", {isPhoneNumberExist})
   const [text, setText] = useState("");
   const isActive = text.length >= 10;
   const floatStyle = getButtonStyle(isActive);

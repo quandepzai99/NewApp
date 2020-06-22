@@ -1,21 +1,23 @@
 import React, { useContext, useState } from "react";
-import {View, Text, TouchableOpacity, Image, Alert} from 'react-native';
+import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
 import colors from "../Themes/Colors";
 import images from "../Images/images";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigate } from "../Navigation/RootNavigation";
 import styles from "./styles/PasswordScreenInputPasswordStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
-import {PassContext, PassProvider} from '../Providers/PassProvider';
-
+import { AuthProductionContext } from "../Providers/AuthProductionProvider";
 
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-  const [code, setCode] = useState("");
-  const passContext = useContext(PassContext);
-  const {isPasswordExist} = passContext;
-  const TextCode = {isPasswordExist, code}
+  const authProductionContext = useContext(AuthProductionContext);
+  const isPasswordCorrect = authProductionContext.state.isAuthenticated;
+  console.log("authPro", authProductionContext);
+  const [text, setText] = useState("");
+  const isFullfilled = text.length >= 6;
+  const onFullFill = getOnFullfilled(isFullfilled, isPasswordCorrect, text);
+  console.log("correct", isPasswordCorrect);
 
   return (
     <View style={styles.container}>
@@ -34,13 +36,13 @@ export default function PasswordScreenInputPassword() {
         cellStyleFocused={{
           borderColor: colors.blueGrey
         }}
-        onTextChange={setCode}
-        value={code}
+        onTextChange={setText}
+        value={text}
         maskDelay={500}
         password={true}
         autoFocus={true}
         codeLength={6}
-        onFulfill={() => TextCode}
+        onFulfill={onFullFill}
       />
       <View style={styles.box}>
         <TouchableOpacity
@@ -64,20 +66,18 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const getOnPress = (isActive, isPhoneNumberExist, phone) => {
-  return isActive
+const getOnFullfilled = (isFullFilled, isPasswordCorrect, phone, text) => {
+  return isFullFilled
     ? () => {
-      console.log("IS EXIST:", phone);
-      isPhoneNumberExist(phone, onSuccess, onFailed);
-    }
+        isPasswordCorrect(phone, text, onSuccess, onFailed);
+      }
     : () => {};
 };
-
-const onSuccess = isExist => {
-  if (isExist) {
+const onSuccess = isFullFilled => {
+  if (isFullFilled) {
     navigate("Home");
   } else {
-    Alert.alert("So dien thoai nay chua ton tai");
+    Alert.alert("toang r ban oi");
   }
 };
 
