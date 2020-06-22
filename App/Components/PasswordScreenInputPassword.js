@@ -13,7 +13,7 @@ export default function PasswordScreenInputPassword() {
   const { content } = languageContext.state;
   const authProductionContext = useContext(AuthProductionContext);
   const { checkPassword } = authProductionContext;
-  console.log("authPro", {checkPassword});
+  console.log("authPro", authProductionContext);
   const [text, setText] = useState("");
   const isFullfilled = text.length >= 6;
   const onFullFill = getOnFullfilled(isFullfilled);
