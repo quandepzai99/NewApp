@@ -12,12 +12,12 @@ export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const authProductionContext = useContext(AuthProductionContext);
-  const { isPasswordCorrect } = authProductionContext;
+  const isPasswordCorrect = authProductionContext.state.isAuthenticated;
   console.log("authPro", authProductionContext);
   const [text, setText] = useState("");
   const isFullfilled = text.length >= 6;
-  const onFullFill = getOnFullfilled(isFullfilled);
-  console.log("fullfill", onFullFill);
+  const onFullFill = getOnFullfilled(isFullfilled, isPasswordCorrect, text);
+  console.log("correct", isPasswordCorrect);
 
   return (
     <View style={styles.container}>
@@ -42,7 +42,7 @@ export default function PasswordScreenInputPassword() {
         password={true}
         autoFocus={true}
         codeLength={6}
-        onFulfill={getOnFullfilled}
+        onFulfill={onFullFill}
       />
       <View style={styles.box}>
         <TouchableOpacity
@@ -66,17 +66,16 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const getOnFullfilled = (isFullFilled, isPasswordCorrect, phone, password) => {
+const getOnFullfilled = (isFullFilled, isPasswordCorrect, phone, text) => {
   return isFullFilled
     ? () => {
-        isPasswordCorrect(phone, password, onSuccess, onFailed);
+        isPasswordCorrect(phone, text, onSuccess, onFailed);
       }
     : () => {};
 };
 const onSuccess = isFullFilled => {
   if (isFullFilled) {
     navigate("Home");
-    console.log("Is Fullfilled", isFullFilled);
   } else {
     Alert.alert("toang r ban oi");
   }
