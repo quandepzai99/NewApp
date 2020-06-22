@@ -1,8 +1,8 @@
 import initialState, {
-  AuthProductionProductionReducer
-} from "../ReduxHooks/AuthProductionProductionReducer";
+  AuthProductionReducer
+} from "../ReduxHooks/AuthProductionReducer";
 import React, { createContext, useReducer } from "react";
-import { AuthProductionProductionActions } from "../ReduxHooks/AuthProductionProductionActions";
+import { AuthProductionActions } from "../ReduxHooks/AuthProductionActions";
 import API from "../Lib/API";
 import { Alert } from "react-native";
 
