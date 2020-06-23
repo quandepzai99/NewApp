@@ -2,6 +2,8 @@ import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
+import { navigate } from "../Navigation/RootNavigation";
+import { Alert } from "react-native";
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -41,18 +43,16 @@ const isPasswordCorrect = dispatch => async (
   onSuccess,
   onFailed
 ): void => {
-  console.log("PHONE", phone);
-  console.log("PASSWORD", password);
   const response = await API.login(phone, password);
-  console.log("LOGIN RESPONSE", data);
-
   if (response.status) {
     const { data } = response;
-    const { is_correct } = data;
-    onSuccess(is_correct);
+    const { isCorrect } = data;
+    onSuccess(isCorrect);
   } else {
     onFailed();
   }
+  console.log("PASSWORD", password);
+
   dispatch({
     type: AuthActions.isPasswordCorrect,
     payload: password

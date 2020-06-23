@@ -11,15 +11,18 @@ import { AuthContext } from "../Providers/AuthProvider";
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
+  console.log("authcontext", authContext);
   const { isPasswordCorrect } = authContext;
-  const onFullFill = () => {
-    isPasswordCorrect(password, onSuccess, onFailed);
-  };
+  const { phone } = authContext.state;
 
-  console.log("ON FULFILL", onFullFill);
+  const onFullFill = text => {
+    isPasswordCorrect(phone, text, onSuccess, onFailed);
+  };
+  console.log("Phoneee", phone);
+
+  console.log("ON FULFILL", isPasswordCorrect);
 
   return (
     <View style={styles.container}>
@@ -68,19 +71,6 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const checkPassword = (isFullFilled, isPasswordCorrect, password) => {
-  // console.log("CHECK PASSWORD:", isFullFilled, isPasswordCorrect, password);
-
-  return isFullFilled
-    ? () => {
-        console.log("CALL PASSWORD CORRECT");
-        isPasswordCorrect(password, onSuccess, onFailed);
-      }
-    : () => {
-        console.log("HELLLLLL");
-      };
-};
-
 const onSuccess = isCorrect => {
   if (isCorrect) {
     navigate("Home");
@@ -89,4 +79,4 @@ const onSuccess = isCorrect => {
   }
 };
 
-const onFailed = () => Alert.alert("faillll");
+const onFailed = () => {};
