@@ -12,14 +12,14 @@ export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
 
-  const [text, setText] = useState("");
-  const isFullfilled = text.length >= 6;
+  const [password, setPassword] = useState("");
+  const isFullFilled = password.length >= 6;
 
   const authContext = useContext(AuthContext);
-  const isPasswordCorrect = authContext.state.isAuthenticated;
-  console.log("authPro", authContext);
-  const onFullFill = getOnFullfilled(isFullfilled, isPasswordCorrect, text);
-  console.log("correct", isPasswordCorrect);
+  const { isPasswordCorrect } = authContext;
+  console.log("auth", { isPasswordCorrect });
+  const onFullFill = getOnFullfilled(isFullFilled, isPasswordCorrect, password);
+  console.log("filled", isFullFilled);
 
   return (
     <View style={styles.container}>
@@ -38,8 +38,8 @@ export default function PasswordScreenInputPassword() {
         cellStyleFocused={{
           borderColor: colors.blueGrey
         }}
-        onTextChange={setText}
-        value={text}
+        onTextChange={setPassword}
+        value={password}
         maskDelay={500}
         password={true}
         autoFocus={true}
@@ -67,20 +67,21 @@ export default function PasswordScreenInputPassword() {
     </View>
   );
 }
-
-const getOnFullfilled = (isFullFilled, isPasswordCorrect, phone, text) => {
+const getOnFullfilled = (isFullFilled, isPasswordCorrect, password) => {
   return isFullFilled
     ? () => {
-        isPasswordCorrect(phone, text, onSuccess, onFailed);
+        console.log("passssss", password);
+        isPasswordCorrect(password, onSuccess, onFailed);
       }
     : () => {};
 };
-const onSuccess = isFullFilled => {
-  if (isFullFilled) {
+
+const onSuccess = isCorrect => {
+  if (isCorrect) {
     navigate("Home");
   } else {
     Alert.alert("toang r ban oi");
   }
 };
 
-const onFailed = () => {};
+const onFailed = () => Alert.alert("faillll");

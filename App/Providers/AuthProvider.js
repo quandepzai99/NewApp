@@ -9,8 +9,8 @@ export const AuthProvider = AuthContext.Provider;
 
 export default function Wrapper(props) {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  const actionSetPhone = mapActionsToDispatch(dispatch);
-  const actionSetPassword = mapActionsToDispatch(dispatch);
+  const actionSetPhone = mapActionsToDispatchLogin(dispatch);
+  const actionSetPassword = mapActionsToDispatchPassword(dispatch);
   return (
     <AuthProvider
       value={{ state, dispatch, ...actionSetPhone, ...actionSetPassword }}>
@@ -19,10 +19,9 @@ export default function Wrapper(props) {
   );
 }
 
-const mapActionsToDispatch = dispatch => {
+const mapActionsToDispatchLogin = dispatch => {
   return {
-    isPhoneNumberExist: isPhoneNumberExist(dispatch),
-    isPasswordCorrect: isPasswordCorrect(dispatch)
+    isPhoneNumberExist: isPhoneNumberExist(dispatch)
   };
 };
 const isPhoneNumberExist = dispatch => async (
@@ -31,7 +30,6 @@ const isPhoneNumberExist = dispatch => async (
   onFailed
 ): void => {
   const response = await API.phoneCheckExist(phone);
-  console.log("RESPONSE:", response);
   if (response.status) {
     const { data } = response;
     const { is_exist } = data;
@@ -45,13 +43,18 @@ const isPhoneNumberExist = dispatch => async (
   });
 };
 
+const mapActionsToDispatchPassword = dispatch => {
+  return {
+    isPasswordCorrect: isPasswordCorrect(dispatch)
+  };
+};
 const isPasswordCorrect = dispatch => async (
   phone,
   password,
   onSuccess,
   onFailed
 ): void => {
-  const response = await API.login(phone);
+  const response = await API.login(phone, password);
   if (response.status) {
     const { data } = response;
     const { is_correct } = data;

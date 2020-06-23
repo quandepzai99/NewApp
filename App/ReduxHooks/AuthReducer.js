@@ -17,6 +17,7 @@ export const AuthReducer = (state, action) => {
   } else {
     return state;
   }
+  console.log("come hezzzze")
 };
 
 export default initialState;
