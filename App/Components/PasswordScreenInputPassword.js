@@ -73,12 +73,12 @@ const checkPassword = (isFullFilled, isPasswordCorrect, password) => {
 
   return isFullFilled
     ? () => {
-        console.log("CALL PASSWORD CORRECT");
-        isPasswordCorrect(password, onSuccess, onFailed);
-      }
+      console.log("CALL PASSWORD CORRECT");
+      isPasswordCorrect(password, onSuccess, onFailed);
+    }
     : () => {
-        console.log("HELLLLLL");
-      };
+      console.log("HELLLLLL");
+    };
 };
 
 const onSuccess = isCorrect => {

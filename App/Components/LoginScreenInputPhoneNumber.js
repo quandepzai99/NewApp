@@ -75,7 +75,6 @@ const getOnPress = (isActive, isPhoneNumberExist, phone) => {
 const onSuccess = isExist => {
   if (isExist) {
     navigate("PinCode");
-    console.log('ssss', () => navigate('PinCode'))
   } else {
     Alert.alert("So dien thoai nay chua ton tai");
   }
