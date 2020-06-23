@@ -46,12 +46,13 @@ const isPasswordCorrect = dispatch => async (
   const response = await API.login(phone, password);
   if (response.status) {
     const { data } = response;
-    const { isCorrect } = data;
-    onSuccess(isCorrect);
+    const { is_Correct } = data;
+    onSuccess(is_Correct);
   } else {
     onFailed();
   }
   console.log("PASSWORD", password);
+  console.log("Corrrect", is_Correct);
 
   dispatch({
     type: AuthActions.isPasswordCorrect,
