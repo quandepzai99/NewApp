@@ -77,7 +77,6 @@ const onSuccess = isCorrect => {
   } else {
     Alert.alert("toang r ban oi");
   }
-  console.log("Correeectttt", onSuccess());
 };
 
 const onFailed = () => {};
