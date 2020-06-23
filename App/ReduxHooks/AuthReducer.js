@@ -4,7 +4,6 @@ export const initialState = {
   phone: "",
   isExist: false,
   password: "",
-  isCorrect: false
 };
 
 export const AuthReducer = (state, action) => {

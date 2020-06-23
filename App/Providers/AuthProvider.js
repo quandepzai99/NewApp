@@ -54,7 +54,8 @@ const isPasswordCorrect = dispatch => async (
   dispatch({
     type: AuthActions.isPasswordCorrect,
     payload: password
-  });
+  })
+  console.log("passsss",password)
 };
 
 const mapActionsToDispatch = dispatch => {

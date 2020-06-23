@@ -70,13 +70,12 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const onSuccess = isExist => {
-  if (isExist) {
+const onSuccess = isAuthenticated => {
+  if (isAuthenticated) {
     navigate("Home");
   } else {
     Alert.alert("toang r ban oi");
   }
-  console.log("Correeectttt", isExist);
 };
 
 const onFailed = () => {};

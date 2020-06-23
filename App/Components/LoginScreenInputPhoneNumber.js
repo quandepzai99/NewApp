@@ -65,7 +65,7 @@ const getButtonStyle = isActive => {
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-        console.log("IS EXIST:", phone);
+        // console.log("IS EXIST:", phone);
         isPhoneNumberExist(phone, onSuccess, onFailed);
       }
     : () => {};
