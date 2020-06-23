@@ -7,10 +7,11 @@ export const initialState = {
 
 export const AuthReducer = (state, action) => {
   if (action.type === AuthActions.isPhoneNumberExist) {
-    const { phone } = action.payload;
-    return { ...state, phone: content };
+    const phone = action.payload;
+    return { ...state, phone: phone };
   } else {
     return state;
   }
 };
+
 export default initialState;
