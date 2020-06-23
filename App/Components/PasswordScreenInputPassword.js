@@ -21,7 +21,6 @@ export default function PasswordScreenInputPassword() {
   const onFullFill = text => {
     isPasswordCorrect(phone, text, onSuccess, onFailed);
   };
-  console.log("Phoneee", phone);
 
   return (
     <View style={styles.container}>
@@ -70,8 +69,8 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const onSuccess = isAuthenticated => {
-  if (isAuthenticated) {
+const onSuccess = is_authenticated => {
+  if (is_authenticated) {
     navigate("Home");
   } else {
     Alert.alert("toang r ban oi");
