@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 6,
     shadowOpacity: 1,
-    elevation: 4
+    elevation: 4,
+    backgroundColor: colors.blueGrey
   },
   ellipse531: {
     width: 60,

@@ -21,10 +21,9 @@ export default function LoginScreenInputPhoneNumber() {
 
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
-  console.log("isPNE", { isPhoneNumberExist });
+  // console.log("isPNE", { isPhoneNumberExist });
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
-  console.log("OnPress", isActive, isPhoneNumberExist, text);
-
+  // console.log("OnPress", isActive, isPhoneNumberExist, text);
 
   return (
     <View style={styles.container}>
@@ -55,20 +54,20 @@ export default function LoginScreenInputPhoneNumber() {
 const getButtonStyle = isActive => {
   return isActive
     ? [
-      styles.floatButton,
-      {
-        backgroundColor: colors.velvet
-      }
-    ]
+        styles.floatButton,
+        {
+          backgroundColor: colors.velvet
+        }
+      ]
     : styles.floatButton;
 };
 
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-      console.log("IS EXIST:", phone);
-      isPhoneNumberExist(phone, onSuccess, onFailed);
-    }
+        // console.log("IS EXIST:", phone);
+        isPhoneNumberExist(phone, onSuccess, onFailed);
+      }
     : () => {};
 };
 
@@ -78,6 +77,7 @@ const onSuccess = isExist => {
   } else {
     Alert.alert("So dien thoai nay chua ton tai");
   }
+  console.log("Exist", isExist)
 };
 
 const onFailed = () => {};

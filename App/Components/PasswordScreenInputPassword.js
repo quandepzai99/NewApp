@@ -11,18 +11,16 @@ import { AuthContext } from "../Providers/AuthProvider";
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
+
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
-  console.log("authcontext", authContext);
   const { isPasswordCorrect } = authContext;
+
   const { phone } = authContext.state;
 
   const onFullFill = text => {
     isPasswordCorrect(phone, text, onSuccess, onFailed);
   };
-  console.log("Phoneee", phone);
-
-  console.log("ON FULFILL", isPasswordCorrect);
 
   return (
     <View style={styles.container}>
@@ -71,8 +69,8 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
-const onSuccess = isCorrect => {
-  if (isCorrect) {
+const onSuccess = is_authenticated => {
+  if (is_authenticated) {
     navigate("Home");
   } else {
     Alert.alert("toang r ban oi");
