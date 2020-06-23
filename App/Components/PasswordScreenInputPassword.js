@@ -73,7 +73,7 @@ const onSuccess = is_authenticated => {
   if (is_authenticated) {
     navigate("Home");
   } else {
-    Alert.alert("toang r ban oi");
+    Alert.alert("Mật khẩu không chính xác");
   }
 };
 
