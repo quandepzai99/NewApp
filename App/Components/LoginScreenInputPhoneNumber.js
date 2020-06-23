@@ -77,6 +77,7 @@ const onSuccess = isExist => {
   } else {
     Alert.alert("So dien thoai nay chua ton tai");
   }
+  console.log("Exist", isExist)
 };
 
 const onFailed = () => {};

@@ -51,9 +51,6 @@ const isPasswordCorrect = dispatch => async (
   } else {
     onFailed();
   }
-  console.log("PASSWORD", password);
-  console.log("Corrrect", is_Correct);
-
   dispatch({
     type: AuthActions.isPasswordCorrect,
     payload: password
