@@ -6,16 +6,18 @@ import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigate } from "../Navigation/RootNavigation";
 import styles from "./styles/PasswordScreenInputPasswordStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
-import { AuthProductionContext } from "../Providers/AuthProductionProvider";
+import { AuthContext } from "../Providers/AuthProvider";
 
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-  const authProductionContext = useContext(AuthProductionContext);
-  const isPasswordCorrect = authProductionContext.state.isAuthenticated;
-  console.log("authPro", authProductionContext);
+
   const [text, setText] = useState("");
   const isFullfilled = text.length >= 6;
+
+  const authContext = useContext(AuthContext);
+  const isPasswordCorrect = authContext.state.isAuthenticated;
+  console.log("authPro", authContext);
   const onFullFill = getOnFullfilled(isFullfilled, isPasswordCorrect, text);
   console.log("correct", isPasswordCorrect);
 
