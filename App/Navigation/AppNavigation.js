@@ -8,13 +8,12 @@ import LoginScreen from "../Containers/LoginScreen";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import HomeScreenDetailPage1 from "../Components/HomeScreenDetailPage1";
 
-
+import { navigationRef } from "../Navigation/RootNavigation";
 const Stack = createStackNavigator();
 
 function AppNavigation() {
-
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator headerMode="none">
         <Stack.Screen name={"Telephone"} component={LoginScreen} />
         <Stack.Screen name={"PinCode"} component={PasswordScreen} />
