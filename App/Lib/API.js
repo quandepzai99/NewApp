@@ -122,8 +122,8 @@ const GET = (url, config = {}, params = {}) => {
 };
 
 const POST = (url, params, config = {}) => {
-  const signature = generateSignature(params);
-  instance.defaults.headers.common["Signature"] = signature;
+  // const signature = generateSignature(params);
+  // instance.defaults.headers.common["Signature"] = signature;
 
   console.log(
     "START:",
@@ -140,8 +140,8 @@ const POST = (url, params, config = {}) => {
 };
 
 const PUT = (url, params, config = {}) => {
-  const signature = generateSignature(params);
-  instance.defaults.headers.common["Signature"] = signature;
+  // const signature = generateSignature(params);
+  // instance.defaults.headers.common["Signature"] = signature;
   console.log(
     "START:",
     url,

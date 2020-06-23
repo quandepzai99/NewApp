@@ -13,13 +13,13 @@ export default function PasswordScreenInputPassword() {
   const { content } = languageContext.state;
 
   const [password, setPassword] = useState("");
-  const isFullFilled = password.length >= 6;
-
   const authContext = useContext(AuthContext);
   const { isPasswordCorrect } = authContext;
-  console.log("auth", { isPasswordCorrect });
-  const onFullFill = getOnFullfilled(isFullFilled, isPasswordCorrect, password);
-  console.log("filled", isFullFilled);
+  const onFullFill = () => {
+    isPasswordCorrect(password, onSuccess, onFailed);
+  };
+
+  console.log("ON FULFILL", onFullFill);
 
   return (
     <View style={styles.container}>
@@ -67,13 +67,18 @@ export default function PasswordScreenInputPassword() {
     </View>
   );
 }
-const getOnFullfilled = (isFullFilled, isPasswordCorrect, password) => {
+
+const checkPassword = (isFullFilled, isPasswordCorrect, password) => {
+  // console.log("CHECK PASSWORD:", isFullFilled, isPasswordCorrect, password);
+
   return isFullFilled
     ? () => {
-        console.log("passssss", password);
+        console.log("CALL PASSWORD CORRECT");
         isPasswordCorrect(password, onSuccess, onFailed);
       }
-    : () => {};
+    : () => {
+        console.log("HELLLLLL");
+      };
 };
 
 const onSuccess = isCorrect => {
