@@ -9,9 +9,11 @@ export const AuthProvider = AuthContext.Provider;
 
 export default function Wrapper(props) {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  const actions = mapActionsToDispatch(dispatch);
+  const actionSetPhone = mapActionsToDispatch(dispatch);
+  const actionSetPassword = mapActionsToDispatch(dispatch);
   return (
-    <AuthProvider value={{ state, dispatch, ...actions }}>
+    <AuthProvider
+      value={{ state, dispatch, ...actionSetPhone, ...actionSetPassword }}>
       {props.children}
     </AuthProvider>
   );
@@ -19,10 +21,10 @@ export default function Wrapper(props) {
 
 const mapActionsToDispatch = dispatch => {
   return {
-    isPhoneNumberExist: isPhoneNumberExist(dispatch)
+    isPhoneNumberExist: isPhoneNumberExist(dispatch),
+    isPasswordCorrect: isPasswordCorrect(dispatch)
   };
 };
-
 const isPhoneNumberExist = dispatch => async (
   phone,
   onSuccess,
@@ -37,9 +39,28 @@ const isPhoneNumberExist = dispatch => async (
   } else {
     onFailed();
   }
-
   dispatch({
     type: AuthActions.isPhoneNumberExist,
     payload: phone
+  });
+};
+
+const isPasswordCorrect = dispatch => async (
+  phone,
+  password,
+  onSuccess,
+  onFailed
+): void => {
+  const response = await API.login(phone);
+  if (response.status) {
+    const { data } = response;
+    const { is_correct } = data;
+    onSuccess(is_correct);
+  } else {
+    onFailed();
+  }
+  dispatch({
+    type: AuthActions.isPasswordCorrect,
+    payload: password
   });
 };
