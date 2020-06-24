@@ -45,14 +45,15 @@ const isPasswordCorrect = dispatch => async (
   onFailed
 ): void => {
   const response = await API.login(phone, password);
-  if (response.status) {
+  const respones = await API.validateToken(phone);
+  console.log('ssss', respones)
+  if (response.status || respones) {
     const { data } = response;
     const { is_authenticated } = data;
-    const accessToken = data.access_token.access_token;
     onSuccess(is_authenticated);
-    const serverToken = LocalStorage.set("serverToken", accessToken, 100000);
-    const savedToken = LocalStorage.get("savedToken", serverToken);
-    console.log("TOKENN", savedToken);
+    const {access_token} = data;
+    await LocalStorage.set('IS_TOKEN', JSON.stringify(access_token));
+    console.log("TOKENN", access_token);
   } else {
     onFailed();
   }
@@ -60,6 +61,11 @@ const isPasswordCorrect = dispatch => async (
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
+  dispatch({
+    type: AuthActions.isToken,
+    payload: phone
+  })
+
 };
 
 const mapActionsToDispatch = dispatch => {
