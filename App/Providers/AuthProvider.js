@@ -30,7 +30,6 @@ const isPhoneNumberExist = dispatch => async (
     const { data } = response;
     const { is_exist } = data;
     onSuccess(is_exist);
-    console.log("resta", response.status);
   } else {
     onFailed();
   }
