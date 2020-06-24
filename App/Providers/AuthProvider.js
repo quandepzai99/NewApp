@@ -50,10 +50,10 @@ const isPasswordCorrect = dispatch => async (
   if (response.status) {
     const { data } = response;
     const { is_authenticated } = data;
-    const accessToken = data.access_token.access_token;
+    const {access_token} = data;
     onSuccess(is_authenticated);
-    const serverToken = LocalStorage.set("servedToken", accessToken, 100000);
-    const savedToken = LocalStorage.get("savedToken", serverToken);
+    await LocalStorage.set('token', access_token);
+    console.log('ffff', access_token)
   } else {
     onFailed();
   }
