@@ -6,14 +6,14 @@ export default function AppState() {
   const [appState, setAppState] = useState(AppState.currentState);
   console.log("STATEEEE", appState);
   useEffect(() => {
-    AppState.addEventListener("change", _handleAppStateChange);
+    AppState.addEventListener("change", handleAppStateChange);
 
     return () => {
-      AppState.removeEventListener("change", _handleAppStateChange);
+      AppState.removeEventListener("change", handleAppStateChange);
     };
   }, []);
 
-  const _handleAppStateChange = nextAppState => {
+  const handleAppStateChange = nextAppState => {
     if (appState.match(/inactive|background/) && nextAppState === "active") {
     }
     setAppState(nextAppState);
