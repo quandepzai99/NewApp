@@ -3,4 +3,5 @@
 export const AuthActions = {
   isPhoneNumberExist: "IS_PHONE_NUMBER_EXIST",
   isPasswordCorrect: "IS_PASSWORD_CORRECT",
+  isAppActive: "VALIDATE_TOKEN",
 };
