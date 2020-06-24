@@ -1,5 +1,6 @@
 import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useReducer } from "react";
+import {AsyncStorage} from 'react-native'
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { navigate } from "../Navigation/RootNavigation";
@@ -9,6 +10,7 @@ export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
 
 export default function Wrapper(props) {
+
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const actions = mapActionsToDispatch(dispatch);
   return (
@@ -65,3 +67,4 @@ const mapActionsToDispatch = dispatch => {
     isPasswordCorrect: isPasswordCorrect(dispatch)
   };
 };
+
