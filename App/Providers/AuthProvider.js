@@ -4,8 +4,7 @@ import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { navigate } from "../Navigation/RootNavigation";
 import { Alert } from "react-native";
-import {LocalStorage} from '../Lib/LocalStorage';
-// import AsyncStorage from '@react-native-community/async-storage';
+import { LocalStorage } from "../Lib/LocalStorage";
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -30,8 +29,6 @@ const isPhoneNumberExist = dispatch => async (
     const { data } = response;
     const { is_exist } = data;
     onSuccess(is_exist);
-
-    // await localStorage.getItem('token', JSON.stringify(data));
   } else {
     onFailed();
   }
@@ -50,11 +47,12 @@ const isPasswordCorrect = dispatch => async (
   const response = await API.login(phone, password);
   if (response.status) {
     const { data } = response;
-    console.log("DATA", data);
     const { is_authenticated } = data;
+    const accessToken = data.access_token.access_token;
     onSuccess(is_authenticated);
-    const setToken = localStorage.setItem('validation', access_token)
-    console.log('setToken', setToken)
+    const serverToken = LocalStorage.set("serverToken", accessToken, 100000);
+    const savedToken = LocalStorage.get("savedToken", serverToken);
+    console.log("TOKENN", savedToken);
   } else {
     onFailed();
   }
@@ -62,28 +60,7 @@ const isPasswordCorrect = dispatch => async (
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
-  console.log("passsss", password);
 };
-
-// const savePhoneNumber = dispatch => async (
-//   phone,
-//   token,
-//   onSuccess,
-//   onFailed
-// ): void => {
-//   const response = await API.validateToken(phone);
-//   if (response.status) {
-//     const { data } = response;
-//     const { access_token } = data;
-//     onSuccess(access_token);
-//   } else {
-//     onFailed();
-//   }
-//   dispatch({
-//     type: AuthActions.savePhoneNumber,
-//     payload: token
-//   });
-// };
 
 const mapActionsToDispatch = dispatch => {
   return {
@@ -91,4 +68,3 @@ const mapActionsToDispatch = dispatch => {
     isPasswordCorrect: isPasswordCorrect(dispatch)
   };
 };
-

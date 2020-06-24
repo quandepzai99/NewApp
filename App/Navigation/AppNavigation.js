@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import CurrentPassWordScreen from "../Containers/CurrentPassWordScreen";
@@ -7,11 +7,26 @@ import ChangePasswordScreen from "../Containers/ChangePassWordScreen";
 import LoginScreen from "../Containers/LoginScreen";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import HomeScreenDetailPage1 from "../Components/HomeScreenDetailPage1";
-
+import { AppState } from "react-native";
 import { navigationRef } from "../Navigation/RootNavigation";
+
 const Stack = createStackNavigator();
 
 function AppNavigation() {
+  const [appState, setAppState] = useState(AppState.currentState);
+  useEffect(() => {
+    AppState.addEventListener("change", _handleAppStateChange);
+
+    return () => {
+      AppState.removeEventListener("change", _handleAppStateChange);
+    };
+  }, []);
+
+  const _handleAppStateChange = nextAppState => {
+    if (appState.match(/inactive|background/) && nextAppState === "active") {
+    }
+    setAppState(nextAppState);
+  };
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator headerMode="none">
