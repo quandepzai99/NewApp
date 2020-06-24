@@ -4,7 +4,7 @@ import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { navigate } from "../Navigation/RootNavigation";
 import { Alert } from "react-native";
-import {LocalStorage} from '../Lib/LocalStorage';
+import { LocalStorage } from "../Lib/LocalStorage";
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -47,9 +47,12 @@ const isPasswordCorrect = dispatch => async (
   const response = await API.login(phone, password);
   if (response.status) {
     const { data } = response;
-    console.log("DATA", data);
     const { is_authenticated } = data;
+    const accessToken = data.access_token.access_token;
     onSuccess(is_authenticated);
+    const serverToken = LocalStorage.set("serverToken", accessToken, 100000);
+    const savedToken = LocalStorage.get("savedToken", serverToken);
+    console.log("TOKENN", savedToken);
   } else {
     onFailed();
   }
@@ -57,7 +60,6 @@ const isPasswordCorrect = dispatch => async (
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
-  console.log("passsss", password);
 };
 
 const mapActionsToDispatch = dispatch => {
@@ -66,6 +68,3 @@ const mapActionsToDispatch = dispatch => {
     isPasswordCorrect: isPasswordCorrect(dispatch)
   };
 };
-
-const userID = LocalStorage.set("userID", '')
-
