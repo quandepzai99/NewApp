@@ -18,5 +18,7 @@ export default function AppState() {
     }
     setAppState(nextAppState);
   };
-  return {};
+  return;
+  appState;
 }
+console.log("Stateeeee", appState);
