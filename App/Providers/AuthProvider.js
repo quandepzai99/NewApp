@@ -4,6 +4,7 @@ import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { navigate } from "../Navigation/RootNavigation";
 import { Alert } from "react-native";
+import {LocalStorage} from '../Lib/LocalStorage';
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -65,3 +66,6 @@ const mapActionsToDispatch = dispatch => {
     isPasswordCorrect: isPasswordCorrect(dispatch)
   };
 };
+
+const userID = LocalStorage.set("userID", '')
+
