@@ -13,22 +13,6 @@ export default function Wrapper(props) {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const actions = mapActionsToDispatch(dispatch);
 
-  const [appState, setAppState] = useState(AppState.currentState);
-  console.log("STATEEEE", appState);
-  useEffect(() => {
-    AppState.addEventListener("change", _handleAppStateChange);
-
-    return () => {
-      AppState.removeEventListener("change", _handleAppStateChange);
-    };
-  }, []);
-
-  const _handleAppStateChange = nextAppState => {
-    if (appState.match(/inactive|background/) && nextAppState === "active") {
-    }
-    setAppState(nextAppState);
-  };
-
   return (
     <AuthProvider value={{ state, dispatch, ...actions }}>
       {props.children}
@@ -46,6 +30,7 @@ const isPhoneNumberExist = dispatch => async (
     const { data } = response;
     const { is_exist } = data;
     onSuccess(is_exist);
+    console.log("resta", response.status);
   } else {
     onFailed();
   }
@@ -92,7 +77,6 @@ const isAppActive = dispatch => async (): void => {
     type: AuthActions.isAppActive,
     payload: token
   });
-  console.log("vali", isTokenValidated);
 };
 
 const mapActionsToDispatch = dispatch => {
