@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert, AsyncStorage } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { LanguageContext } from "../Providers/LanguageProvider";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -22,7 +23,6 @@ export default function LoginScreenInputPhoneNumber() {
 
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
-  // console.log("isPNE", { isPhoneNumberExist });
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
   // console.log("OnPress", isActive, isPhoneNumberExist, text);
 
