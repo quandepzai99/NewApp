@@ -4,21 +4,15 @@ import { AuthActions } from "../ReduxHooks/AuthActions";
 
 export default function AppState() {
   const [appState, setAppState] = useState(AppState.currentState);
-  console.log("STATEEEE", appState);
-  useEffect(() => {
-    AppState.addEventListener("change", handleAppStateChange);
-
-    return () => {
-      AppState.removeEventListener("change", handleAppStateChange);
-    };
-  }, []);
-
   const handleAppStateChange = nextAppState => {
     if (appState.match(/inactive|background/) && nextAppState === "active") {
     }
     setAppState(nextAppState);
   };
-  return;
-  appState;
+  console.log("STATEEEE", appState);
+
+  return () => {
+    AppState.removeEventListener("change", handleAppStateChange);
+  };
 }
 console.log("Stateeeee", appState);
