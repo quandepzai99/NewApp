@@ -15,14 +15,14 @@ function LoginScreen() {
 
   AppState.addEventListener("change", handleAppStateChange);
   const token = LocalStorage.get("savedToken");
-
+  console.log("TOKEN", token);
   async function checkToken() {
     const response = await API.validateToken(token);
     if (response.status) {
       const { data } = response;
       const { is_alive } = data;
       console.log("status", response.status);
-      console.log("DATATATATA", token);
+      console.log("DATATATATA", data);
     }
   }
 
