@@ -1,9 +1,9 @@
 import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { navigate } from "../Navigation/RootNavigation";
-import { Alert } from "react-native";
+import { Alert, AppState } from "react-native";
 import { LocalStorage } from "../Lib/LocalStorage";
 
 export const AuthContext = createContext({});
@@ -12,6 +12,7 @@ export const AuthProvider = AuthContext.Provider;
 export default function Wrapper(props) {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const actions = mapActionsToDispatch(dispatch);
+
   return (
     <AuthProvider value={{ state, dispatch, ...actions }}>
       {props.children}
@@ -29,6 +30,7 @@ const isPhoneNumberExist = dispatch => async (
     const { data } = response;
     const { is_exist } = data;
     onSuccess(is_exist);
+    console.log("resta", response.status);
   } else {
     onFailed();
   }
@@ -45,14 +47,13 @@ const isPasswordCorrect = dispatch => async (
   onFailed
 ): void => {
   const response = await API.login(phone, password);
-  const respones = await API.validateToken(phone);
-  if (response.status || respones) {
+  if (response.status) {
     const { data } = response;
     const { is_authenticated } = data;
+    const accessToken = data.access_token.access_token;
     onSuccess(is_authenticated);
-    const {access_token} = data;
-    await LocalStorage.set('IS_TOKEN', JSON.stringify(access_token));
-    console.log("TOKENN", access_token);
+    const serverToken = LocalStorage.set("servedToken", accessToken, 100000);
+    const savedToken = LocalStorage.get("savedToken", serverToken);
   } else {
     onFailed();
   }
@@ -60,13 +61,28 @@ const isPasswordCorrect = dispatch => async (
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
-  dispatch(AuthActions(access_token))
+};
+const token = LocalStorage.get("savedToken");
+console.log("TOKENNNNNNN", token);
 
+const isAppActive = dispatch => async (): void => {
+  const response = await API.validateToken(token);
+  if (response.status) {
+    const { data } = response;
+    const { is_alive } = data;
+    console.log("status", response.status);
+    console.log("DATATATATA", data);
+  }
+  dispatch({
+    type: AuthActions.isAppActive,
+    payload: token
+  });
 };
 
 const mapActionsToDispatch = dispatch => {
   return {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
-    isPasswordCorrect: isPasswordCorrect(dispatch)
+    isPasswordCorrect: isPasswordCorrect(dispatch),
+    isTokenValidated: isAppActive(dispatch)
   };
 };

@@ -72,7 +72,7 @@ export default function PasswordScreenInputPassword() {
 
 const onSuccess = is_authenticated => {
   if (is_authenticated) {
-    navigate("Home");
+    navigate("PinCode1");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }
