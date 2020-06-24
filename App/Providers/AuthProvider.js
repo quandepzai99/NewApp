@@ -62,7 +62,7 @@ const isPasswordCorrect = dispatch => async (
   });
 };
 const token = LocalStorage.get("savedToken");
-console.log("TOKENNNNNNN", token);
+
 
 const isAppActive = dispatch => async (): void => {
   const response = await API.validateToken(token);

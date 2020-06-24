@@ -4,6 +4,7 @@ import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumb
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
 import API from "../Lib/API";
+import { LocalStorage } from "../Lib/LocalStorage";
 
 function LoginScreen() {
   const handleAppStateChange = nextAppState => {
@@ -13,6 +14,7 @@ function LoginScreen() {
   };
 
   AppState.addEventListener("change", handleAppStateChange);
+  const token = LocalStorage.get("savedToken");
 
   async function checkToken() {
     const response = await API.validateToken(token);
@@ -20,7 +22,7 @@ function LoginScreen() {
       const { data } = response;
       const { is_alive } = data;
       console.log("status", response.status);
-      console.log("DATATATATA", data);
+      console.log("DATATATATA", token);
     }
   }
 
