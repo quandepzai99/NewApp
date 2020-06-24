@@ -46,7 +46,6 @@ const isPasswordCorrect = dispatch => async (
 ): void => {
   const response = await API.login(phone, password);
   const respones = await API.validateToken(phone);
-  console.log('ssss', respones)
   if (response.status || respones) {
     const { data } = response;
     const { is_authenticated } = data;
@@ -61,10 +60,7 @@ const isPasswordCorrect = dispatch => async (
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
-  dispatch({
-    type: AuthActions.isToken,
-    payload: phone
-  })
+  dispatch(AuthActions(access_token))
 
 };
 

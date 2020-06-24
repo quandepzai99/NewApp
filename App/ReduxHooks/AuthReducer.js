@@ -13,6 +13,9 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.isPasswordCorrect) {
     const password = action.payload;
     return { ...state, password: password };
+  } else if (action.type === AuthActions.isToken) {
+    const token = action.payload;
+    return { ...state, token: token };
   } else {
     return state;
   }
