@@ -8,10 +8,19 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
-  const token = "";
-  LocalStorage.get("access_token").then(data => {
+  const token = LocalStorage.get("access_token").then(data => {
     console.log("TOKENNNNN", data);
+    return JSON.parse(data);
   });
+  // LocalStorage.get("access_token").then(data => {
+  //   console.log("TOKENNNNN", data);
+  // });
+  // const parsed = JSON.parsed()
+  const onFullFill = token => {
+    isTokenValidated(token, appState, isValidated, isNotValidated);
+  };
+
+  const [appState, setState] = useState(AppState.currentState);
 
   console.log("TOKEN", token);
   const authContext = useContext(AuthContext);
@@ -19,30 +28,23 @@ function LoginScreen() {
   console.log("CONTEXT?", authContext);
   console.log("VALIDATED?", isTokenValidated);
 
-  const [appState, setState] = useState(AppState.currentState);
-
   const handleAppStateChange = nextAppState => {
-    isTokenValidated(appState, token, isValidated, isNotValidated);
     if (nextAppState === "active") {
-
-      const validateToken = token => {
-        token.setState(validateToken)
-      }
+        onFullFill(appState)
 
     }setState(nextAppState);
   };
   const isValidated = is_alive => {
-    if (is_alive) {
+    if (is_alive.status) {
       navigate("PinCode");
     } else {
-      Alert.alert("TOANGGGG");
+      Alert.alert("So");
     }
   };
   const isNotValidated = () => {};
 
   AppState.addEventListener("change", handleAppStateChange);
 
-  // console.log('Fillll', onFullFill)
   return (
     <View>
       <StatusBar
