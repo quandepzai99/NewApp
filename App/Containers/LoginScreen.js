@@ -9,25 +9,26 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
-  const token = "";
-  LocalStorage.get("access_token").then(token => {
+  const savedToken = LocalStorage.get("access_token").then(token => {
     console.log("TOKEN", token);
   });
 
+  const authContext = useContext(AuthContext);
+  const { isTokenValidated } = authContext;
+  const { token } = authContext.isTokenValidated;
   const validateToken = token => {
     isTokenValidated(token, onSuccess, onFailed);
   };
-  const authContext = useContext(AuthContext);
-  const { isTokenValidated } = authContext;
-  // console.log("CONTEXT?", authContext);
-  console.log("VALIDATED?", isTokenValidated);
+
+  console.log("CONTEXT?", authContext);
+  // console.log("VALIDATED?", isTokenValidated);
 
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {
       validateToken(token);
     }
   };
-
+  AppState.addEventListener("change", handleAppStateChange);
   const onSuccess = is_alive => {
     if (is_alive) {
       navigate("Home");
@@ -36,10 +37,9 @@ function LoginScreen() {
     }
   };
   const onFailed = () => {};
-  console.log("OS", onSuccess());
-  console.log("OF", onFailed());
+  // console.log("OS", onSuccess());
+  // console.log("OF", onFailed());
 
-  AppState.addEventListener("change", handleAppStateChange);
   return (
     <View>
       <StatusBar

@@ -50,11 +50,11 @@ export const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    const savingToken = LocalStorage.set("access_token", access_token);
-    const saveToken = () => {
-      LocalStorage.get("access_token").then(access_token => {});
-      console.log("KOTEN", access_token);
-    };
+    const savedToken = LocalStorage.set("access_token", access_token);
+    // const saveToken = () => {
+    //   LocalStorage.get("access_token").then(access_token => {});
+    //   console.log("KOTEN", access_token);
+    // };
   } else {
     onFailed();
   }
@@ -76,7 +76,7 @@ const isTokenValidated = dispatch => async (
     onSuccess(is_alive);
     console.log("SENT TOKEN", token);
     console.log("ALIVE?", is_alive);
-    console.log("token?", data);
+    console.log("DATA", data);
   } else {
     onFailed();
   }
