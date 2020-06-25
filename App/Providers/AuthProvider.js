@@ -38,7 +38,7 @@ const isPhoneNumberExist = dispatch => async (
   });
 };
 
-const isPasswordCorrect = dispatch => async (
+export const isPasswordCorrect = dispatch => async (
   phone,
   password,
   onSuccess,
@@ -50,11 +50,10 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    const token = LocalStorage.set("access_token", access_token);
+    const savedToken = LocalStorage.set("access_token", access_token);
   } else {
     onFailed();
   }
-
   dispatch({
     type: AuthActions.isPasswordCorrect,
     payload: password
@@ -62,17 +61,17 @@ const isPasswordCorrect = dispatch => async (
 };
 
 export const isTokenValidated = dispatch => async (
-  access_token,
+  savedToken,
   onSuccess,
   onFailed
 ): void => {
-  const response = await API.validateToken(access_token);
+  const response = await API.validateToken(savedToken);
   if (response.status) {
     const { data } = response;
     const { is_alive } = data;
     console.log("status", response.status);
     console.log("ALIVE?", is_alive);
-    console.log("token?", access_token);
+    console.log("token?", savedToken);
     onSuccess(is_alive);
   } else {
     onFailed();

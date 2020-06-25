@@ -9,8 +9,8 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
-  LocalStorage.get("access_token").then(data => {
-    // console.log("TOKENNNNN", token);
+  LocalStorage.get("access_token").then(token => {
+    console.log("TOKENNNNN", token);
   });
 
   // console.log("TOKEN", token);
