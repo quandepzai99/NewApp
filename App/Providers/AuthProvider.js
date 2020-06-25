@@ -63,12 +63,12 @@ const isPasswordCorrect = dispatch => async (
 };
 
 export const isValidated = dispatch => async (
-  savedToken,
+  saveToken,
   isValidated,
   isNotValidated
 ): void => {
   const response = await API.validateToken(
-    savedToken,
+    saveToken,
     isValidated,
     isNotValidated
   );
@@ -77,7 +77,7 @@ export const isValidated = dispatch => async (
     const { is_alive } = data;
     // console.log("status", response.status);
     console.log("ALIVE?", is_alive);
-    console.log("token?", savedToken);
+    console.log("token?", saveToken);
     isValidated(is_alive);
   } else {
     isNotValidated();
