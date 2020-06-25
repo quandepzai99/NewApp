@@ -55,7 +55,7 @@ export default function ChangePassWordScreen() {
           justifyContent: "center",
           marginTop: 26
         }}
-        onPress={() => navigate("PinCode1")}>
+        onPress={() => navigate("CurrentPasswordScreen")}>
         <AntDesign
           name={"left"}
           size={20}
