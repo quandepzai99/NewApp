@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useState} from 'react';
 import { View, StatusBar, AppState } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
@@ -8,19 +8,17 @@ import {AuthActions} from '../ReduxHooks/AuthActions';
 
 
 function LoginScreen() {
+  const [appState, setAppState] = useState(AppState.currentState);
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {
       console.log("STATEEEE", nextAppState);
-      // const user = {
-      //   token: data
-      // };
-      // LocalStorage.set('user', user);
-      // nextAppState.dispatch(AuthActions(user))
-    }
-  };
-  console.log('asasa', handleAppStateChange)
 
-  AppState.addEventListener("change", handleAppStateChange);
+    }
+    appState(nextAppState);
+  };
+  // console.log('asasa', handleAppStateChange)
+
+  // AppState.addEventListener("change", handleAppStateChange);
 
   return (
     <View>

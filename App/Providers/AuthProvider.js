@@ -5,6 +5,7 @@ import API from "../Lib/API";
 import { navigate } from "../Navigation/RootNavigation";
 import { Alert, AppState } from "react-native";
 import { LocalStorage } from "../Lib/LocalStorage";
+import {get} from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 export const AuthContext = createContext({});
 export const AuthProvider = AuthContext.Provider;
@@ -49,10 +50,13 @@ const isPasswordCorrect = dispatch => async (
   if (response.status) {
     const { data } = response;
     const { is_authenticated } = data;
-    const {access_token} = data;
+    const {access_token} = data.access_token;
+    const {user_id} = data;
     onSuccess(is_authenticated);
-    await LocalStorage.set('token', access_token);
-    console.log('ffff', access_token)
+    await LocalStorage.set("servedToken", access_token, 100000);
+    await LocalStorage.get("getToken", access_token);
+    // console.log('bdbdbdb', access_token)
+    // console.log('bdbdbdb', access_token)
   } else {
     onFailed();
   }
@@ -61,7 +65,8 @@ const isPasswordCorrect = dispatch => async (
     payload: password
   });
 };
-const token = LocalStorage.get("savedToken");
+
+const token = LocalStorage.get("savedToken", JSON.stringify({isPasswordCorrect}));
 console.log("TOKENNNNNNN", token);
 
 const isAppActive = dispatch => async (): void => {
