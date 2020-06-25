@@ -50,22 +50,25 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    const savedToken = LocalStorage.set("token",access_token,1000000)
+    const saveToken = LocalStorage.set("access_token", access_token);
+    console.log("SAVEDTK", saveToken);
   } else {
     onFailed();
   }
+
   dispatch({
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
 };
+
 export const isValidated = dispatch => async (
-  access_token,
+  savedToken,
   isValidated,
   isNotValidated
 ): void => {
   const response = await API.validateToken(
-    access_token,
+    savedToken,
     isValidated,
     isNotValidated
   );
@@ -74,6 +77,7 @@ export const isValidated = dispatch => async (
     const { is_alive } = data;
     // console.log("status", response.status);
     console.log("ALIVE?", is_alive);
+    console.log("token?", savedToken);
     isValidated(is_alive);
   } else {
     isNotValidated();

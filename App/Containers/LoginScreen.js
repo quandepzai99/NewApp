@@ -9,8 +9,12 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
-  const token = LocalStorage.get("savedToken");
-  console.log("TOKEN",token)
+  const token = "";
+  LocalStorage.get("access_token").then(data => {
+    console.log("TOKENNNNN", data);
+  });
+
+  console.log("TOKEN", token);
   const authContext = useContext(AuthContext);
   const { isTokenValidated } = authContext;
   console.log("CONTEXT?", authContext);
