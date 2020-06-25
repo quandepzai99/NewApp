@@ -63,12 +63,12 @@ const isPasswordCorrect = dispatch => async (
 };
 
 export const isValidated = dispatch => async (
-  saveToken,
+  access_token,
   isValidated,
   isNotValidated
 ): void => {
   const response = await API.validateToken(
-    saveToken,
+    access_token,
     isValidated,
     isNotValidated
   );
@@ -84,7 +84,7 @@ export const isValidated = dispatch => async (
   }
   dispatch({
     type: AuthActions.validateToken,
-    payload: saveToken
+    payload: access_token
   });
 };
 

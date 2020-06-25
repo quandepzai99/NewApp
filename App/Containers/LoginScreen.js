@@ -36,6 +36,7 @@ function LoginScreen() {
   };
   const isNotValidated = () => {};
 
+
   AppState.addEventListener("change", handleAppStateChange);
   return (
     <View>
