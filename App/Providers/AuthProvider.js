@@ -50,7 +50,7 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    const savedToken = LocalStorage.set("servedToken", access_token, 100000);
+    const savedToken = LocalStorage.set("token",access_token,1000000)
   } else {
     onFailed();
   }
@@ -59,19 +59,21 @@ const isPasswordCorrect = dispatch => async (
     payload: password
   });
 };
-const tokenn = LocalStorage.get("savedToken");
-console.log("KENTO", tokenn);
 export const isValidated = dispatch => async (
-  tokenn,
+  access_token,
   isValidated,
   isNotValidated
 ): void => {
-  const response = await API.validateToken(tokenn, isValidated, isNotValidated);
+  const response = await API.validateToken(
+    access_token,
+    isValidated,
+    isNotValidated
+  );
   if (response.status) {
     const { data } = response;
     const { is_alive } = data;
     // console.log("status", response.status);
-    console.log("ALIVE?",is_alive );
+    console.log("ALIVE?", is_alive);
     isValidated(is_alive);
   } else {
     isNotValidated();
