@@ -46,7 +46,7 @@ function LoginScreen() {
 
 const onSuccess = is_alive => {
   if (is_alive) {
-    navigate("Home");
+    navigate("PasswordScreen");
   } else {
     Alert.alert("TOANGGGG");
   }

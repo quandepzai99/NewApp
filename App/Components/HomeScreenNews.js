@@ -44,11 +44,11 @@ export default function HomeScreenNews() {
   //   this.props.navigation.navigate(id)
   // }
 
-  function renderItem ({item}) {
+  function renderItem({ item }) {
     return (
       <TouchableOpacity
         style={styles.btnBanner}
-        onPress={() => navigate("Page1")}>
+        onPress={() => navigate("HomeScreenDetailPage1")}>
         <View>
           <Image source={item.image} style={{ borderRadius: 12 }} />
           <Text style={styles.desc}>

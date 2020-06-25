@@ -34,7 +34,7 @@ export default function PinInput() {
           password={true}
           autoFocus={true}
           codeLength={6}
-          onFulfill={() => navigate("PinCode2")}
+          onFulfill={() => navigate("ChangePasswordScreen")}
         />
       </View>
     </View>

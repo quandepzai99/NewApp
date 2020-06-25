@@ -50,7 +50,7 @@ export default function PasswordScreenInputPassword() {
       />
       <View style={styles.box}>
         <TouchableOpacity
-          onPress={() => navigate("PinCode1")}
+          onPress={() => navigate("HomeScreen")}
           style={{ paddingTop: 10, paddingBottom: 10 }}>
           <Text style={styles.text2}>
             {content.PasswordScreenForgotPassword}
@@ -58,7 +58,7 @@ export default function PasswordScreenInputPassword() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btSignOut}
-          onPress={() => navigate("Telephone")}>
+          onPress={() => navigate("LoginScreen")}>
           <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
           <Text style={styles.text3}>{content.PasswordScreenSignOut}</Text>
         </TouchableOpacity>
@@ -72,7 +72,7 @@ export default function PasswordScreenInputPassword() {
 
 const onSuccess = is_authenticated => {
   if (is_authenticated) {
-    navigate("PinCode1");
+    navigate("CurrenPasswordScreen");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }

@@ -13,7 +13,7 @@ export default function GlobalChatPopUpIcon() {
       <View style={{ alignItems: "flex-end", marginRight: 16 }}>
         <TouchableOpacity
           style={styles.container}
-          onPress={() => navigate("Chats")}>
+          onPress={() => navigate("LoginScreen")}>
           <View style={styles.ellipse608}>
             <Image source={images.chat} style={styles.chat} />
           </View>
