@@ -71,7 +71,7 @@ export default function PasswordScreenInputPassword() {
 
 const onSuccess = is_authenticated => {
   if (is_authenticated) {
-    navigate("HomeScreen");
+    navigate("CurrenPasswordScreen");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }
