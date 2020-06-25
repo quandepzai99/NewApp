@@ -46,7 +46,7 @@ function LoginScreen() {
 
 const onSuccess = is_alive => {
   if (is_alive) {
-    navigate("Home");
+    navigate("PinCode");
   } else {
     Alert.alert("TOANGGGG");
   }
