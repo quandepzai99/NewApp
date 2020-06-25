@@ -1,25 +1,42 @@
-import React, {useContext, useState} from 'react';
-import { View, StatusBar, AppState } from "react-native";
+import React, { useContext } from "react";
+import { View, StatusBar, AppState, Alert } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
-import {LocalStorage} from '../Lib/LocalStorage';
-import {AuthActions} from '../ReduxHooks/AuthActions';
-
+import API from "../Lib/API";
+import { LocalStorage } from "../Lib/LocalStorage";
+import { AuthContext } from "../Providers/AuthProvider";
+import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
-  const [appState, setAppState] = useState(AppState.currentState);
+  const token = "";
+  LocalStorage.get("access_token").then(data => {
+    console.log("TOKENNNNN", data);
+  });
+
+  console.log("TOKEN", token);
+  const authContext = useContext(AuthContext);
+  const { isTokenValidated } = authContext;
+  console.log("CONTEXT?", authContext);
+  console.log("VALIDATED?", isTokenValidated);
+
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {
-      console.log("STATEEEE", nextAppState);
-
+      const validateToken = token => {
+        isTokenValidated(token, isValidated, isNotValidated);
+      };
     }
-    appState(nextAppState);
   };
-  // console.log('asasa', handleAppStateChange)
+  const isValidated = is_alive => {
+    if (is_alive) {
+      navigate("PinCode2");
+    } else {
+      Alert.alert("TOANGGGG");
+    }
+  };
+  const isNotValidated = () => {};
 
-  // AppState.addEventListener("change", handleAppStateChange);
-
+  AppState.addEventListener("change", handleAppStateChange);
   return (
     <View>
       <StatusBar
