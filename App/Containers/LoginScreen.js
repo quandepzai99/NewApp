@@ -9,33 +9,33 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
-  const token = "";
   LocalStorage.get("access_token").then(data => {
-    console.log("TOKENNNNN", data);
+    // console.log("TOKENNNNN", token);
   });
 
-  console.log("TOKEN", token);
+  // console.log("TOKEN", token);
   const authContext = useContext(AuthContext);
   const { isTokenValidated } = authContext;
-  console.log("CONTEXT?", authContext);
-  console.log("VALIDATED?", isTokenValidated);
+  // console.log("CONTEXT?", authContext);
+  // console.log("VALIDATED?", isTokenValidated);
 
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {
-      const validateToken = token => {
-        isTokenValidated(token, isValidated, isNotValidated);
-      };
+      validateToken();
     }
   };
-  const isValidated = is_alive => {
+  const validateToken = token => {
+    isTokenValidated(isTokenValidated, token, onSuccess, onFailed);
+  };
+
+  const onSuccess = is_alive => {
     if (is_alive) {
-      navigate("PinCode2");
+      navigate("Home");
     } else {
       Alert.alert("TOANGGGG");
     }
   };
-  const isNotValidated = () => {};
-
+  const onFailed = () => {};
 
   AppState.addEventListener("change", handleAppStateChange);
   return (

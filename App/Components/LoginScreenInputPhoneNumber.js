@@ -24,7 +24,6 @@ export default function LoginScreenInputPhoneNumber() {
   // console.log("isPNE", { isPhoneNumberExist });
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
   // console.log("OnPress", isActive, isPhoneNumberExist, text);
-
   return (
     <View style={styles.container}>
       <View style={styles.trans}>

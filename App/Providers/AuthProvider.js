@@ -1,8 +1,8 @@
 import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
-import React, { createContext, useEffect, useReducer, useState } from "react";
+import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
-import { Alert, AppState } from "react-native";
+// import { Alert, AppState } from "react-native";
 import { LocalStorage } from "../Lib/LocalStorage";
 
 export const AuthContext = createContext({});
@@ -50,8 +50,7 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    const saveToken = LocalStorage.set("access_token", access_token);
-    console.log("SAVEDTK", saveToken);
+    const token = LocalStorage.set("access_token", access_token);
   } else {
     onFailed();
   }
@@ -62,25 +61,21 @@ const isPasswordCorrect = dispatch => async (
   });
 };
 
-export const isValidated = dispatch => async (
+export const isTokenValidated = dispatch => async (
   access_token,
-  isValidated,
-  isNotValidated
+  onSuccess,
+  onFailed
 ): void => {
-  const response = await API.validateToken(
-    access_token,
-    isValidated,
-    isNotValidated
-  );
+  const response = await API.validateToken(access_token);
   if (response.status) {
     const { data } = response;
     const { is_alive } = data;
-    // console.log("status", response.status);
+    console.log("status", response.status);
     console.log("ALIVE?", is_alive);
-    console.log("token?", saveToken);
-    isValidated(is_alive);
+    console.log("token?", access_token);
+    onSuccess(is_alive);
   } else {
-    isNotValidated();
+    onFailed();
   }
   dispatch({
     type: AuthActions.validateToken,
@@ -92,6 +87,6 @@ const mapActionsToDispatch = dispatch => {
   return {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
-    isTokenValidated: isValidated(dispatch)
+    isTokenValidated: isTokenValidated(dispatch)
   };
 };
