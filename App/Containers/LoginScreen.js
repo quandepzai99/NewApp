@@ -1,49 +1,34 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useEffect } from "react";
 import { View, StatusBar, AppState, Alert } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
 import { LocalStorage } from "../Lib/LocalStorage";
-import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
+import { AuthContext } from "../Providers/AuthProvider";
+import API from "../Lib/API";
 
 function LoginScreen() {
-  const token = LocalStorage.get("access_token").then(data => {
-    console.log("TOKENNNNN", data);
-    return JSON.parse(data);
-  });
-  // LocalStorage.get("access_token").then(data => {
-  //   console.log("TOKENNNNN", data);
-  // });
-  // const parsed = JSON.parsed()
-  const onFullFill = token => {
-    isTokenValidated(token, appState, isValidated, isNotValidated);
-  };
-
-  const [appState, setState] = useState(AppState.currentState);
-
-  console.log("TOKEN", token);
   const authContext = useContext(AuthContext);
   const { isTokenValidated } = authContext;
-  console.log("CONTEXT?", authContext);
-  console.log("VALIDATED?", isTokenValidated);
-
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {
-        onFullFill(appState)
-
-    }setState(nextAppState);
-  };
-  const isValidated = is_alive => {
-    if (is_alive.status) {
-      navigate("PinCode");
-    } else {
-      Alert.alert("So");
+      LocalStorage.get("access_token").then(token => {
+        console.log("TOKEN", token);
+        if (token !== null) {
+          API.setAccessToken(token);
+          isTokenValidated(token, onSuccess, onFailed);
+        }
+      });
     }
   };
-  const isNotValidated = () => {};
 
-  AppState.addEventListener("change", handleAppStateChange);
+  useEffect(() => {
+    AppState.addEventListener("change", handleAppStateChange);
+    return () => {
+      AppState.removeEventListener("change", handleAppStateChange);
+    };
+  }, []);
 
   return (
     <View>
@@ -58,5 +43,14 @@ function LoginScreen() {
     </View>
   );
 }
+
+const onSuccess = is_alive => {
+  if (is_alive) {
+    navigate("Home");
+  } else {
+    Alert.alert("TOANGGGG");
+  }
+};
+const onFailed = () => {};
 
 export default LoginScreen;
