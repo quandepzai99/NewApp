@@ -10,6 +10,7 @@ import { navigate } from "../Navigation/RootNavigation";
 
 function LoginScreen() {
   const token = LocalStorage.get("savedToken");
+  console.log("TOKEN",token)
   const authContext = useContext(AuthContext);
   const { isTokenValidated } = authContext;
   console.log("CONTEXT?", authContext);
@@ -32,8 +33,6 @@ function LoginScreen() {
   const isNotValidated = () => {};
 
   AppState.addEventListener("change", handleAppStateChange);
-  console.log("TOKEN", token);
-
   return (
     <View>
       <StatusBar
