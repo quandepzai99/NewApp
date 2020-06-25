@@ -84,7 +84,7 @@ export const isValidated = dispatch => async (
   }
   dispatch({
     type: AuthActions.validateToken,
-    payload: token
+    payload: saveToken
   });
 };
 
