@@ -51,7 +51,6 @@ const isPasswordCorrect = dispatch => async (
     const { data } = response;
     const { is_authenticated } = data;
     const {access_token} = data.access_token;
-    const {user_id} = data;
     onSuccess(is_authenticated);
     await LocalStorage.set("servedToken", access_token, 100000);
     await LocalStorage.get("getToken", access_token);
