@@ -52,7 +52,6 @@ export const isPasswordCorrect = dispatch => async (
     const { access_token } = data.access_token;
     const savedToken = LocalStorage.set("access_token", access_token);
 
-
     // const saveToken = () => {
     //   LocalStorage.get("access_token").then(access_token => {});
     //   console.log("KOTEN", access_token);
@@ -65,8 +64,6 @@ export const isPasswordCorrect = dispatch => async (
     payload: password
   });
 };
-
-
 
 const isTokenValidated = dispatch => async (
   token,

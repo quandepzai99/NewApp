@@ -51,13 +51,13 @@ export default function HomeScreenProduct() {
         <Text style={styles.xemTtC}>Xem tất cả</Text>
       </View>
       <View style={{ height: 300 }}>
-        <FlatList
-          data={proData}
-          renderItem={Item}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keybroardShouldPersisTaps={"always"}
-        />
+        {/*<FlatList*/}
+        {/*  data={proData}*/}
+        {/*  renderItem={Item}*/}
+        {/*  horizontal*/}
+        {/*  showsHorizontalScrollIndicator={false}*/}
+        {/*  keybroardShouldPersisTaps={"always"}*/}
+        {/*/>*/}
       </View>
     </View>
   );
