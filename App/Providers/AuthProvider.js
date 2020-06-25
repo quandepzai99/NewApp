@@ -36,7 +36,6 @@ const isPhoneNumberExist = dispatch => async (
     type: AuthActions.isPhoneNumberExist,
     payload: phone
   });
-  console.log("PARAM PASS", phone);
 };
 
 export const isPasswordCorrect = dispatch => async (
@@ -52,6 +51,10 @@ export const isPasswordCorrect = dispatch => async (
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
     const savingToken = LocalStorage.set("access_token", access_token);
+    const saveToken = () => {
+      LocalStorage.get("access_token").then(access_token => {});
+      console.log("KOTEN", access_token);
+    };
   } else {
     onFailed();
   }
@@ -59,14 +62,9 @@ export const isPasswordCorrect = dispatch => async (
     type: AuthActions.isPasswordCorrect,
     payload: password
   });
-  console.log("PARAM PASS", phone, password);
-};
-const saveToken = () => {
-  LocalStorage.get("access_token").then(token => {});
-  console.log("SAVED", token);
 };
 
-export const isTokenValidated = dispatch => async (
+const isTokenValidated = dispatch => async (
   token,
   onSuccess,
   onFailed
@@ -75,16 +73,16 @@ export const isTokenValidated = dispatch => async (
   if (response.status) {
     const { data } = response;
     const { is_alive } = data;
+    onSuccess(is_alive);
     console.log("SENT TOKEN", token);
     console.log("ALIVE?", is_alive);
     console.log("token?", data);
-    onSuccess(is_alive);
   } else {
     onFailed();
   }
   dispatch({
     type: AuthActions.validateToken,
-    payload: access_token
+    payload: token
   });
 };
 
@@ -95,8 +93,3 @@ const mapActionsToDispatch = dispatch => {
     isTokenValidated: isTokenValidated(dispatch)
   };
 };
-function getToken() {
-  LocalStorage.get("access_token").then(token => {
-    console.log("TOKENNNNN", token);
-  });
-}
