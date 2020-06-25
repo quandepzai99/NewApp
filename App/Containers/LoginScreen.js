@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React, {useContext, useState} from 'react';
 import { View, StatusBar, AppState, Alert } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
-import API from "../Lib/API";
 import { LocalStorage } from "../Lib/LocalStorage";
 import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
@@ -20,16 +19,21 @@ function LoginScreen() {
   console.log("CONTEXT?", authContext);
   console.log("VALIDATED?", isTokenValidated);
 
+  const [appState, setState] = useState(AppState.currentState);
+
   const handleAppStateChange = nextAppState => {
+    isTokenValidated(appState, token, isValidated, isNotValidated);
     if (nextAppState === "active") {
+
       const validateToken = token => {
-        isTokenValidated(token, isValidated, isNotValidated);
-      };
-    }
+        token.setState(validateToken)
+      }
+
+    }setState(nextAppState);
   };
   const isValidated = is_alive => {
     if (is_alive) {
-      navigate("PinCode2");
+      navigate("PinCode");
     } else {
       Alert.alert("TOANGGGG");
     }
@@ -37,6 +41,8 @@ function LoginScreen() {
   const isNotValidated = () => {};
 
   AppState.addEventListener("change", handleAppStateChange);
+
+  // console.log('Fillll', onFullFill)
   return (
     <View>
       <StatusBar

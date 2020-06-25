@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import {View, Text, TextInput, TouchableOpacity, Alert, AppState} from 'react-native';
 import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -11,9 +11,50 @@ import colors from "../Themes/Colors";
 
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigate } from "../Navigation/RootNavigation";
+import {LocalStorage} from '../Lib/LocalStorage';
 
 
 export default function LoginScreenInputPhoneNumber() {
+  // const token = "";
+  // LocalStorage.get("access_token").then(data => {
+  //   // console.log("TOKENNNNN", data);
+  // });
+  //
+  // console.log("TOKEN", token);
+  // const authContext = useContext(AuthContext);
+  // const { isTokenValidated } = authContext;
+  // // console.log("CONTEXT?", authContext);
+  // // console.log("VALIDATED?", isTokenValidated);
+  //
+  // const [appState, setState] = useState(AppState.currentState);
+  //
+  // const handleAppStateChange = nextAppState => {
+  //   if (nextAppState === "active") {
+  //     const validateToken = token => {
+  //       isTokenValidated(token, isValidated, isNotValidated);
+  //       setState(validateToken)
+  //     }
+  //     return setState(nextAppState);
+  //   }
+  // };
+  // const isValidated = is_alive => {
+  //   if (is_alive) {
+  //     navigate("PinCode");
+  //   } else {
+  //     Alert.alert("TOANGGGG");
+  //   }
+  // };
+  // const isNotValidated = () => {};
+  //
+  // AppState.addEventListener("change", handleAppStateChange);
+  //
+  // const onFullFill = token => {
+  //   isTokenValidated(token, appState, isValidated, onFailed);
+  // };
+  // console.log('Fillll', onFullFill)
+
+
+
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
 
@@ -24,7 +65,6 @@ export default function LoginScreenInputPhoneNumber() {
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
-  // console.log("OnPress", isActive, isPhoneNumberExist, text);
 
   return (
     <View style={styles.container}>

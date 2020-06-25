@@ -50,8 +50,8 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    const saveToken = LocalStorage.set("access_token", access_token);
-    console.log("SAVEDTK", saveToken);
+    await LocalStorage.set("access_token", access_token);
+    console.log("ccccc", access_token);
   } else {
     onFailed();
   }
@@ -84,7 +84,7 @@ export const isValidated = dispatch => async (
   }
   dispatch({
     type: AuthActions.validateToken,
-    payload: token
+    payload: saveToken
   });
 };
 
