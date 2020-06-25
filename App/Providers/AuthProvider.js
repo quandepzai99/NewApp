@@ -51,6 +51,8 @@ export const isPasswordCorrect = dispatch => async (
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
     const savedToken = LocalStorage.set("access_token", access_token);
+
+
     // const saveToken = () => {
     //   LocalStorage.get("access_token").then(access_token => {});
     //   console.log("KOTEN", access_token);
@@ -64,6 +66,8 @@ export const isPasswordCorrect = dispatch => async (
   });
 };
 
+
+
 const isTokenValidated = dispatch => async (
   token,
   onSuccess,
@@ -74,8 +78,8 @@ const isTokenValidated = dispatch => async (
     const { data } = response;
     const { is_alive } = data;
     onSuccess(is_alive);
-    console.log("SENT TOKEN", token);
-    console.log("ALIVE?", is_alive);
+    console.log("SENT", token);
+    // console.log("ALIVE?", is_alive);
     console.log("DATA", data);
   } else {
     onFailed();
@@ -88,8 +92,8 @@ const isTokenValidated = dispatch => async (
 
 const mapActionsToDispatch = dispatch => {
   return {
+    isTokenValidated: isTokenValidated(dispatch),
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
-    isPasswordCorrect: isPasswordCorrect(dispatch),
-    isTokenValidated: isTokenValidated(dispatch)
+    isPasswordCorrect: isPasswordCorrect(dispatch)
   };
 };
