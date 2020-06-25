@@ -7,7 +7,7 @@ export const initialState = {
 };
 
 export const AuthReducer = (state, action) => {
-  if (action.type === AuthActions.isAppActive) {
+  if (action.type === AuthActions.validateToken) {
     const token = action.payload;
     return { ...state, token: token };
   } else if (action.type === AuthActions.isPasswordCorrect) {

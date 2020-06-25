@@ -2,7 +2,6 @@ import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useEffect, useReducer, useState } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
-import { navigate } from "../Navigation/RootNavigation";
 import { Alert, AppState } from "react-native";
 import { LocalStorage } from "../Lib/LocalStorage";
 
@@ -52,7 +51,6 @@ const isPasswordCorrect = dispatch => async (
     const accessToken = data.access_token.access_token;
     onSuccess(is_authenticated);
     const serverToken = LocalStorage.set("servedToken", accessToken, 100000);
-    const savedToken = LocalStorage.get("savedToken", serverToken);
   } else {
     onFailed();
   }
@@ -61,19 +59,21 @@ const isPasswordCorrect = dispatch => async (
     payload: password
   });
 };
+
 const token = LocalStorage.get("savedToken");
-
-
-const isAppActive = dispatch => async (): void => {
+export const isValidated = dispatch => async (token): void => {
   const response = await API.validateToken(token);
   if (response.status) {
     const { data } = response;
     const { is_alive } = data;
     console.log("status", response.status);
     console.log("DATATATATA", data);
+    isValidated(is_alive);
+  } else {
+    isNotValidated();
   }
   dispatch({
-    type: AuthActions.isAppActive,
+    type: AuthActions.validateToken,
     payload: token
   });
 };
@@ -82,6 +82,6 @@ const mapActionsToDispatch = dispatch => {
   return {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
-    isTokenValidated: isAppActive(dispatch)
+    isTokenValidated: isValidated(dispatch)
   };
 };
