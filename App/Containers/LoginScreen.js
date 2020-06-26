@@ -48,7 +48,7 @@ const onSuccess = is_alive => {
   if (is_alive) {
     navigate("PasswordScreen");
   } else {
-    Alert.alert("TOANGGGG");
+    navigate("Login Screen");
   }
 };
 const onFailed = () => {};
