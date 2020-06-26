@@ -7,7 +7,6 @@ import { navigate } from "../Navigation/RootNavigation";
 import styles from "./styles/PasswordScreenInputPasswordStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import { AuthContext } from "../Providers/AuthProvider";
-import {LocalStorage} from '../Lib/LocalStorage';
 
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
