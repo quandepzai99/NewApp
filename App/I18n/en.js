@@ -9,7 +9,7 @@ const en = {
   PasswordScreenFaceID: "Face ID",
   CurrentPasswordScreenHeader: "Change Password",
   CurrentPasswordScreenInputPassword: "Input Current Password",
-  GobackButton: "Go Back",
+  GobackButton: "Back",
   ChangePasswordScreenHeader :  "Change Password",
   ChangePasswordScreenInputNewPassword: "Input New Password",
   CurrentPasswordScreenConfirmNewPassword: "Confirm New Password",

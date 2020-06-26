@@ -4,4 +4,5 @@ export const AuthActions = {
   isPhoneNumberExist: "IS_PHONE_NUMBER_EXIST",
   isPasswordCorrect: "IS_PASSWORD_CORRECT",
   validateToken: "VALIDATE_TOKEN",
+  logout: "LOG_OUT"
 };

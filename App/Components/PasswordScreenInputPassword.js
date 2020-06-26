@@ -16,8 +16,12 @@ export default function PasswordScreenInputPassword() {
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
   const { isPasswordCorrect } = authContext;
-
+  const { logOut } = authContext;
   const { phone } = authContext.state;
+  const onPress = () => {
+    logOut();
+    navigate("LoginScreen");
+  };
 
   const onFullFill = text => {
     isPasswordCorrect(phone, text, onSuccess, onFailed);
@@ -50,15 +54,13 @@ export default function PasswordScreenInputPassword() {
       />
       <View style={styles.box}>
         <TouchableOpacity
-          onPress={() => navigate("HomeScreen")}
+          onPress={() => navigate("CurrentPasswordScreen")}
           style={{ paddingTop: 10, paddingBottom: 10 }}>
           <Text style={styles.text2}>
             {content.PasswordScreenForgotPassword}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btSignOut}
-          onPress={() => navigate("LoginScreen")}>
+        <TouchableOpacity style={styles.btSignOut} onPress={onPress}>
           <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
           <Text style={styles.text3}>{content.PasswordScreenSignOut}</Text>
         </TouchableOpacity>
