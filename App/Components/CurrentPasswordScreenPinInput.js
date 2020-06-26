@@ -9,9 +9,9 @@ import { AuthContext } from "../Providers/AuthProvider";
 export default function PinInput() {
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
-  const { isCurrentPasswordCorrect } = authContext;
-  const onFullfill = text => {
-    isCurrentPasswordCorrect(text, onSuccess, onFailed);
+  const { checkCurrentPassword } = authContext;
+  const onFullfill = () => {
+    checkCurrentPassword(password, onSuccess, onFailed);
   };
 
   return (
@@ -45,7 +45,8 @@ export default function PinInput() {
 }
 const onSuccess = is_match => {
   if (is_match) {
-    navigate("Login");
+    Alert.alert("Mật khẩu chính xác");
+    // navigate("Login");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }

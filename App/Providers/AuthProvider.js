@@ -107,7 +107,7 @@ const checkCurrentPassword = dispatch => async (
   } else {
     onFailed();
   }
-  dispatch({ type: AuthActions.isCurrentPasswordCorrect, payload: password });
+  dispatch({ type: AuthActions.confirmPassword, payload: password });
 };
 
 const mapActionsToDispatch = dispatch => {
