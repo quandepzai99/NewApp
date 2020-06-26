@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { View, StatusBar, AppState, Alert } from "react-native";
+import { View, StatusBar, AppState } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";

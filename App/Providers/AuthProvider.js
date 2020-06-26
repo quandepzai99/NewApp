@@ -94,6 +94,10 @@ const logOut = dispatch => async (token, onSuccess, onFailed): void => {
   });
 };
 
+const currentPassword = dispatch => async (pass): void => {
+  const response = await API
+}
+
 const mapActionsToDispatch = dispatch => {
   return {
     logOut: logOut(dispatch),
