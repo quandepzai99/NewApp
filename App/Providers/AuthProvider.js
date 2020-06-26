@@ -2,7 +2,6 @@ import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
-// import { Alert, AppState } from "react-native";
 import { LocalStorage } from "../Lib/LocalStorage";
 
 export const AuthContext = createContext({});
@@ -108,6 +107,15 @@ const checkCurrentPassword = dispatch => async (
     onFailed();
   }
   dispatch({ type: AuthActions.confirmPassword, payload: password });
+};
+
+const changePassword = dispatch => async (password): void => {
+  const response = await API.changePassword(password);
+  if (response.status) {
+    const { data } = response;
+    console.log("DATAA", data);
+  } else {
+  }
 };
 
 const mapActionsToDispatch = dispatch => {

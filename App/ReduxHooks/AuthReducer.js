@@ -22,6 +22,9 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.confirmPassword) {
     const password = action.payload;
     return { ...state, password: password };
+  } else if (action.type === AuthActions.changePassword) {
+    const password = action.payload;
+    return { ...state, password: password };
   } else {
     return state;
   }
