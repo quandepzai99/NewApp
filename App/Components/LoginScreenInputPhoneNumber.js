@@ -53,20 +53,20 @@ export default function LoginScreenInputPhoneNumber() {
 const getButtonStyle = isActive => {
   return isActive
     ? [
-        styles.floatButton,
-        {
-          backgroundColor: colors.velvet
-        }
-      ]
+      styles.floatButton,
+      {
+        backgroundColor: colors.velvet
+      }
+    ]
     : styles.floatButton;
 };
 
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-        // console.log("IS EXIST:", phone);
-        isPhoneNumberExist(phone, onSuccess, onFailed);
-      }
+      // console.log("IS EXIST:", phone);
+      isPhoneNumberExist(phone, onSuccess, onFailed);
+    }
     : () => {};
 };
 

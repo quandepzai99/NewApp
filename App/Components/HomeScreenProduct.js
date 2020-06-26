@@ -5,14 +5,14 @@ import styles from "./styles/HomeScreenProductStyle";
 
 const proData = [
   {
-    id: 'dfadfsdfadfadf',
+    id: '1dfadfsdfadfadf',
     image: images.pro1,
     desc: "Tay Cầm Microsoft Xbox One S (Màu…",
     price: "200.000đ",
     plus: images.plus
   },
   {
-    id: 'adfasdfadffadfdsf',
+    id: '3adfasdfadffadfdsf',
     image: images.pro2,
     desc: "Tay Cầm Microsoft Xbox One S (Màu…",
     price: "200.000đ",
