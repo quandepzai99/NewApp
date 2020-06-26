@@ -20,7 +20,7 @@ function AppNavigation() {
         <Stack.Screen name={"LoginScreen"} component={LoginScreen} />
         <Stack.Screen name={"PasswordScreen"} component={PasswordScreen} />
         <Stack.Screen
-          name={"CurrentPassWordScreen"}
+          name={"CurrentPasswordScreen"}
           component={CurrentPassWordScreen}
         />
         <Stack.Screen

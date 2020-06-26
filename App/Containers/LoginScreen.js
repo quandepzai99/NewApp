@@ -48,7 +48,7 @@ const onSuccess = is_alive => {
   if (is_alive) {
     navigate("PasswordScreen");
   } else {
-    navigate("Login Screen");
+    navigate("LoginScreen");
   }
 };
 const onFailed = () => {};

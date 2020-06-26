@@ -53,7 +53,7 @@ export default function PasswordScreenInputPassword() {
       />
       <View style={styles.box}>
         <TouchableOpacity
-          onPress={() => navigate("HomeScreen")}
+          onPress={() => navigate("CurrentPasswordScreen")}
           style={{ paddingTop: 10, paddingBottom: 10 }}>
           <Text style={styles.text2}>
             {content.PasswordScreenForgotPassword}
