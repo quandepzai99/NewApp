@@ -13,7 +13,7 @@ export default function PinInput() {
   const onFullfill = () => {
     checkCurrentPassword(password, onSuccess, onFailed);
   };
-
+  // console.log("PASSS", password);
   return (
     <View style={styles.container}>
       <View style={styles.section}>
