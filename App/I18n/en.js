@@ -13,8 +13,6 @@ const en = {
   ChangePasswordScreenHeader :  "Change Password",
   ChangePasswordScreenInputNewPassword: "Input New Password",
   CurrentPasswordScreenConfirmNewPassword: "Confirm New Password",
-
-
 };
 
 export default en;

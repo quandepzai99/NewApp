@@ -19,7 +19,7 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.logout) {
     const phone = action.payload;
     return { ...state, phone: phone };
-  } else if (action.type === AuthActions.currentPassword) {
+  } else if (action.type === AuthActions.confirmPassword) {
     const password = action.payload;
     return { ...state, password: password };
   } else {

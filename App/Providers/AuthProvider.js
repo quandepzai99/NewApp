@@ -82,7 +82,7 @@ const isTokenValidated = dispatch => async (
   });
 };
 
-const logOut = dispatch => async (token, onSuccess, onFailed): void => {
+const logOut = dispatch => async (token): void => {
   const response = await API.logout(token);
   if (response.status) {
     LocalStorage.delete("access_token");
@@ -94,15 +94,28 @@ const logOut = dispatch => async (token, onSuccess, onFailed): void => {
   });
 };
 
-const currentPassword = dispatch => async (pass): void => {
-  const response = await API
-}
+const checkCurrentPassword = dispatch => async (
+  password,
+  onSuccess,
+  onFailed
+): void => {
+  const response = await API.confirmPassword(password);
+  if (response.status) {
+    const { data } = response;
+    const { is_match } = data;
+    onSuccess(is_match);
+  } else {
+    onFailed();
+  }
+  dispatch({ type: AuthActions.confirmPassword, payload: password });
+};
 
 const mapActionsToDispatch = dispatch => {
   return {
     logOut: logOut(dispatch),
     isTokenValidated: isTokenValidated(dispatch),
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
-    isPasswordCorrect: isPasswordCorrect(dispatch)
+    isPasswordCorrect: isPasswordCorrect(dispatch),
+    checkCurrentPassword: checkCurrentPassword(dispatch)
   };
 };

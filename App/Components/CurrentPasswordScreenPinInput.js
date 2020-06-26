@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigate } from "../Navigation/RootNavigation";
 import colors from "../Themes/Colors";
 import styles from "./styles/CurrentPasswordScreenPinInputStyle";
-import { LanguageContext } from "../Providers/LanguageProvider";
+import { AuthContext } from "../Providers/AuthProvider";
 
 export default function PinInput() {
-  const languageContext = useContext(LanguageContext);
-  const { content } = languageContext.state;
-  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
+  const authContext = useContext(AuthContext);
+  const { checkCurrentPassword } = authContext;
+  const onFullfill = () => {
+    checkCurrentPassword(password, onSuccess, onFailed);
+  };
 
   return (
     <View style={styles.container}>
@@ -28,15 +31,25 @@ export default function PinInput() {
           cellStyleFocused={{
             borderColor: colors.blueGrey
           }}
-          onTextChange={setCode}
-          value={code}
+          onTextChange={setPassword}
+          value={password}
           maskDelay={500}
           password={true}
           autoFocus={true}
           codeLength={6}
-          onFulfill={() => navigate("ChangePasswordScreen")}
+          onFulfill={onFullfill}
         />
       </View>
     </View>
   );
 }
+const onSuccess = is_match => {
+  if (is_match) {
+    Alert.alert("Mật khẩu chính xác");
+    // navigate("Login");
+  } else {
+    Alert.alert("Mật khẩu không chính xác");
+  }
+};
+
+const onFailed = () => {};

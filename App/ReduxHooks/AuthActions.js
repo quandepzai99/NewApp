@@ -5,5 +5,7 @@ export const AuthActions = {
   isPasswordCorrect: "IS_PASSWORD_CORRECT",
   validateToken: "VALIDATE_TOKEN",
   logout: "LOG_OUT",
-  currentPassword: 'CURRENT_PASSWORD'
+  confirmPassword: "CHECK_CURRENT_PASSWORD",
+  changePassword: "CHANGE_PASSWORD"
 };
+
