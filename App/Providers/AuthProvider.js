@@ -85,8 +85,7 @@ const isTokenValidated = dispatch => async (
 const logOut = dispatch => async (token, onSuccess, onFailed): void => {
   const response = await API.logout(token);
   if (response.status) {
-    const { data } = response;
-    const { is_alive } = data;
+      LocalStorage.delete("access_token")
   }
 };
 
