@@ -51,11 +51,6 @@ export const isPasswordCorrect = dispatch => async (
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
     const savedToken = LocalStorage.set("access_token", access_token);
-
-    // const saveToken = () => {
-    //   LocalStorage.get("access_token").then(access_token => {});
-    //   console.log("KOTEN", access_token);
-    // };
   } else {
     onFailed();
   }
@@ -75,9 +70,9 @@ const isTokenValidated = dispatch => async (
     const { data } = response;
     const { is_alive } = data;
     onSuccess(is_alive);
-    console.log("SENT", token);
+    // console.log("SENT", token);
     // console.log("ALIVE?", is_alive);
-    console.log("DATA", data);
+    // console.log("DATA", data);
   } else {
     onFailed();
   }
@@ -85,6 +80,14 @@ const isTokenValidated = dispatch => async (
     type: AuthActions.validateToken,
     payload: token
   });
+};
+
+const logOut = dispatch => async (token, onSuccess, onFailed): void => {
+  const response = await API.logout(token);
+  if (response.status) {
+    const { data } = response;
+    const { is_alive } = data;
+  }
 };
 
 const mapActionsToDispatch = dispatch => {
