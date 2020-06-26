@@ -94,6 +94,22 @@ const logOut = dispatch => async (token, onSuccess, onFailed): void => {
   });
 };
 
+const checkCurrentPassword = dispatch => async (
+  password,
+  onSuccess,
+  onFailed
+): void => {
+  const response = await API.confirmPassword(password);
+  if (response.status) {
+    const { data } = response;
+    const { is_match } = data;
+    onSuccess(is_match);
+  } else {
+    onFailed();
+  }
+};
+dispatch({ type: AuthActions.isCurrentPasswordCorrect, payload: password });
+
 const mapActionsToDispatch = dispatch => {
   return {
     logOut: logOut(dispatch),
