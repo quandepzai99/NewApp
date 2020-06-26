@@ -85,12 +85,18 @@ const isTokenValidated = dispatch => async (
 const logOut = dispatch => async (token, onSuccess, onFailed): void => {
   const response = await API.logout(token);
   if (response.status) {
-      LocalStorage.delete("access_token")
+    LocalStorage.delete("access_token");
+  } else {
   }
+  dispatch({
+    type: AuthActions.logout,
+    payload: {}
+  });
 };
 
 const mapActionsToDispatch = dispatch => {
   return {
+    logOut: logOut(dispatch),
     isTokenValidated: isTokenValidated(dispatch),
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch)
