@@ -50,7 +50,7 @@ export const isPasswordCorrect = dispatch => async (
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
     LocalStorage.set("access_token", access_token);
-    API.setAccessToken(access_token)
+    API.setAccessToken(access_token);
   } else {
     onFailed();
   }
@@ -117,6 +117,7 @@ const changePassword = dispatch => async (password): void => {
     console.log("DATAA", data);
   } else {
   }
+  dispatch({ type: AuthActions.changePassword, payload: password });
 };
 
 const mapActionsToDispatch = dispatch => {
@@ -125,6 +126,7 @@ const mapActionsToDispatch = dispatch => {
     isTokenValidated: isTokenValidated(dispatch),
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
-    checkCurrentPassword: checkCurrentPassword(dispatch)
+    checkCurrentPassword: checkCurrentPassword(dispatch),
+    changePassword: changePassword(dispatch)
   };
 };
