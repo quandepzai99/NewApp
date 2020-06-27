@@ -57,10 +57,10 @@ export default function ChangePassWordScreen() {
             </Text>
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword
-                isFulfill={isFulfillConfirmPassword}
-                setFulfill={setFulfillConfirmPassword}
-                password={confirmPassword}
-                setPassword={setConfirmPassword}
+                isFulfillConfirmPassword={isFulfillConfirmPassword}
+                setFulfillConfirmPassword={setFulfillConfirmPassword}
+                confirmPassword={confirmPassword}
+                setConfirmPassword={setConfirmPassword}
               />
             </View>
           </View>

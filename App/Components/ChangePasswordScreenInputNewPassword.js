@@ -6,7 +6,7 @@ import styles from "./styles/ChangePassWordScreenStyle";
 
 export default function InputNewPassword(props) {
   const { password, setPassword, setFulfill } = props;
-  console.log("PASS11", password);
+  console.log("PASS", password);
   return (
     <View style={styles.container1}>
       <View style={styles.section}>

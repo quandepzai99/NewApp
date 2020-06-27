@@ -4,7 +4,6 @@ import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
 import styles from "./styles/ChangePassWordScreenStyle";
 
-
 export default function InputConfirmPassword(props) {
   const {
     confirmPassword,
