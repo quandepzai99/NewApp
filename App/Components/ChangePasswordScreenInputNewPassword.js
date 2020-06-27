@@ -3,13 +3,10 @@ import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
 import styles from "./styles/ChangePassWordScreenStyle";
-import { AuthContext } from "../Providers/AuthProvider";
 
 export default function InputNewPassword(props) {
   const { password, setPassword, setFulfill } = props;
-  const authContext = useContext(AuthContext);
-  const { changePassword } = authContext;
-
+  console.log("PASS11", password);
   return (
     <View style={styles.container1}>
       <View style={styles.section}>

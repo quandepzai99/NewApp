@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Text, StatusBar, TouchableOpacity } from "react-native";
+import { View, Text, StatusBar, TouchableOpacity, Alert } from "react-native";
 import ChangePasswordScreenHeader from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import InputNewPassword from "../Components/ChangePasswordScreenInputNewPassword";
@@ -7,6 +7,7 @@ import InputConfirmedPassword from "../Components/ChangePasswordScreenConfirmedP
 import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
+import { AuthContext } from "../Providers/AuthProvider";
 
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
@@ -15,7 +16,24 @@ export default function ChangePassWordScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFulfill, setFulfill] = useState(false);
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
-
+  const authContext = useContext(AuthContext);
+  const { changePassword } = authContext;
+  const changeNewPassword = (confirmPassword, isFulfillConfirmPassword) => {
+    changePassword(
+      confirmPassword,
+      isFulfillConfirmPassword,
+      onSuccess,
+      onFailed
+    );
+    console.log("PASStren", password);
+    // console.log("PASSduoi", confirmPassword);
+    // console.log("FULLFILL duoi", isFulfillConfirmPassword);
+    console.log("FUNCTION");
+    console.log("WOLOLO");
+  };
+  if ([password === confirmPassword][isFulfillConfirmPassword]) {
+    changeNewPassword;
+  }
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
@@ -72,3 +90,14 @@ export default function ChangePassWordScreen() {
     </View>
   );
 }
+
+const onSuccess = () => {
+  if ({}) {
+    Alert.alert("Mật khẩu đã đc đổi");
+    // navigate("HomeScreen");
+  } else {
+    Alert.alert("Mật khẩu không chính xác");
+  }
+};
+
+const onFailed = () => {};
