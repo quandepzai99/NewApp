@@ -15,10 +15,6 @@ export default function PinInput() {
     checkCurrentPassword( password, onSuccess, onFailed);
   };
 
-  console.log('asasas', onFullFill)
-
-  console.log('dadadada', phone, checkCurrentPassword, password)
-
   return (
     <View style={styles.container}>
       <View style={styles.section}>
@@ -56,6 +52,5 @@ const onSuccess = is_match => {
     Alert.alert("Mật khẩu không chính xác");
   }
 };
-console.log('aaaa', onSuccess)
 
 const onFailed = () => {};
