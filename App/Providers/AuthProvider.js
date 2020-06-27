@@ -2,7 +2,6 @@ import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
 import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
-// import { Alert, AppState } from "react-native";
 import { LocalStorage } from "../Lib/LocalStorage";
 
 export const AuthContext = createContext({});
@@ -51,7 +50,7 @@ export const isPasswordCorrect = dispatch => async (
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
     LocalStorage.set("access_token", access_token);
-    API.setAccessToken(access_token)
+    API.setAccessToken(access_token);
   } else {
     onFailed();
   }
@@ -111,12 +110,23 @@ const checkCurrentPassword = dispatch => async (
   dispatch({ type: AuthActions.confirmPassword, payload: password });
 };
 
+const changePassword = dispatch => async (password): void => {
+  const response = await API.changePassword(password);
+  if (response.status) {
+    const { data } = response;
+    console.log("DATAA", data);
+  } else {
+  }
+  dispatch({ type: AuthActions.changePassword, payload: password });
+};
+
 const mapActionsToDispatch = dispatch => {
   return {
     logOut: logOut(dispatch),
     isTokenValidated: isTokenValidated(dispatch),
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
-    checkCurrentPassword: checkCurrentPassword(dispatch)
+    checkCurrentPassword: checkCurrentPassword(dispatch),
+    changePassword: changePassword(dispatch)
   };
 };
