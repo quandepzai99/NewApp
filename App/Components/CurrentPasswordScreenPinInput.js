@@ -10,9 +10,14 @@ export default function PinInput() {
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
   const { checkCurrentPassword } = authContext;
-  const onFullfill = () => {
-    checkCurrentPassword(password, onSuccess, onFailed);
+  const {phone} = authContext.state;
+  const onFullFill = password => {
+    checkCurrentPassword( password, onSuccess, onFailed);
   };
+
+  console.log('asasas', onFullFill)
+
+  console.log('dadadada', phone, checkCurrentPassword, password)
 
   return (
     <View style={styles.container}>
@@ -37,7 +42,7 @@ export default function PinInput() {
           password={true}
           autoFocus={true}
           codeLength={6}
-          onFulfill={onFullfill}
+          onFulfill={onFullFill}
         />
       </View>
     </View>
@@ -45,11 +50,12 @@ export default function PinInput() {
 }
 const onSuccess = is_match => {
   if (is_match) {
-    Alert.alert("Mật khẩu chính xác");
+    navigate('ChangePasswordScreen')
     // navigate("Login");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }
 };
+console.log('aaaa', onSuccess)
 
 const onFailed = () => {};
