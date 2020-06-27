@@ -10,7 +10,7 @@ export default function PinInput() {
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
   const { checkCurrentPassword } = authContext;
-  const onFullfill = () => {
+  const onFullfill = password => {
     checkCurrentPassword(password, onSuccess, onFailed);
   };
   // console.log("PASSS", password);
@@ -45,8 +45,7 @@ export default function PinInput() {
 }
 const onSuccess = is_match => {
   if (is_match) {
-    Alert.alert("Mật khẩu chính xác");
-    // navigate("Login");
+    navigate("ChangePasswordScreen");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }
