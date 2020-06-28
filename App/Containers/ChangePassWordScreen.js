@@ -25,11 +25,11 @@ export default function ChangePassWordScreen() {
       onSuccess,
       onFailed
     );
-    console.log("PASStren", password);
+      // console.log("PASStren", password);
     // console.log("PASSduoi", confirmPassword);
     // console.log("FULLFILL duoi", isFulfillConfirmPassword);
-    console.log("FUNCTION");
-    console.log("WOLOLO");
+      console.log('CONFIRMPASS', confirmPassword);
+      console.log('Fullfill', isFulfillConfirmPassword);
   };
   if ([password === confirmPassword][isFulfillConfirmPassword]) {
     changeNewPassword;
@@ -53,7 +53,7 @@ export default function ChangePassWordScreen() {
         {isFulfill ? (
           <View>
             <Text style={styles.textblock2box2}>
-              {content.CurrentPasswordScreenConfirmNewPassword}{" "}
+                {content.CurrentPasswordScreenConfirmNewPassword}
             </Text>
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword

@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
     marginTop: 24,
     borderRadius: 24,
-    borderColor: "grey",
+      borderColor: 'red',
     flexDirection: "row"
   },
   textblock2box2: {
@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
     borderColor: colors.paleGreyFour,
     borderWidth: 1,
     marginLeft: 12
+
   }
 });
 
