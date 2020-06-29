@@ -29,12 +29,13 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.paleGreyFour,
     },
     textStyle: {
-        fontSize: 32,
+        fontSize: 28,
         fontWeight: 'normal',
         fontStyle: 'normal',
-        lineHeight: 24,
+        lineHeight: 34,
         letterSpacing: 0,
         textAlign: 'center',
+        color: 'rgba(71, 71, 71,0.9)',
     },
     focusedText: {
         fontSize: 32,
