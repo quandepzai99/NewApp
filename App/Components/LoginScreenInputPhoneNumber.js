@@ -69,7 +69,7 @@ const getOnPress = (isActive, isPhoneNumberExist, phone) => {
 };
 
 const newPhone = phone => {
-    phoneRegister(phone);
+    phoneRegister(phone, ifSuccess, ifFailed);
 };
 
 const onSuccess = isExist => {
@@ -81,3 +81,5 @@ const onSuccess = isExist => {
 };
 
 const onFailed = () => {};
+// const ifSuccess = () =>
+
