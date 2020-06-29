@@ -1,23 +1,25 @@
-import React, { useContext, useEffect } from "react";
-import { View } from "react-native";
+import React from "react";
+import { Alert, View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
 import styles from "./styles/ChangePassWordScreenStyle";
-import { AuthContext } from "../Providers/AuthProvider";
 
-export default function PasswordScreenInputPassword(props) {
-  const { password, setPassword, setFulfill } = props;
-  const authContext = useContext(AuthContext);
-  const { changePassword } = authContext;
+export default function InputConfirmPassword(props) {
+  const {
+    confirmPassword,
+    setConfirmPassword,
+    setFulfillConfirmPassword
+  } = props;
+    // console.log("PASSduoi", confirmPassword);
+    // console.log("FULLFILL duoi");
 
   return (
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
           onFulfill={() => {
-            setFulfill(true);
+            setFulfillConfirmPassword(true);
           }}
-          password
           mask=<View
             style={{
               width: 20,
@@ -31,8 +33,8 @@ export default function PasswordScreenInputPassword(props) {
           }}
           cellSize={28}
           codeLength={6}
-          value={password}
-          onTextChange={setPassword}
+          value={confirmPassword}
+          onTextChange={setConfirmPassword}
           cellStyle={styles.cellStyle}
           autoFocus={true}
         />
