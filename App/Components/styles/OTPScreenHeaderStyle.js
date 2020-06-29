@@ -2,11 +2,12 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        width: 414,
-        height: 200,
+        width: '100%',
+        height: 160,
         justifyContent: 'center',
     },
     headerText: {
+        marginTop: -40,
         fontSize: 32,
         fontWeight: 'bold',
         fontStyle: 'normal',
