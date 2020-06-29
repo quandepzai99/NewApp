@@ -30,14 +30,15 @@ function LoginScreen() {
   const handleAppStateChange = nextAppState => {
     if (nextAppState === 'active') {
       LocalStorage.get('access_token').then(token => {
+        // console.log('tokennn', token)
         if (token !== null) {
           API.setAccessToken(token);
           isTokenValidated(token, onSuccess, onFailed)
-          console.log('tokennn', token)
         }
       })
     }
   }
+
 
   useEffect(() => {
     AppState.addEventListener("change", handleAppStateChange);

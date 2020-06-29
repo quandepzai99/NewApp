@@ -150,15 +150,23 @@ const checkCurrentPassword = dispatch => async (
   dispatch({ type: AuthActions.confirmPassword, payload: password });
 };
 
+// const changePassword = dispatch => async (confirmPassword): void => {
+//   const response = await API.changePassword(confirmPassword);
+//   if (response.status) {
+//     const { data } = response;
+//     console.log("DATAA", data);
+//   } else {
+//   }
+//   dispatch({type: AuthActions.changePassword, payload: confirmPassword});
+// };
+
 const changePassword = dispatch => async (confirmPassword): void => {
-  const response = await API.changePassword(confirmPassword);
+  const response = await API.confirmPassword(confirmPassword);
   if (response.status) {
-    const { data } = response;
-    console.log("DATAA", data);
-  } else {
+    const {data} = response;
+    console.log('DAta', data)
   }
-  dispatch({type: AuthActions.changePassword, payload: confirmPassword});
-};
+}
 
 const mapActionsToDispatch = dispatch => {
   return {
@@ -167,6 +175,7 @@ const mapActionsToDispatch = dispatch => {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
     checkCurrentPassword: checkCurrentPassword(dispatch),
+    // changePassword: changePassword(dispatch)
     changePassword: changePassword(dispatch)
   };
 };

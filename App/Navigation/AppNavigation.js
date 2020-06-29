@@ -23,14 +23,14 @@ function AppNavigation() {
         {/*<Stack.Screen name={'OTPScreen'} component={OTPScreen}/>*/}
         <Stack.Screen name={"LoginScreen"} component={LoginScreen} />
         <Stack.Screen name={"PasswordScreen"} component={PasswordScreen} />
-        {/*<Stack.Screen*/}
-        {/*  name={"CurrentPasswordScreen"}*/}
-        {/*  component={CurrentPassWordScreen}*/}
-        {/*/>*/}
-        {/*<Stack.Screen*/}
-        {/*  name={"ChangePasswordScreen"}*/}
-        {/*  component={ChangePasswordScreen}*/}
-        {/*/>*/}
+        <Stack.Screen
+          name={"CurrentPasswordScreen"}
+          component={CurrentPassWordScreen}
+        />
+        <Stack.Screen
+          name={"ChangePasswordScreen"}
+          component={ChangePasswordScreen}
+        />
         {/*/!*<Stack.Screen name={"Chats"} component={Inbox} />*!/*/}
         <Stack.Screen name={"HomeScreen"} component={BottomNavigation} />
         {/*<Stack.Screen*/}
