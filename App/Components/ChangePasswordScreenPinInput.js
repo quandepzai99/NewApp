@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";

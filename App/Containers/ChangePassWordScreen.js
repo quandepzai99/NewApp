@@ -6,6 +6,7 @@ import PasswordScreenInputPassword from "../Components/ChangePasswordScreenPinIn
 import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
+import { AuthContext } from '../Providers/AuthProvider';
 
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
@@ -14,6 +15,10 @@ export default function ChangePassWordScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFulfill, setFulfill] = useState(false);
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
+  const authContext = useContext(AuthContext);
+  const {changePassword} = authContext;
+
+  console.log('adadadad', isFulfillConfirmPassword, changePassword, authContext)
 
   return (
     <View>
@@ -34,7 +39,7 @@ export default function ChangePassWordScreen() {
         {isFulfill ? (
           <View>
             <Text style={styles.textblock2box2}>
-              {content.CurrentPasswordScreenConfirmNewPassword}{" "}
+              {content.CurrentPasswordScreenConfirmNewPassword}{""}
             </Text>
             <View style={styles.viewBlock2box2}>
               <PasswordScreenInputPassword
