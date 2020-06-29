@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { LanguageContext } from "../Providers/LanguageProvider";
-import { AuthContext } from "../Providers/AuthProvider";
+import {AuthContext, phoneRegister} from '../Providers/AuthProvider';
 
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import colors from "../Themes/Colors";
@@ -20,7 +20,7 @@ export default function LoginScreenInputPhoneNumber() {
   const floatStyle = getButtonStyle(isActive);
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
-
+    const {phoneRegister} = authContext;
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
 
     return (
@@ -66,6 +66,10 @@ const getOnPress = (isActive, isPhoneNumberExist, phone) => {
         isPhoneNumberExist(phone, onSuccess, onFailed);
       }
     : () => {};
+};
+
+const newPhone = phone => {
+    phoneRegister(phone);
 };
 
 const onSuccess = isExist => {

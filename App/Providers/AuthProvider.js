@@ -119,11 +119,13 @@ const changePassword = dispatch => async (confirmPassword): void => {
   dispatch({type: AuthActions.changePassword, payload: confirmPassword});
 };
 
-const phoneRegister = dispatch => async (phone): void => {
+export const phoneRegister = dispatch => async (phone): void => {
   const response = await API.phoneRegister(phone);
   if (response.status) {
     const {data} = response;
+    const {otp} = response;
     console.log('DATAA', data);
+    console.log('OTPPP', otp);
   } else {
   }
   dispatch({type: AuthActions.phoneRegister, payload: phone});
