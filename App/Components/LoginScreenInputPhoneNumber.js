@@ -21,7 +21,7 @@ export default function LoginScreenInputPhoneNumber() {
 
   const authContext = useContext(AuthContext);
   const {isPhoneNumberExist} = authContext;
-  console.log('telephone',  isPhoneNumberExist, text)
+  // console.log('telephone',  isPhoneNumberExist, text)
   const onPress = getOnPress(isActive, isPhoneNumberExist, text)
   return (
     <View style={styles.container}>

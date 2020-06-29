@@ -87,7 +87,10 @@ export const isPasswordCorrect = dispatch => async (
     const { data } = response;
     const {is_authenticated} = data;
     onSuccess(is_authenticated);
-    console.log('asdadas', is_authenticated)
+    const {access_token} = data.access_token;
+    await LocalStorage.set('access_token', access_token);
+    API.setAccessToken(access_token)
+    console.log('asdadas', access_token)
   } else {
     onFailed();
   }

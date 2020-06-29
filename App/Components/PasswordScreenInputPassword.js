@@ -32,7 +32,6 @@ export default function PasswordScreenInputPassword() {
   const isFullFill = text => {
     isPasswordCorrect(phone, text, onSuccess, onFailed)
   }
-  console.log('klklk', isPasswordCorrect,password, phone, onSuccess, onFailed)
 
   return (
     <View style={styles.container}>
