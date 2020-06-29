@@ -13,6 +13,8 @@ const en = {
   ChangePasswordScreenHeader :  "Change Password",
   ChangePasswordScreenInputNewPassword: "Input New Password",
   CurrentPasswordScreenConfirmNewPassword: "Confirm New Password",
+  OTPScreenHeader: 'Input OTP',
+  OTPScreenStatus: 'OTP sent',
 };
 
 export default en;
