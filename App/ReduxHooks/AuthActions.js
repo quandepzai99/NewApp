@@ -6,6 +6,7 @@ export const AuthActions = {
   validateToken: "VALIDATE_TOKEN",
   logout: "LOG_OUT",
   confirmPassword: "CHECK_CURRENT_PASSWORD",
-  changePassword: "CHANGE_PASSWORD"
+  changePassword: 'CHANGE_PASSWORD',
+  phoneRegister: 'PHONE_REGISTER',
 };
 

@@ -114,10 +114,19 @@ const changePassword = dispatch => async (confirmPassword): void => {
   const response = await API.changePassword(confirmPassword);
   if (response.status) {
     const { data } = response;
-    console.log("DATAA", data);
   } else {
   }
-  dispatch({type: AuthActions.changePassword, payload: confirmPassword});
+    dispatch({type: AuthActions.changePassword, payload: confirmPassword});
+};
+
+const phoneRegister = dispatch => async (phone): void => {
+    const response = await API.phoneRegister(phone);
+    if (response.status) {
+        const {data} = response;
+        console.log('DATAA', data);
+    } else {
+    }
+    dispatch({type: AuthActions.phoneRegister, payload: phone});
 };
 
 const mapActionsToDispatch = dispatch => {
@@ -127,6 +136,7 @@ const mapActionsToDispatch = dispatch => {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
     checkCurrentPassword: checkCurrentPassword(dispatch),
-    changePassword: changePassword(dispatch)
+      changePassword: changePassword(dispatch),
+      phoneRegister: phoneRegister(dispatch),
   };
 };
