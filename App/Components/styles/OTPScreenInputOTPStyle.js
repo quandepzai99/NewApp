@@ -36,6 +36,15 @@ const styles = StyleSheet.create({
         letterSpacing: 0,
         textAlign: 'center',
     },
+    focusedText: {
+        fontSize: 32,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        lineHeight: 38,
+        letterSpacing: 0,
+        textAlign: 'center',
+        color: colors.greyishBrown,
+    },
     cellStyle: {
         borderWidth: 1,
         borderRadius: 8,

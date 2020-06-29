@@ -14,15 +14,7 @@ export default function InputOTP() {
                     placeholder={'0'}
                     cellStyleFocused={{borderColor: colors.velvet}}
                     autoFocus={true}
-                    textStyleFocused={{
-                        fontSize: 32,
-                        fontWeight: 'normal',
-                        fontStyle: 'normal',
-                        lineHeight: 38,
-                        letterSpacing: 0,
-                        textAlign: 'center',
-                        color: colors.greyishBrown,
-                    }}
+                    textStyleFocused={styles.focusedText}
                 />
             </View>
             <View/>
