@@ -28,7 +28,7 @@ export default function InputOTP() {
                     restrictToNumbers={true}
                 />
             </View>
-            <View style={{justifyContent: 'center'}}>
+            <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
                 <TouchableOpacity
                     style={{flexDirection: 'row', alignItems: 'center'}}>
                     <AntDesign
@@ -50,6 +50,10 @@ export default function InputOTP() {
                         {content.GobackButton}
                     </Text>
                 </TouchableOpacity>
+                <Text
+                    style={{paddingRight: 10, paddingTop: 10, color: colors.blueGrey}}>
+                    {content.OTPScreenStatus}
+                </Text>
             </View>
         </View>
     );
