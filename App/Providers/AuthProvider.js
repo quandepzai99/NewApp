@@ -134,39 +134,44 @@ const logOut = dispatch => async (token): void => {
   });
 };
 
-const checkCurrentPassword = dispatch => async (
-  password,
-  onSuccess,
-  onFailed
-): void => {
+// const checkCurrentPassword = dispatch => async (
+//   password,
+//   onSuccess,
+//   onFailed
+// ): void => {
+//   const response = await API.confirmPassword(password);
+//   if (response.status) {
+//     const { data } = response;
+//     const { is_match } = data;
+//     onSuccess(is_match);
+//   } else {
+//     onFailed();
+//   }
+//   dispatch({ type: AuthActions.confirmPassword, payload: password });
+// };
+
+const checkCurrentPassword = dispatch => async (password, onSuccess, onFailed): void => {
   const response = await API.confirmPassword(password);
   if (response.status) {
-    const { data } = response;
-    const { is_match } = data;
+    const {data} = response;
+    const {is_match} = data
     onSuccess(is_match);
   } else {
     onFailed();
   }
-  dispatch({ type: AuthActions.confirmPassword, payload: password });
-};
-
-// const changePassword = dispatch => async (confirmPassword): void => {
-//   const response = await API.changePassword(confirmPassword);
-//   if (response.status) {
-//     const { data } = response;
-//     console.log("DATAA", data);
-//   } else {
-//   }
-//   dispatch({type: AuthActions.changePassword, payload: confirmPassword});
-// };
+  dispatch({type: AuthActions.confirmPassword, payload: password})
+}
 
 const changePassword = dispatch => async (confirmPassword): void => {
-  const response = await API.confirmPassword(confirmPassword);
+  const response = await API.changePassword(confirmPassword);
   if (response.status) {
-    const {data} = response;
-    console.log('DAta', data)
+    const { data } = response;
+    console.log("DATAA", data);
+  } else {
   }
-}
+  dispatch({type: AuthActions.changePassword, payload: confirmPassword});
+};
+
 
 const mapActionsToDispatch = dispatch => {
   return {
@@ -175,7 +180,6 @@ const mapActionsToDispatch = dispatch => {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
     checkCurrentPassword: checkCurrentPassword(dispatch),
-    // changePassword: changePassword(dispatch)
     changePassword: changePassword(dispatch)
   };
 };

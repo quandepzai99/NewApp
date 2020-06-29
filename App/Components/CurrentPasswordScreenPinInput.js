@@ -19,7 +19,7 @@ export default function PinInput() {
   const authContext = useContext(AuthContext);
   const {checkCurrentPassword} = authContext;
   const onFullFill = password => {
-    checkCurrentPassword(password, onSuccess);
+    checkCurrentPassword(password);
 
   }
   console.log('confirm', checkCurrentPassword, password)
