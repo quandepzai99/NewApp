@@ -162,11 +162,13 @@ const checkCurrentPassword = dispatch => async (password, onSuccess, onFailed): 
   dispatch({type: AuthActions.confirmPassword, payload: password})
 }
 
-const changePassword = dispatch => async (confirmPassword): void => {
+const changePassword = dispatch => async (confirmPassword, onSuccess): void => {
   const response = await API.changePassword(confirmPassword);
   if (response.status) {
     const { data } = response;
-    console.log("DATAA", data);
+    const {user_id} = data;
+    onSuccess(user_id)
+    console.log("DATAA", user_id);
   } else {
   }
   dispatch({type: AuthActions.changePassword, payload: confirmPassword});

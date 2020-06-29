@@ -13,15 +13,16 @@ export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isFulfill, setFulfill] = useState(false);
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
     const changeNewPassword = confirmPassword => {
-        changePassword(confirmPassword, onSuccess, onFailed);
+        changePassword(confirmPassword);
         if (password === confirmPassword && isFulfillConfirmPassword) {
-            changeNewPassword;
+            changePassword(password);
+            console.log('dadad')
         }
     };
     console.log('PASStren', password);
@@ -85,13 +86,14 @@ export default function ChangePassWordScreen() {
   );
 }
 
-const onSuccess = () => {
-  if ({}) {
+const onSuccess = event => {
+  if (event) {
     Alert.alert("Mật khẩu đã đc đổi");
     // navigate("HomeScreen");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }
 };
+
 
 const onFailed = () => {};
