@@ -20,9 +20,9 @@ function AppNavigation() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator headerMode="none">
-        <Stack.Screen name={'OTPScreen'} component={OTPScreen}/>
-        {/*<Stack.Screen name={"LoginScreen"} component={LoginScreen} />*/}
-        {/*<Stack.Screen name={"PasswordScreen"} component={PasswordScreen} />*/}
+        {/*<Stack.Screen name={'OTPScreen'} component={OTPScreen}/>*/}
+        <Stack.Screen name={"LoginScreen"} component={LoginScreen} />
+        <Stack.Screen name={"PasswordScreen"} component={PasswordScreen} />
         {/*<Stack.Screen*/}
         {/*  name={"CurrentPasswordScreen"}*/}
         {/*  component={CurrentPassWordScreen}*/}
@@ -32,7 +32,7 @@ function AppNavigation() {
         {/*  component={ChangePasswordScreen}*/}
         {/*/>*/}
         {/*/!*<Stack.Screen name={"Chats"} component={Inbox} />*!/*/}
-        {/*<Stack.Screen name={"HomeScreen"} component={BottomNavigation} />*/}
+        <Stack.Screen name={"HomeScreen"} component={BottomNavigation} />
         {/*<Stack.Screen*/}
         {/*  name={"HomeScreenDetailPage1"}*/}
         {/*  component={HomeScreenDetailPage1}*/}

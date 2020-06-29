@@ -20,15 +20,13 @@ export default function ChangePassWordScreen() {
   const { changePassword } = authContext;
     const changeNewPassword = confirmPassword => {
         changePassword(confirmPassword, onSuccess, onFailed);
-        if ([password === confirmPassword] && [isFulfillConfirmPassword]) {
+        if (password === confirmPassword && isFulfillConfirmPassword) {
             changeNewPassword;
         }
     };
     console.log('PASStren', password);
     console.log('PASSduoi', confirmPassword);
     console.log('FULLFILL duoi', changeNewPassword);
-    // console.log("CONFIRMPASS",);
-    // console.log("Fullfill");
 
   return (
     <View>
