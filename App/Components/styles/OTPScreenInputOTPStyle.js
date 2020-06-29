@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         shadowRadius: 20,
         shadowOpacity: 1,
     },
-    InputOTP: {
+    inputOTP: {
         width: '100%',
         height: (164 / 736) * Dimensions.get('screen').height,
         backgroundColor: 'white',
@@ -28,9 +28,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: colors.paleGreyFour,
     },
-    title: {
-        fontSize: 200,
-        fontWeight: 'bold',
+    textStyle: {
+        fontSize: 32,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        lineHeight: 24,
+        letterSpacing: 0,
+        textAlign: 'center',
     },
     cellStyle: {
         borderWidth: 1,
