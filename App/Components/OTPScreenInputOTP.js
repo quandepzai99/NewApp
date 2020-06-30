@@ -19,12 +19,15 @@ export default function InputOTP() {
   const pullPhoneNumber = () => {
     if (isFullfill) {
       LocalStorage.get("Phone").then(phone => console.log("PHONE", phone));
-      if () 
+      if (phone != null) {
+        const phoneNumber = phone;
+        console.log("PHONEEEEEE", phone);
+      }
     }
   };
 
-  const onFullfill = () => {
-    confirmOTP(otp, onSuccess, onFailed);
+  const onFullfill = phone => {
+    confirmOTP(phone, otp, onSuccess, onFailed);
   };
 
   return (
