@@ -18,7 +18,7 @@ export default function Wrapper(props) {
   );
 }
 
-const isPhoneNumberExist = dispatch => async (
+export const isPhoneNumberExist = dispatch => async (
   phone,
   onSuccess,
   onFailed
@@ -39,6 +39,8 @@ const isPhoneNumberExist = dispatch => async (
     } & { type: AuthActions.savePhoneNumber, payload: phone }
   );
 };
+
+const saveTheDamnPhone = dispatch => {phone}
 
 export const isPasswordCorrect = dispatch => async (
   phone,
