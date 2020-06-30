@@ -15,8 +15,16 @@ export default function InputOTP() {
   const [otp, setOTP] = useState("");
   const authContext = useContext(AuthContext);
   const { confirmOTP } = authContext;
-  const onFullfill = text => {
-    confirmOTP(LocalStorage.get("phone"), text, onSuccess, onFailed);
+  const isFullfill = otp.length >= 6;
+  const pullPhoneNumber = () => {
+    if (isFullfill) {
+      LocalStorage.get("Phone").then(phone => console.log("PHONE", phone));
+      if () 
+    }
+  };
+
+  const onFullfill = () => {
+    confirmOTP(otp, onSuccess, onFailed);
   };
 
   return (

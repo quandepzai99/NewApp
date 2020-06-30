@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
@@ -22,11 +22,15 @@ export default function LoginScreenInputPhoneNumber() {
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
-  const registerPhone = () => {
-    return phoneRegister(text);
+  const onSuccessCallback = () => {
+    phoneRegister(text, onSuccess(), onFailed());
   };
-  LocalStorage.set("regPhone", registerPhone);
-  const onPress = getOnPress(isActive, isPhoneNumberExist, text);
+  const onPress = getOnPress(
+    isActive,
+    isPhoneNumberExist,
+    text,
+    onSuccessCallback
+  );
 
   return (
     <View style={styles.container}>
@@ -53,6 +57,25 @@ export default function LoginScreenInputPhoneNumber() {
     </View>
   );
 }
+
+const getOnPress = (isActive, isPhoneNumberExist, phone, onSuccessCallback) => {
+  return isActive
+    ? () => {
+        isPhoneNumberExist(phone, onSuccess.bind(onSuccessCallback), onFailed);
+      }
+    : () => {};
+};
+
+const onSuccess = (isExist, callback) => {
+  if (isExist) {
+    navigate("PasswordScreen");
+    callback();
+  } else {
+    navigate("OTPScreen");
+  }
+};
+
+const onFailed = () => {};
 const getButtonStyle = isActive => {
   return isActive
     ? [
@@ -63,23 +86,6 @@ const getButtonStyle = isActive => {
       ]
     : styles.floatButton;
 };
-
-const getOnPress = (isActive, isPhoneNumberExist, phone) => {
-  return isActive
-    ? () => {
-        isPhoneNumberExist(phone, onSuccess, onFailed);
-      }
-    : () => {};
-};
-
-const onSuccess = isExist => {
-  if (isExist) {
-    navigate("PasswordScreen");
-  } else {
-    LocalStorage.get("regPhone").then(data => console.log("RESPONSE", data));
-    navigate("OTPScreen");
-  }
-};
-
-const onFailed = () => {};
 // const ifSuccess = () =>
+
+// LocalStorage.get("Phone").then(phone => console.log("PHONEEE", phone));
