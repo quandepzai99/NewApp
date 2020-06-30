@@ -164,12 +164,12 @@ const confirmOTP = dispatch => async (
 
 const mapActionsToDispatch = dispatch => {
   return {
+    isPhoneNumberExist: isPhoneNumberExist(dispatch),
     phoneRegister: phoneRegister(dispatch),
     sendOTP: sendOTP(dispatch),
     confirmOTP: confirmOTP(dispatch),
     logOut: logOut(dispatch),
     isTokenValidated: isTokenValidated(dispatch),
-    isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
     checkCurrentPassword: checkCurrentPassword(dispatch),
     changePassword: changePassword(dispatch)

@@ -22,7 +22,9 @@ export default function LoginScreenInputPhoneNumber() {
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
-  const registerPhone = text => phoneRegister(text);
+  const registerPhone = () => {
+    return phoneRegister(text);
+  };
   LocalStorage.set("regPhone", registerPhone);
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
 
@@ -74,7 +76,7 @@ const onSuccess = isExist => {
   if (isExist) {
     navigate("PasswordScreen");
   } else {
-    LocalStorage.get("regPhone").then(console.log("fuction"));
+    LocalStorage.get("regPhone").then(data => console.log("RESPONSE", data));
     navigate("OTPScreen");
   }
 };
