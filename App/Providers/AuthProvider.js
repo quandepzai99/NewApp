@@ -123,6 +123,7 @@ const phoneRegister = dispatch => async (phone): void => {
   const response = await API.phoneRegister(phone);
   if (response.status) {
     sendOTP(phone);
+    console.log('PHONEREG STATUS', response.status);
   } else {
   }
   dispatch({type: AuthActions.phoneRegister, payload: phone});
@@ -134,6 +135,8 @@ const sendOTP = dispatch => async (phone): void => {
     const {data} = response;
     const {otp} = data;
     const {otp_expired} = data;
+    console.log('SENT OTP', response.status);
+
     LocalStorage.set('phone', phone);
     LocalStorage.set('otp', otp);
     LocalStorage.set('otp_expired', otp_expired);

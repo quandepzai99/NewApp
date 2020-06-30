@@ -40,6 +40,7 @@ export default function InputOTP() {
             </View>
             <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
                 <TouchableOpacity
+                    onPress={navigate('LoginScreen')}
                     style={{flexDirection: 'row', alignItems: 'center'}}>
                     <AntDesign
                         name={'left'}

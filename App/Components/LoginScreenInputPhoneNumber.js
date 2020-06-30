@@ -3,13 +3,14 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { LanguageContext } from "../Providers/LanguageProvider";
-import {AuthContext, phoneRegister} from '../Providers/AuthProvider';
+import {AuthContext} from '../Providers/AuthProvider';
 
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import colors from "../Themes/Colors";
 
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigate } from "../Navigation/RootNavigation";
+import {LocalStorage} from '../Lib/LocalStorage';
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
@@ -47,7 +48,6 @@ export default function LoginScreenInputPhoneNumber() {
     </View>
   );
 }
-
 const getButtonStyle = isActive => {
   return isActive
     ? [
@@ -59,10 +59,13 @@ const getButtonStyle = isActive => {
     : styles.floatButton;
 };
 
+console.log('GOOOOO');
+
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
         isPhoneNumberExist(phone, onSuccess, onFailed);
+          console.log('HAHAHAHA');
       }
     : () => {};
 };
@@ -71,6 +74,8 @@ const onSuccess = isExist => {
   if (isExist) {
     navigate("PasswordScreen");
   } else {
+      navigate('OTPScreen');
+      console.log('HELU');
   }
 };
 
