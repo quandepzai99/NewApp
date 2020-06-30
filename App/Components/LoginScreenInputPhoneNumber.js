@@ -3,14 +3,14 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { LanguageContext } from "../Providers/LanguageProvider";
-import {AuthContext} from '../Providers/AuthProvider';
+import { AuthContext } from "../Providers/AuthProvider";
 
 import styles from "./styles/LoginScreenInputPhoneNumberStyle";
 import colors from "../Themes/Colors";
 
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigate } from "../Navigation/RootNavigation";
-import {LocalStorage} from '../Lib/LocalStorage';
+import { LocalStorage } from "../Lib/LocalStorage";
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
@@ -21,9 +21,12 @@ export default function LoginScreenInputPhoneNumber() {
   const floatStyle = getButtonStyle(isActive);
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
+  const { phoneRegister } = authContext;
+  const registerPhone = text => phoneRegister(text);
+  LocalStorage.set("regPhone", registerPhone);
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
 
-    return (
+  return (
     <View style={styles.container}>
       <View style={styles.trans}>
         <Text style={styles.text1}>{content.LoginScreenEnterPhoneNumber}</Text>
@@ -59,13 +62,10 @@ const getButtonStyle = isActive => {
     : styles.floatButton;
 };
 
-console.log('GOOOOO');
-
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
         isPhoneNumberExist(phone, onSuccess, onFailed);
-          console.log('HAHAHAHA');
       }
     : () => {};
 };
@@ -74,8 +74,8 @@ const onSuccess = isExist => {
   if (isExist) {
     navigate("PasswordScreen");
   } else {
-      navigate('OTPScreen');
-      console.log('HELU');
+    LocalStorage.get("regPhone").then(console.log("fuction"));
+    navigate("OTPScreen");
   }
 };
 

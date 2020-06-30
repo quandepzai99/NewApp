@@ -116,50 +116,50 @@ const changePassword = dispatch => async (confirmPassword): void => {
     const { data } = response;
   } else {
   }
-  dispatch({type: AuthActions.changePassword, payload: confirmPassword});
+  dispatch({ type: AuthActions.changePassword, payload: confirmPassword });
 };
 
 const phoneRegister = dispatch => async (phone): void => {
   const response = await API.phoneRegister(phone);
   if (response.status) {
     sendOTP(phone);
-    console.log('PHONEREG STATUS', response.status);
+    console.log("PHONEREG STATUS", response.status);
   } else {
   }
-  dispatch({type: AuthActions.phoneRegister, payload: phone});
+  dispatch({ type: AuthActions.phoneRegister, payload: phone });
 };
 
 const sendOTP = dispatch => async (phone): void => {
   const response = await API.sendOTP(phone);
   if (response.status) {
-    const {data} = response;
-    const {otp} = data;
-    const {otp_expired} = data;
-    console.log('SENT OTP', response.status);
+    const { data } = response;
+    const { otp } = data;
+    const { otp_expired } = data;
+    console.log("SENT OTP", response.status);
 
-    LocalStorage.set('phone', phone);
-    LocalStorage.set('otp', otp);
-    LocalStorage.set('otp_expired', otp_expired);
+    LocalStorage.set("phone", phone);
+    LocalStorage.set("otp", otp);
+    LocalStorage.set("otp_expired", otp_expired);
   }
-  dispatch({type: AuthActions.sendOTP, payload: phone});
+  dispatch({ type: AuthActions.sendOTP, payload: phone });
 };
 
 const confirmOTP = dispatch => async (
-    phone,
-    otp,
-    onSuccess,
-    onFailed,
+  phone,
+  otp,
+  onSuccess,
+  onFailed
 ): void => {
   const response = await API.confirmOTP(phone, otp);
   if (response.status) {
-    const {data} = response;
-    const {is_match} = data;
-    const {is_expired} = data;
+    const { data } = response;
+    const { is_match } = data;
+    const { is_expired } = data;
     onSuccess(is_expired, is_match);
   } else {
-    onFailed;
+    onFailed();
   }
-  dispatch({type: AuthActions.confirmOTP, payload: otp});
+  dispatch({ type: AuthActions.confirmOTP, payload: otp });
 };
 
 const mapActionsToDispatch = dispatch => {
@@ -172,6 +172,6 @@ const mapActionsToDispatch = dispatch => {
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
     isPasswordCorrect: isPasswordCorrect(dispatch),
     checkCurrentPassword: checkCurrentPassword(dispatch),
-    changePassword: changePassword(dispatch),
+    changePassword: changePassword(dispatch)
   };
 };
