@@ -32,10 +32,12 @@ const isPhoneNumberExist = dispatch => async (
   } else {
     onFailed();
   }
-  dispatch({
-    type: AuthActions.isPhoneNumberExist,
-    payload: phone
-  });
+  dispatch(
+    {
+      type: AuthActions.isPhoneNumberExist,
+      payload: phone
+    } & { type: AuthActions.savePhoneNumber, payload: phone }
+  );
 };
 
 export const isPasswordCorrect = dispatch => async (
