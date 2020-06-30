@@ -175,7 +175,8 @@ const checkCurrentPassword = dispatch => async (password, onSuccess, onFailed): 
   if (response.status) {
     const {data} = response;
     console.log('dasdas', data)
-
+    const {is_match} = data;
+    onSuccess(is_match)
   }else {
     onFailed();
   }
