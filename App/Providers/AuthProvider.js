@@ -157,30 +157,45 @@ const logOut = dispatch => async (token): void => {
 //   dispatch({ type: AuthActions.confirmPassword, payload: password });
 // };
 
+// const checkCurrentPassword = dispatch => async (password, onSuccess, onFailed): void => {
+//   const response = await API.confirmPassword(password);
+//   if (response.status) {
+//     const {data} = response;
+//     console.log('data', data)
+//     const {is_match} = data
+//     onSuccess(is_match);
+//   } else {
+//     onFailed();
+//   }
+//   dispatch({type: AuthActions.confirmPassword, payload: password})
+// }
+
 const checkCurrentPassword = dispatch => async (password, onSuccess, onFailed): void => {
   const response = await API.confirmPassword(password);
   if (response.status) {
     const {data} = response;
-    const {is_match} = data
-    onSuccess(is_match);
-  } else {
+    console.log('dasdas', data)
+
+  }else {
     onFailed();
   }
-  dispatch({type: AuthActions.confirmPassword, payload: password})
+  dispatch({
+    type: AuthActions.confirmPassword,
+    payload: password
+  })
 }
 
 const changePassword = dispatch => async (confirmPassword, onSuccess): void => {
   const response = await API.changePassword(confirmPassword);
   if (response.status) {
     const { data } = response;
-    const {user_id} = data;
-    onSuccess(user_id)
-    console.log("DATAA", user_id);
+    const {is_match} = data;
+    onSuccess(is_match)
+    console.log("DATAA", is_match);
   } else {
   }
   dispatch({type: AuthActions.changePassword, payload: confirmPassword});
 };
-
 
 const mapActionsToDispatch = dispatch => {
   return {

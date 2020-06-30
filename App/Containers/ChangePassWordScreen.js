@@ -8,6 +8,7 @@ import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
 import { AuthContext } from "../Providers/AuthProvider";
+import {LocalStorage} from '../Lib/LocalStorage';
 
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
@@ -21,17 +22,15 @@ export default function ChangePassWordScreen() {
     const changeNewPassword = dispatch => {
         const {password, confirmPassword} = dispatch.target;
         changePassword(password, confirmPassword, onSuccess)
-        // if (password === confirmPassword !== isFulfillConfirmPassword) {
-        //     changePassword(password, confirmPassword, onSuccess);
-        //     setConfirmPassword(true);
-        //
-        //   console.log("Please enter current password", changePassword);
-        // }
+        if (password === confirmPassword !== isFulfillConfirmPassword) {
+          changeNewPassword;
+          console.log("Please enter current password", changeNewPassword);
+        }
     };
     console.log('PASStren', password);
-    console.log('PASSduoi', changePassword);
-    console.log('Change',password, confirmPassword, onSuccess );
-    // console.log('FULLFILL duoi', changeNewPassword);
+    console.log('PASSduoi', confirmPassword);
+    // console.log('Change',password, confirmPassword, onSuccess );
+    // console.log('FULLFILL duoi', changePassword);
 
   return (
     <View>

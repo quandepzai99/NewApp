@@ -38,6 +38,8 @@ export default function PasswordScreenInputPassword() {
     navigate('LoginScreen')
   }
 
+  console.log('PAssword', phone, password)
+
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>{content.PasswordScreenInputPassword}</Text>
