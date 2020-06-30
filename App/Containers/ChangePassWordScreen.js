@@ -18,16 +18,20 @@ export default function ChangePassWordScreen() {
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
-    const changeNewPassword = confirmPassword => {
-        changePassword(confirmPassword);
-        if (password === confirmPassword && isFulfillConfirmPassword) {
-            changePassword(password);
-            console.log('dadad')
-        }
+    const changeNewPassword = dispatch => {
+        const {password, confirmPassword} = dispatch.target;
+        changePassword(password, confirmPassword, onSuccess)
+        // if (password === confirmPassword !== isFulfillConfirmPassword) {
+        //     changePassword(password, confirmPassword, onSuccess);
+        //     setConfirmPassword(true);
+        //
+        //   console.log("Please enter current password", changePassword);
+        // }
     };
     console.log('PASStren', password);
-    console.log('PASSduoi', confirmPassword);
-    console.log('FULLFILL duoi', changeNewPassword);
+    console.log('PASSduoi', changePassword);
+    console.log('Change',password, confirmPassword, onSuccess );
+    // console.log('FULLFILL duoi', changeNewPassword);
 
   return (
     <View>
@@ -43,6 +47,7 @@ export default function ChangePassWordScreen() {
             setFulfill={setFulfill}
             password={password}
             setPassword={setPassword}
+            changeNewPassword={changeNewPassword}
           />
         </View>
         {isFulfill ? (
@@ -56,6 +61,7 @@ export default function ChangePassWordScreen() {
                 setFulfillConfirmPassword={setFulfillConfirmPassword}
                 confirmPassword={confirmPassword}
                 setConfirmPassword={setConfirmPassword}
+                changeNewPassword={changeNewPassword}
               />
             </View>
           </View>
@@ -88,6 +94,7 @@ export default function ChangePassWordScreen() {
 
 const onSuccess = event => {
   if (event) {
+    event.preventDefault();
     Alert.alert("Mật khẩu đã đc đổi");
     // navigate("HomeScreen");
   } else {

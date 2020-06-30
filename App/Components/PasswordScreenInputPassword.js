@@ -32,6 +32,11 @@ export default function PasswordScreenInputPassword() {
   const isFullFill = text => {
     isPasswordCorrect(phone, text, onSuccess, onFailed)
   }
+  const { logOut } = authContext;
+  const onPress = () => {
+    logOut();
+    navigate('LoginScreen')
+  }
 
   return (
     <View style={styles.container}>
@@ -68,7 +73,7 @@ export default function PasswordScreenInputPassword() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btSignOut}
-          // onPress={onPress}
+          onPress={onPress}
         >
           <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
           <Text style={styles.text3}>{content.PasswordScreenSignOut}</Text>

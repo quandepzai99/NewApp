@@ -25,7 +25,7 @@ function LoginScreen() {
 
   const authContext = useContext(AuthContext);
   const {isTokenValidated} = authContext;
-  console.log('validated_token', isTokenValidated )
+  // console.log('validated_token', isTokenValidated )
 
   const handleAppStateChange = nextAppState => {
     if (nextAppState === 'active') {
@@ -61,13 +61,6 @@ function LoginScreen() {
   );
 }
 
-// const onSuccess = is_alive => {
-//   if (is_alive) {
-//     navigate("PasswordScreen");
-//   } else {
-//     navigate("LoginScreen");
-//   }
-// };
 const onSuccess = is_alive => {
   if (is_alive) {
     navigate('PasswordScreen')

@@ -11,7 +11,7 @@ export default function InputConfirmPassword(props) {
     setFulfillConfirmPassword
   } = props;
     // console.log("PASSduoi", confirmPassword);
-    // console.log("FULLFILL duoi");
+    console.log("FULLFILL duoi", confirmPassword, setConfirmPassword, setFulfillConfirmPassword);
 
   return (
     <View style={styles.container1}>
