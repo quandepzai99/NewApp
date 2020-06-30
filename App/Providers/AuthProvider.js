@@ -134,16 +134,36 @@ const sendOTP = dispatch => async (phone): void => {
     const {data} = response;
     const {otp} = data;
     const {otp_expired} = data;
+    LocalStorage.set('phone', phone);
     LocalStorage.set('otp', otp);
     LocalStorage.set('otp_expired', otp_expired);
   }
   dispatch({type: AuthActions.sendOTP, payload: phone});
 };
 
+const confirmOTP = dispatch => async (
+    phone,
+    otp,
+    onSuccess,
+    onFailed,
+): void => {
+  const response = await API.confirmOTP(phone, otp);
+  if (response.status) {
+    const {data} = response;
+    const {is_match} = data;
+    const {is_expired} = data;
+    onSuccess(is_expired, is_match);
+  } else {
+    onFailed;
+  }
+  dispatch({type: AuthActions.confirmOTP, payload: otp});
+};
 
 const mapActionsToDispatch = dispatch => {
   return {
     phoneRegister: phoneRegister(dispatch),
+    sendOTP: sendOTP(dispatch),
+    confirmOTP: confirmOTP(dispatch),
     logOut: logOut(dispatch),
     isTokenValidated: isTokenValidated(dispatch),
     isPhoneNumberExist: isPhoneNumberExist(dispatch),
