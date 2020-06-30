@@ -29,7 +29,6 @@ const isPhoneNumberExist = dispatch => async (
     const { is_exist } = data;
     const { phone } = data;
     onSuccess(is_exist);
-    LocalStorage.set("Phone", phone);
   } else {
     onFailed();
   }

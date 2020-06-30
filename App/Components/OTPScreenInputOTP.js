@@ -14,15 +14,20 @@ export default function InputOTP() {
   const { content } = languageContext.state;
   const [otp, setOTP] = useState("");
   const authContext = useContext(AuthContext);
+  console.log("CONTEXT", authContext);
   const { confirmOTP } = authContext;
   const isFullfill = otp.length >= 6;
+  console.log("GO HERE?");
+  const pullPhone = async () =>
+    await LocalStorage.get("Phone").then(phone => console.log("PHONE", phone));
 
-  LocalStorage.get("Phone").then(phone => {
-    return console.log("PHONEEEEE", phone);
-  });
 
-  const onFullfill = phone => {
-    confirmOTP(phone, otp, onSuccess, onFailed);
+
+
+  console.log("Pull", pullPhone());
+
+  const onFullfill = () => {
+    confirmOTP(pullPhone, otp, onSuccess, onFailed);
   };
 
   return (
