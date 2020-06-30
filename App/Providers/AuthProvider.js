@@ -119,17 +119,27 @@ const changePassword = dispatch => async (confirmPassword): void => {
   dispatch({type: AuthActions.changePassword, payload: confirmPassword});
 };
 
-export const phoneRegister = dispatch => async (phone): void => {
+const phoneRegister = dispatch => async (phone): void => {
   const response = await API.phoneRegister(phone);
   if (response.status) {
-    const {data} = response;
-    const {otp} = response;
-    console.log('DATAA', data);
-    console.log('OTPPP', otp);
+    sendOTP(phone);
   } else {
   }
   dispatch({type: AuthActions.phoneRegister, payload: phone});
 };
+
+const sendOTP = dispatch => async (phone): void => {
+  const response = await API.sendOTP(phone);
+  if (response.status) {
+    const {data} = response;
+    const {otp} = data;
+    const {otp_expired} = data;
+    LocalStorage.set('otp', otp);
+    LocalStorage.set('otp_expired', otp_expired);
+  }
+  dispatch({type: AuthActions.sendOTP, payload: phone});
+};
+
 
 const mapActionsToDispatch = dispatch => {
   return {

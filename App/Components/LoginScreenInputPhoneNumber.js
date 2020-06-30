@@ -20,7 +20,6 @@ export default function LoginScreenInputPhoneNumber() {
   const floatStyle = getButtonStyle(isActive);
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
-    const {phoneRegister} = authContext;
   const onPress = getOnPress(isActive, isPhoneNumberExist, text);
 
     return (
@@ -68,18 +67,12 @@ const getOnPress = (isActive, isPhoneNumberExist, phone) => {
     : () => {};
 };
 
-const newPhone = phone => {
-    phoneRegister(phone, ifSuccess, ifFailed);
-};
-
 const onSuccess = isExist => {
   if (isExist) {
     navigate("PasswordScreen");
   } else {
-      newPhone();
   }
 };
 
 const onFailed = () => {};
 // const ifSuccess = () =>
-
