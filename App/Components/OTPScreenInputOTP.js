@@ -8,26 +8,24 @@ import { LanguageContext } from "../Providers/LanguageProvider";
 import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
 import { LocalStorage } from "../Lib/LocalStorage";
+import initialState from "../ReduxHooks/AuthReducer";
 
 export default function InputOTP() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [otp, setOTP] = useState("");
   const authContext = useContext(AuthContext);
-  console.log("CONTEXT", authContext);
+  // console.log("CONTEXT", authContext);
   const { confirmOTP } = authContext;
   const isFullfill = otp.length >= 6;
   console.log("GO HERE?");
-  const pullPhone = async () =>
-    await LocalStorage.get("Phone").then(phone => console.log("PHONE", phone));
-
-
-
-
-  console.log("Pull", pullPhone());
+  // const pullPhone = async () =>
+  //   await LocalStorage.get("Phone").then(phone => console.log("PHONE", phone));
+  //
+  // console.log("Pull", pullPhone());
 
   const onFullfill = () => {
-    confirmOTP(pullPhone, otp, onSuccess, onFailed);
+    confirmOTP(savePhone, otp, onSuccess, onFailed);
   };
 
   return (
@@ -49,10 +47,23 @@ export default function InputOTP() {
           onFulfill={onFullfill}
         />
       </View>
-      <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
+      <View
+        style={{
+          justifyContent: "space-between",
+          flexDirection: "row",
+          backgroundColor: "white",
+          borderBottomRightRadius: 12,
+          borderBottomLeftRadius: 12
+        }}>
         <TouchableOpacity
-          // onPress={navigate('HomeScreen')}
-          style={{ flexDirection: "row", alignItems: "center" }}>
+          // onPress={onPress()}
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "white",
+            paddingRight: 10,
+            borderBottomLeftRadius: 12
+          }}>
           <AntDesign
             name={"left"}
             size={20}
@@ -80,6 +91,11 @@ export default function InputOTP() {
     </View>
   );
 }
+
+// const onPress = () => navigate("CurrentPasswordScreen");
+const savePhone = phone => {
+  return phone;
+};
 
 const onSuccess = (is_match, is_expired) => {
   if (is_match === true && is_expired === false) {

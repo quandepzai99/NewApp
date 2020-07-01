@@ -10,8 +10,8 @@ export default function InputConfirmPassword(props) {
     setConfirmPassword,
     setFulfillConfirmPassword
   } = props;
-    // console.log("PASSduoi", confirmPassword);
-    // console.log("FULLFILL duoi");
+  // console.log("PASSduoi", confirmPassword);
+  // console.log("FULLFILL duoi");
 
   return (
     <View style={styles.container1}>
@@ -31,6 +31,7 @@ export default function InputConfirmPassword(props) {
           cellStyleFocused={{
             borderColor: colors.blueGrey
           }}
+          password
           cellSize={28}
           codeLength={6}
           value={confirmPassword}
