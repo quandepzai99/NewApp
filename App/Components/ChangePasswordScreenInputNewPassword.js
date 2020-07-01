@@ -9,14 +9,6 @@ export default function InputNewPassword(props) {
   const { password, setPassword, setFulfill } = props;
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
-  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
-  const changeNewPassword = confirmPassword => {
-    changePassword(password, confirmPassword);
-    if ((password === confirmPassword) !== isFulfillConfirmPassword) {
-      changeNewPassword;
-    }
-  };
-
   // console.log("PASS", password);
   return (
     <View style={styles.container1}>
