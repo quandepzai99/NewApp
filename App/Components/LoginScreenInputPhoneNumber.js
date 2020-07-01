@@ -22,14 +22,7 @@ export default function LoginScreenInputPhoneNumber() {
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
   const { phone } = authContext.state;
-  const regPhone = registerPhone(phone);
-  const onPress = getOnPress(
-    isActive,
-    isPhoneNumberExist,
-    text,
-    phoneRegister(),
-    regPhone()
-  );
+  const onPress = getOnPress(isActive, isPhoneNumberExist, text, phoneRegister);
 
   return (
     <View style={styles.container}>
@@ -57,25 +50,25 @@ export default function LoginScreenInputPhoneNumber() {
   );
 }
 
-const getOnPress = (isActive, isPhoneNumberExist, phone) => {
-  return isActive
-    ? () => {
-        isPhoneNumberExist(phone, onSuccess(), onFailed());
-      }
-    : () => {};
-};
-
 const registerPhone = (phone, phoneRegister) => {
   return () => {
     phoneRegister(phone);
   };
 };
 
-const onSuccess = (isExist, phone, regPhone) => {
+const getOnPress = (isActive, isPhoneNumberExist, phone) => {
+  return isActive
+    ? () => {
+        isPhoneNumberExist(phone, onSuccess(), onFailed(), registerPhone());
+      }
+    : () => {};
+};
+
+const onSuccess = (isExist, phone, registerPhone) => {
   if (isExist === true) {
     return () => navigate("PasswordScreen");
   } else {
-    regPhone();
+    registerPhone();
     navigate("OTPScreen", {
       phone: phone
     });

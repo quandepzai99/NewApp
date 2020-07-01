@@ -18,14 +18,18 @@ export default function Wrapper(props) {
   );
 }
 
-const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
+const isPhoneNumberExist = dispatch => async (
+  phone,
+  onSuccess,
+  onFailed,
+  registerPhone
+) => {
   const response = await API.phoneCheckExist(phone);
   if (response.status) {
     const { data } = response;
     const { is_exist } = data;
     const { phone } = data;
-    dispatch({ type: AuthActions.savePhoneNumber, payload: phone });
-    onSuccess(is_exist, phone);
+    onSuccess(is_exist, phone, registerPhone);
   } else {
     onFailed();
   }
@@ -110,7 +114,11 @@ const checkCurrentPassword = dispatch => async (
   dispatch({ type: AuthActions.confirmPassword, payload: password });
 };
 
-const changePassword = dispatch => async (password): void => {
+const changePassword = dispatch => async (
+  password,
+  onSuccess,
+  onFailed
+): void => {
   const response = await API.changePassword(password);
   if (response.status) {
     const status = response.status;

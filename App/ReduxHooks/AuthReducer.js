@@ -37,9 +37,6 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.activeAccount) {
     const password = action.payload;
     return { ...state, password: password };
-  } else if (action.type === AuthActions.savePhoneNumber) {
-    const phone = action.payload;
-    return { ...state, phone: phone };
   } else {
     return state;
   }
