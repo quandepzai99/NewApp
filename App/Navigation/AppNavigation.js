@@ -20,7 +20,7 @@ function AppNavigation() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator headerMode="none">
-        {/*<Stack.Screen name={'LoginScreen'} component={LoginScreen}/>*/}
+        <Stack.Screen name={"LoginScreen"} component={LoginScreen} />
         <Stack.Screen name={"OTPScreen"} component={OTPScreen} />
         <Stack.Screen name={"PasswordScreen"} component={PasswordScreen} />
         <Stack.Screen

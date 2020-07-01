@@ -25,7 +25,7 @@ export default function InputOTP() {
   // console.log("Pull", pullPhone());
 
   const onFullfill = () => {
-    confirmOTP(savePhone, otp, onSuccess, onFailed);
+    // confirmOTP(savePhone, otp, onSuccess, onFailed);
   };
 
   return (

@@ -10,7 +10,6 @@ import colors from "../Themes/Colors";
 
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigate } from "../Navigation/RootNavigation";
-import { LocalStorage } from "../Lib/LocalStorage";
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
@@ -63,17 +62,18 @@ export default function LoginScreenInputPhoneNumber() {
 const getOnPress = (isActive, isPhoneNumberExist, phone, onSuccessCallback) => {
   return isActive
     ? () => {
-        isPhoneNumberExist(phone, onSuccess.bind(onSuccessCallback), onFailed);
+        isPhoneNumberExist(phone, onSuccess, onFailed);
       }
     : () => {};
 };
 
-const onSuccess = (isExist, callback) => {
+const onSuccess = (isExist, phone) => {
   if (isExist) {
     navigate("PasswordScreen");
-    callback();
   } else {
-    navigate("OTPScreen");
+    navigate("OTPScreen", {
+      phone: phone
+    });
   }
 };
 
@@ -88,6 +88,3 @@ const getButtonStyle = isActive => {
       ]
     : styles.floatButton;
 };
-// const ifSuccess = () =>
-
-// LocalStorage.get("Phone").then(phone => console.log("PHONEEE", phone));
