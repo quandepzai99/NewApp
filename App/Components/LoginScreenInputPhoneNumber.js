@@ -72,8 +72,8 @@ const registerPhone = (phone, phoneRegister) => {
 };
 
 const onSuccess = (isExist, phone, regPhone) => {
-  if (isExist) {
-    navigate("PasswordScreen");
+  if (isExist === true) {
+    return () => navigate("PasswordScreen");
   } else {
     regPhone();
     navigate("OTPScreen", {
