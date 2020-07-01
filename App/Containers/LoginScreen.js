@@ -9,23 +9,8 @@ import { AuthContext } from "../Providers/AuthProvider";
 import API from "../Lib/API";
 
 function LoginScreen() {
-  // const authContext = useContext(AuthContext);
-  // const { isTokenValidated } = authContext;
-  // const handleAppStateChange = nextAppState => {
-  //   if (nextAppState === "active") {
-  //     LocalStorage.get("access_token").then(token => {
-  //       console.log("TOKEN", token);
-  //       if (token !== null) {
-  //         API.setAccessToken(token);
-  //         isTokenValidated(token, onSuccess, onFailed);
-  //       }
-  //     });
-  //   }
-  // };
-
   const authContext = useContext(AuthContext);
   const { isTokenValidated } = authContext;
-  // console.log('validated_token', isTokenValidated )
 
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {

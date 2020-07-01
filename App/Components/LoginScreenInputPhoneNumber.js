@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { LanguageContext } from "../Providers/LanguageProvider";
@@ -10,7 +10,6 @@ import colors from "../Themes/Colors";
 
 import GlobalLanguageButton from "./GlobalLanguageButton";
 import { navigate } from "../Navigation/RootNavigation";
-import { LocalStorage } from "../Lib/LocalStorage";
 
 export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
@@ -22,7 +21,7 @@ export default function LoginScreenInputPhoneNumber() {
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
-  console.log("CONTEXT", authContext);
+  // console.log("CONTEXT", authContext);
 
   const onSuccessCallback = () => {
     phoneRegister(text, onSuccess(), onFailed());
@@ -60,20 +59,21 @@ export default function LoginScreenInputPhoneNumber() {
   );
 }
 
-const getOnPress = (isActive, isPhoneNumberExist, phone, onSuccessCallback) => {
+const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-        isPhoneNumberExist(phone, onSuccess.bind(onSuccessCallback), onFailed);
+        isPhoneNumberExist(phone, onSuccess, onFailed);
       }
     : () => {};
 };
 
-const onSuccess = (isExist, callback) => {
+const onSuccess = (isExist, phone) => {
   if (isExist) {
     navigate("PasswordScreen");
-    callback();
   } else {
-    navigate("OTPScreen");
+    navigate("OTPScreen", {
+      phone: phone
+    });
   }
 };
 
@@ -88,6 +88,3 @@ const getButtonStyle = isActive => {
       ]
     : styles.floatButton;
 };
-// const ifSuccess = () =>
-
-// LocalStorage.get("Phone").then(phone => console.log("PHONEEE", phone));

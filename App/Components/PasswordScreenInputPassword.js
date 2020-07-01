@@ -11,21 +11,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 export default function PasswordScreenInputPassword() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
-
   const [password, setPassword] = useState("");
-  // const authContext = useContext(AuthContext);
-  // const { isPasswordCorrect } = authContext;
-  // const { logOut } = authContext;
-  // const { phone } = authContext.state;
-  // const onPress = () => {
-  //   logOut();
-  //   navigate("LoginScreen");
-  // };
-  //
-  // const onFullFill = text => {
-  //   isPasswordCorrect(phone, text, onSuccess, onFailed);
-  // };
-
   const authContext = useContext(AuthContext);
   const { isPasswordCorrect } = authContext;
   const { phone } = authContext.state;
@@ -37,9 +23,6 @@ export default function PasswordScreenInputPassword() {
     logOut();
     navigate("LoginScreen");
   };
-
-  console.log("PAssword", phone, password);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>{content.PasswordScreenInputPassword}</Text>

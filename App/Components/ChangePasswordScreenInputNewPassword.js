@@ -9,21 +9,11 @@ export default function InputNewPassword(props) {
   const { password, setPassword, setFulfill } = props;
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
-  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
-  const changeNewPassword = confirmPassword => {
-    // const {password, confirmPassword} = dispatch.target;
-    changePassword(password, confirmPassword);
-    if ((password === confirmPassword) !== isFulfillConfirmPassword) {
-      changeNewPassword;
-    }
-  };
-
   // console.log("PASS", password);
   return (
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
-          changeNewPassword={changeNewPassword}
           onFulfill={() => {
             setFulfill(true);
           }}

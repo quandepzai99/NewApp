@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Alert, View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import { navigate } from "../Navigation/RootNavigation";
@@ -8,18 +8,12 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 export default function PinInput() {
   const [password, setPassword] = useState("");
-  // const authContext = useContext(AuthContext);
-  // const {checkCurrentPassword} = authContext;
-  // const onFullFill = password => {
-  //   checkCurrentPassword(password, onSuccess, onFailed);
-  // }
-  // console.log('confirm', password, onSuccess)
+
   const authContext = useContext(AuthContext);
   const { checkCurrentPassword } = authContext;
   const onFullFill = password => {
     checkCurrentPassword(password, onSuccess, onFailed);
   };
-  console.log("fullfill", checkCurrentPassword, password, onFullFill);
   return (
     <View style={styles.container}>
       <View style={styles.section}>
