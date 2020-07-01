@@ -21,29 +21,29 @@ function AppNavigation() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator headerMode="none">
         {/*<Stack.Screen name={'LoginScreen'} component={LoginScreen}/>*/}
-        <Stack.Screen name={'OTPScreen'} component={OTPScreen}/>
-        <Stack.Screen name={'PasswordScreen'} component={PasswordScreen}/>
+        <Stack.Screen name={"OTPScreen"} component={OTPScreen} />
+        <Stack.Screen name={"PasswordScreen"} component={PasswordScreen} />
         <Stack.Screen
-            name={'CurrentPasswordScreen'}
-            component={CurrentPassWordScreen}
+          name={"CurrentPasswordScreen"}
+          component={CurrentPassWordScreen}
         />
         <Stack.Screen
-            name={'ChangePasswordScreen'}
-            component={ChangePasswordScreen}
+          name={"ChangePasswordScreen"}
+          component={ChangePasswordScreen}
         />
         {/*<Stack.Screen name={"Chats"} component={Inbox} />*/}
-        <Stack.Screen name={'HomeScreen'} component={BottomNavigation}/>
+        <Stack.Screen name={"HomeScreen"} component={BottomNavigation} />
         <Stack.Screen
-            name={'HomeScreenDetailPage1'}
-            component={HomeScreenDetailPage1}
+          name={"HomeScreenDetailPage1"}
+          component={HomeScreenDetailPage1}
         />
         <Stack.Screen
-            name={'HomeScreenDetailPage2'}
-            component={HomeScreenDetailPage1}
+          name={"HomeScreenDetailPage2"}
+          component={HomeScreenDetailPage1}
         />
         <Stack.Screen
-            name={'HomeScreenDetailPage3'}
-            component={HomeScreenDetailPage1}
+          name={"HomeScreenDetailPage3"}
+          component={HomeScreenDetailPage1}
         />
       </Stack.Navigator>
     </NavigationContainer>

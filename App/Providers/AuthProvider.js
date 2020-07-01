@@ -25,7 +25,7 @@ const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
     const { is_exist } = data;
     const { phone } = data;
     dispatch({ type: AuthActions.savePhoneNumber, payload: phone });
-    savePhone(phone)
+    savePhone(phone);
     onSuccess(is_exist);
   } else {
     onFailed();

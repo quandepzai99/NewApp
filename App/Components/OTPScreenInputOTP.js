@@ -47,8 +47,7 @@ export default function InputOTP() {
           onFulfill={onFullfill}
         />
       </View>
-      <View
-        style={styles.buttonGoback}>
+      <View style={styles.buttonGoback}>
         <TouchableOpacity
           // onPress={onPress()}
           style={{
