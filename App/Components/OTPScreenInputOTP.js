@@ -10,22 +10,17 @@ import { navigate } from "../Navigation/RootNavigation";
 import { LocalStorage } from "../Lib/LocalStorage";
 import initialState from "../ReduxHooks/AuthReducer";
 
-export default function InputOTP() {
+export default function InputOTP(props) {
+  const { phone } = props;
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [otp, setOTP] = useState("");
   const authContext = useContext(AuthContext);
-  // console.log("CONTEXT", authContext);
   const { confirmOTP } = authContext;
   const isFullfill = otp.length >= 6;
-  console.log("GO HERE?");
-  // const pullPhone = async () =>
-  //   await LocalStorage.get("Phone").then(phone => console.log("PHONE", phone));
-  //
-  // console.log("Pull", pullPhone());
 
   const onFullfill = () => {
-    // confirmOTP(savePhone, otp, onSuccess, onFailed);
+    confirmOTP(phone, otp, onSuccess, onFailed);
   };
 
   return (
@@ -85,16 +80,11 @@ export default function InputOTP() {
   );
 }
 
-// const onPress = () => navigate("CurrentPasswordScreen");
-const savePhone = phone => {
-  return phone;
-};
-
 const onSuccess = (is_match, is_expired) => {
   if (is_match === true && is_expired === false) {
     navigate("HomeScreen");
   } else {
-    Alert.alert("Mật khẩu không chính xác");
+    Alert.alert("OTP không chính xác");
   }
 };
 

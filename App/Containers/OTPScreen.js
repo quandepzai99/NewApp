@@ -12,13 +12,12 @@ export default function OTPScreen(props) {
 
   const authContext = useContext(AuthContext);
   const { phone } = authContext.state;
-  console.log("PHONE", phone);
 
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
       <OTPScreenHeader />
-      <InputOTP />
+      <InputOTP phone={phone} />
       <GlobalChatPopUpIcon />
     </View>
   );
