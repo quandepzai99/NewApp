@@ -124,9 +124,9 @@ const changePassword = dispatch => async (password): void => {
 
 const phoneRegister = dispatch => async (phone): void => {
   const response = await API.phoneRegister(phone);
-  if (response.status) {
-    sendOTP(phone);
-    console.log("PHONEREG STATUS", response.status);
+  if (response.status === true) {
+    await sendOTP(phone);
+    // console.log("PHONEREG STATUS", response.status);
   } else {
   }
   dispatch({ type: AuthActions.phoneRegister, payload: phone });
