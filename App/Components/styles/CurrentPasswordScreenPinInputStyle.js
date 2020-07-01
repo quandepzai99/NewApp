@@ -17,16 +17,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   cellStyle: {
-      borderWidth: 1,
-      borderRadius: 24,
-      width: 28,
-      height: 28,
-      borderColor: colors.paleGreyFour,
-      backgroundColor: "#fff",
-      marginLeft: 16
+    borderWidth: 1,
+    borderRadius: 24,
+    width: 28,
+    height: 28,
+    borderColor: colors.paleGreyFour,
+    backgroundColor: "#fff",
+    marginLeft: 16
   },
   maskStyle: {
     width: 17,

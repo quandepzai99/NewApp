@@ -8,7 +8,7 @@ import ChangePasswordScreen from "../Containers/ChangePassWordScreen";
 import LoginScreen from "../Containers/LoginScreen";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import HomeScreenDetailPage1 from "../Components/HomeScreenDetailPage1";
-import OTPScreen from '../Containers/OTPScreen';
+import OTPScreen from "../Containers/OTPScreen";
 
 import { AppState } from "react-native";
 import { navigationRef } from "../Navigation/RootNavigation";

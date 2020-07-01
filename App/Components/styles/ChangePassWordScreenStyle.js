@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
     marginTop: 24,
     borderRadius: 24,
-      borderColor: 'grey',
+    borderColor: "grey",
     flexDirection: "row"
   },
   textblock2box2: {

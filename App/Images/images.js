@@ -27,6 +27,6 @@ const images = {
   detail: require("./imageBG/Voucher_default.png"),
   times: require("./icon-Cross/ico_calendar.png"),
   frame_item: require("./product/Frame_Item.png"),
-  icon_signout : require("./icon-Cross/icon-signout.png")
+  icon_signout: require("./icon-Cross/icon-signout.png")
 };
 export default images;

@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 import { Text, ImageBackground } from "react-native";
 import images from "../Images/images";
-import {LanguageContext} from '../Providers/LanguageProvider';
+import { LanguageContext } from "../Providers/LanguageProvider";
 
 export default function HeaderChangePass() {
-    const languageContext = useContext(LanguageContext);
-    const { content } = languageContext.state;
+  const languageContext = useContext(LanguageContext);
+  const { content } = languageContext.state;
   return (
     <ImageBackground
       source={images.backGround}
@@ -25,7 +25,7 @@ export default function HeaderChangePass() {
           color: "#ffffff",
           justifyContent: "center"
         }}>
-          {content.CurrentPasswordScreenHeader}
+        {content.CurrentPasswordScreenHeader}
       </Text>
     </ImageBackground>
   );

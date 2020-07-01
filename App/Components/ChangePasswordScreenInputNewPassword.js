@@ -1,16 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
 import styles from "./styles/ChangePassWordScreenStyle";
+import { AuthContext } from "../Providers/AuthProvider";
 
 export default function InputNewPassword(props) {
   const { password, setPassword, setFulfill } = props;
-    // console.log("PASS", password);
+  const authContext = useContext(AuthContext);
+  const { changePassword } = authContext;
+  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
+  const changeNewPassword = confirmPassword => {
+    // const {password, confirmPassword} = dispatch.target;
+    changePassword(password, confirmPassword);
+    if ((password === confirmPassword) !== isFulfillConfirmPassword) {
+      changeNewPassword;
+    }
+  };
+
+  // console.log("PASS", password);
   return (
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
+          changeNewPassword={changeNewPassword}
           onFulfill={() => {
             setFulfill(true);
           }}
