@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, Dimensions, TouchableOpacity, Text, Alert } from "react-native";
+import { View, TouchableOpacity, Text, Alert } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import colors from "../Themes/Colors";
@@ -7,8 +7,6 @@ import styles from "./styles/OTPScreenInputOTPStyle";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import { AuthContext } from "../Providers/AuthProvider";
 import { navigate } from "../Navigation/RootNavigation";
-import { LocalStorage } from "../Lib/LocalStorage";
-import initialState from "../ReduxHooks/AuthReducer";
 
 export default function InputOTP(props) {
   const { phone } = props;
