@@ -19,12 +19,11 @@ export default function ChangePassWordScreen() {
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
-  const changeNewPassword = dispatch => {
-    const { password, confirmPassword } = dispatch.target;
+  const changeNewPassword = confirmPassword => {
     changePassword(password, confirmPassword, onSuccess);
     if ((password === confirmPassword) !== isFulfillConfirmPassword) {
       changeNewPassword;
-      console.log("Please enter current password", changeNewPassword);
+      // console.log("Please enter current password", changeNewPassword);
     }
   };
   console.log("PASStren", password);

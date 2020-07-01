@@ -11,7 +11,6 @@ export default function InputNewPassword(props) {
   const { changePassword } = authContext;
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const changeNewPassword = confirmPassword => {
-    // const {password, confirmPassword} = dispatch.target;
     changePassword(password, confirmPassword);
     if ((password === confirmPassword) !== isFulfillConfirmPassword) {
       changeNewPassword;
