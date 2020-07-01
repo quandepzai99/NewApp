@@ -110,13 +110,16 @@ const checkCurrentPassword = dispatch => async (
   dispatch({ type: AuthActions.confirmPassword, payload: password });
 };
 
-const changePassword = dispatch => async (confirmPassword): void => {
-  const response = await API.changePassword(confirmPassword);
+const changePassword = dispatch => async (password): void => {
+  const response = await API.changePassword(password);
   if (response.status) {
-    const { data } = response;
+    const status = response.status;
+    onSuccess(status);
+    console.log("STATUS", status);
   } else {
+    onFailed();
   }
-  dispatch({ type: AuthActions.changePassword, payload: confirmPassword });
+  dispatch({ type: AuthActions.changePassword, payload: password });
 };
 
 const phoneRegister = dispatch => async (phone): void => {
