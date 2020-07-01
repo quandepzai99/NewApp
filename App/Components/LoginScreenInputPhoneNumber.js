@@ -21,7 +21,7 @@ export default function LoginScreenInputPhoneNumber() {
   const authContext = useContext(AuthContext);
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
-  console.log("CONTEXT", authContext);
+  // console.log("CONTEXT", authContext);
 
   const onSuccessCallback = () => {
     phoneRegister(text, onSuccess(), onFailed());
