@@ -1,5 +1,5 @@
 import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { LocalStorage } from "../Lib/LocalStorage";
@@ -18,7 +18,12 @@ export default function Wrapper(props) {
   );
 }
 
-const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
+const isPhoneNumberExist = dispatch => async (
+  phone,
+  onSuccess,
+  onFailed,
+  registerPhone
+) => {
   const response = await API.phoneCheckExist(phone);
   if (response.status) {
     const { data } = response;
@@ -26,8 +31,8 @@ const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
     const { phone } = data;
     const onPhoneRegister = phoneRegister(phone);
     onSuccess(is_exist, phone, onPhoneRegister);
+    registerPhone(phone);
     console.log("PHONY", phone);
-
   } else {
     onFailed();
   }

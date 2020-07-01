@@ -51,9 +51,8 @@ export default function LoginScreenInputPhoneNumber() {
 }
 
 const registerPhone = (phone, phoneRegister) => {
-  return () => {
+    return () => {
     phoneRegister(phone);
-    console.log("PHONXXXXXX", phone);
   };
 };
 
