@@ -13,18 +13,32 @@ export default function PasswordScreenInputPassword() {
   const { content } = languageContext.state;
 
   const [password, setPassword] = useState("");
-  const authContext = useContext(AuthContext);
-  const { isPasswordCorrect } = authContext;
+  // const authContext = useContext(AuthContext);
+  // const { isPasswordCorrect } = authContext;
+  // const { logOut } = authContext;
+  // const { phone } = authContext.state;
+  // const onPress = () => {
+  //   logOut();
+  //   navigate("LoginScreen");
+  // };
+  //
+  // const onFullFill = text => {
+  //   isPasswordCorrect(phone, text, onSuccess, onFailed);
+  // };
+
+  const authContext= useContext(AuthContext);
+  const {isPasswordCorrect} = authContext;
+  const {phone} = authContext.state;
+  const isFullFill = text => {
+    isPasswordCorrect(phone, text, onSuccess, onFailed)
+  }
   const { logOut } = authContext;
-  const { phone } = authContext.state;
   const onPress = () => {
     logOut();
-    navigate("LoginScreen");
-  };
+    navigate('LoginScreen')
+  }
 
-  const onFullFill = text => {
-    isPasswordCorrect(phone, text, onSuccess, onFailed);
-  };
+  console.log('PAssword', phone, password)
 
   return (
     <View style={styles.container}>
@@ -49,7 +63,7 @@ export default function PasswordScreenInputPassword() {
         password={true}
         autoFocus={true}
         codeLength={6}
-        onFulfill={onFullFill}
+        onFulfill={isFullFill}
       />
       <View style={styles.box}>
         <TouchableOpacity
@@ -59,7 +73,10 @@ export default function PasswordScreenInputPassword() {
             {content.PasswordScreenForgotPassword}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btSignOut} onPress={onPress}>
+        <TouchableOpacity
+          style={styles.btSignOut}
+          onPress={onPress}
+        >
           <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
           <Text style={styles.text3}>{content.PasswordScreenSignOut}</Text>
         </TouchableOpacity>
@@ -71,12 +88,19 @@ export default function PasswordScreenInputPassword() {
   );
 }
 
+// const onSuccess = is_authenticated => {
+//   if (is_authenticated) {
+//     navigate("HomeScreen");
+//   } else {
+//     Alert.alert("Mật khẩu không chính xác");
+//   }
+// };
 const onSuccess = is_authenticated => {
   if (is_authenticated) {
-    navigate("HomeScreen");
-  } else {
-    Alert.alert("Mật khẩu không chính xác");
+    navigate('HomeScreen')
+  }else {
+    Alert.alert('sai mat khau')
   }
-};
+}
 
 const onFailed = () => {};

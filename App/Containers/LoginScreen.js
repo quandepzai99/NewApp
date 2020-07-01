@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { View, StatusBar, AppState, Alert } from "react-native";
+import { View, StatusBar, AppState } from "react-native";
 import LoginScreenInputPhoneNumber from "../Components/LoginScreenInputPhoneNumber";
 import LoginScreenHeader from "../Components/LoginScreenHeader";
 import GlobalChatPopUpIcon from "../Components/GlobalChatPopUpIcon";
@@ -9,19 +9,36 @@ import { AuthContext } from "../Providers/AuthProvider";
 import API from "../Lib/API";
 
 function LoginScreen() {
+  // const authContext = useContext(AuthContext);
+  // const { isTokenValidated } = authContext;
+  // const handleAppStateChange = nextAppState => {
+  //   if (nextAppState === "active") {
+  //     LocalStorage.get("access_token").then(token => {
+  //       console.log("TOKEN", token);
+  //       if (token !== null) {
+  //         API.setAccessToken(token);
+  //         isTokenValidated(token, onSuccess, onFailed);
+  //       }
+  //     });
+  //   }
+  // };
+
   const authContext = useContext(AuthContext);
-  const { isTokenValidated } = authContext;
+  const {isTokenValidated} = authContext;
+  // console.log('validated_token', isTokenValidated )
+
   const handleAppStateChange = nextAppState => {
-    if (nextAppState === "active") {
-      LocalStorage.get("access_token").then(token => {
-        console.log("TOKEN", token);
+    if (nextAppState === 'active') {
+      LocalStorage.get('access_token').then(token => {
+        // console.log('tokennn', token)
         if (token !== null) {
           API.setAccessToken(token);
-          isTokenValidated(token, onSuccess, onFailed);
+          isTokenValidated(token, onSuccess, onFailed)
         }
-      });
+      })
     }
-  };
+  }
+
 
   useEffect(() => {
     AppState.addEventListener("change", handleAppStateChange);
@@ -46,11 +63,12 @@ function LoginScreen() {
 
 const onSuccess = is_alive => {
   if (is_alive) {
-    navigate("PasswordScreen");
+    navigate('PasswordScreen')
   } else {
-    navigate("LoginScreen");
+    navigate('LoginScreen')
   }
-};
+}
 const onFailed = () => {};
+// const onFailed = () => {};
 
 export default LoginScreen;
