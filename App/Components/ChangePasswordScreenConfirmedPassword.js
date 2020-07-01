@@ -37,6 +37,7 @@ export default function InputConfirmPassword(props) {
           onTextChange={setConfirmPassword}
           cellStyle={styles.cellStyle}
           autoFocus={true}
+          password={true}
         />
       </View>
     </View>

@@ -1,16 +1,30 @@
-import React, { useContext, useEffect } from "react";
+import React, {useContext, useEffect, useState} from 'react';
 import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
 import styles from "./styles/ChangePassWordScreenStyle";
+import {AuthContext} from '../Providers/AuthProvider';
+
 
 export default function InputNewPassword(props) {
   const { password, setPassword, setFulfill } = props;
+  const authContext = useContext(AuthContext);
+  const { changePassword } = authContext;
+  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
+  const changeNewPassword = confirmPassword => {
+    // const {password, confirmPassword} = dispatch.target;
+    changePassword(password, confirmPassword)
+    if (password === confirmPassword !== isFulfillConfirmPassword) {
+      changeNewPassword;
+    }
+  };
+
     // console.log("PASS", password);
   return (
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
+          changeNewPassword={changeNewPassword}
           onFulfill={() => {
             setFulfill(true);
           }}
@@ -24,7 +38,7 @@ export default function InputNewPassword(props) {
             }}
           />
           cellStyleFocused={{
-            borderColor: colors.blueGrey
+          borderColor: colors.blueGrey
           }}
           cellSize={28}
           codeLength={6}
@@ -33,6 +47,7 @@ export default function InputNewPassword(props) {
           cellStyle={styles.cellStyle}
           autoFocus={true}
         />
+
       </View>
     </View>
   );

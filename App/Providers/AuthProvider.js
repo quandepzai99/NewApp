@@ -174,7 +174,6 @@ const checkCurrentPassword = dispatch => async (password, onSuccess, onFailed): 
   const response = await API.confirmPassword(password);
   if (response.status) {
     const {data} = response;
-    console.log('dasdas', data)
     const {is_match} = data;
     onSuccess(is_match)
   }else {
@@ -190,9 +189,9 @@ const changePassword = dispatch => async (confirmPassword, onSuccess): void => {
   const response = await API.changePassword(confirmPassword);
   if (response.status) {
     const { data } = response;
-    const {is_match} = data;
-    onSuccess(is_match)
-    console.log("DATAA", is_match);
+    // const {is_match} = data;
+    // onSuccess(is_match)
+    console.log("DATAA", data);
   } else {
   }
   dispatch({type: AuthActions.changePassword, payload: confirmPassword});
