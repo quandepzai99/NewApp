@@ -133,6 +133,8 @@ const sendOTP = dispatch => async (phone): void => {
   const response = await API.sendOTP(phone);
   if (response.status) {
     const { data } = response;
+    console.log('data', data)
+
     const { otp } = data;
     const { otp_expired } = data;
     console.log("SENT OTP", response.status);
@@ -144,23 +146,33 @@ const sendOTP = dispatch => async (phone): void => {
   dispatch({ type: AuthActions.sendOTP, payload: phone });
 };
 
-const confirmOTP = dispatch => async (
-  phone,
-  otp,
-  onSuccess,
-  onFailed
-): void => {
-  const response = await API.confirmOTP(phone, otp);
+// const confirmOTP = dispatch => async (
+//   phone,
+//   otp,
+//   onSuccess,
+//   onFailed
+// ): void => {
+//   const response = await API.confirmOTP(phone, otp);
+//   if (response.status) {
+//     const { data } = response;
+//     const { is_match } = data;
+//     const { is_expired } = data;
+//     onSuccess(is_expired, is_match);
+//   } else {
+//     onFailed();
+//   }
+//   dispatch({ type: AuthActions.confirmOTP, payload: otp });
+// };
+const confirmOTP = dispatch => async (phone, otp, onSuccess, onFailed): void => {
+  const response = await API.confirmOTP(phone, otp)
   if (response.status) {
-    const { data } = response;
-    const { is_match } = data;
-    const { is_expired } = data;
-    onSuccess(is_expired, is_match);
-  } else {
-    onFailed();
+    const {data} = response;
+    console.log('Otp', data)
+    const {is_match} = data;
+    const {is_expired} = data;
+    onSuccess(is_match, is_expired);
   }
-  dispatch({ type: AuthActions.confirmOTP, payload: otp });
-};
+}
 
 const mapActionsToDispatch = dispatch => {
   return {

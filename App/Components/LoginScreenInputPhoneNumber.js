@@ -50,7 +50,7 @@ export default function LoginScreenInputPhoneNumber() {
         dataDetectorTypes="phoneNumber"
         keyboardType="phone-pad"
       />
-      <TouchableOpacity onPress={onPress} style={floatStyle}>
+      <TouchableOpacity style={floatStyle} onPress={onPress}>
         <View style={styles.ellipse531}>
           <AntDesign name="arrowright" size={28} style={styles.icon} />
         </View>
