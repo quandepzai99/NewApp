@@ -19,13 +19,13 @@ export default function ChangePassWordScreen() {
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
+
   const changeNewPassword = (isFulfillConfirmPassword, confirmPassword) => {
     changePassword(confirmPassword, onSuccess, onFailed);
-    if (password === confirmPassword && isFulfillConfirmPassword) {
-      changeNewPassword;
-      // console.log("Please enter current password", changeNewPassword);
-    }
   };
+  if (password === confirmPassword && isFulfillConfirmPassword) {
+    changeNewPassword(confirmPassword);
+  }
   console.log("PASStren", password);
   console.log("PASSduoi", confirmPassword);
   // console.log('Change',password, confirmPassword, onSuccess );
@@ -90,9 +90,8 @@ export default function ChangePassWordScreen() {
   );
 }
 
-const onSuccess = event => {
-  if (event) {
-    event.preventDefault();
+const onSuccess = () => {
+  if ({}) {
     Alert.alert("Mật khẩu đã đc đổi");
     // navigate("HomeScreen");
   } else {
