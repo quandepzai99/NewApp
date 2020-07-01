@@ -171,7 +171,12 @@ const confirmOTP = dispatch => async (phone, otp, onSuccess, onFailed): void => 
     const {is_match} = data;
     const {is_expired} = data;
     onSuccess(is_match, is_expired);
+  } else {
+    onFailed();
   }
+  dispatch({
+    type: AuthActions.confirmOTP, payload: otp
+  })
 }
 
 const mapActionsToDispatch = dispatch => {
