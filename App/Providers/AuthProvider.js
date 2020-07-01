@@ -1,5 +1,5 @@
 import initialState, { AuthReducer } from "../ReduxHooks/AuthReducer";
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer } from "react";
 import { AuthActions } from "../ReduxHooks/AuthActions";
 import API from "../Lib/API";
 import { LocalStorage } from "../Lib/LocalStorage";
