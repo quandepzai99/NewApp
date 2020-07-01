@@ -19,9 +19,9 @@ export default function LoginScreenInputPhoneNumber() {
   const isActive = text.length >= 10;
   const floatStyle = getButtonStyle(isActive);
   const authContext = useContext(AuthContext);
+  // console.log("CONTEXT", authContext);
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
-  const { phone } = authContext.state;
   const onPress = getOnPress(isActive, isPhoneNumberExist, text, phoneRegister);
 
   return (
@@ -53,22 +53,23 @@ export default function LoginScreenInputPhoneNumber() {
 const registerPhone = (phone, phoneRegister) => {
   return () => {
     phoneRegister(phone);
+    console.log("PHONXXXXXX", phone);
   };
 };
 
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-        isPhoneNumberExist(phone, onSuccess(), onFailed(), registerPhone());
+        isPhoneNumberExist(phone, onSuccess, onFailed, registerPhone(phone));
       }
     : () => {};
 };
 
-const onSuccess = (isExist, phone, registerPhone) => {
-  if (isExist === true) {
-    return () => navigate("PasswordScreen");
+const onSuccess = (isExist, phone, onPhoneRegister) => {
+  if (isExist) {
+    navigate("PasswordScreen");
   } else {
-    registerPhone();
+    onPhoneRegister();
     navigate("OTPScreen", {
       phone: phone
     });
@@ -87,6 +88,3 @@ const getButtonStyle = isActive => {
       ]
     : styles.floatButton;
 };
-
-const ifSuccess = () => {};
-const ifFailed = () => {};

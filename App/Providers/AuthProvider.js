@@ -18,30 +18,36 @@ export default function Wrapper(props) {
   );
 }
 
-const isPhoneNumberExist = dispatch => async (
-  phone,
-  onSuccess,
-  onFailed,
-  registerPhone
-) => {
+const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
   const response = await API.phoneCheckExist(phone);
   if (response.status) {
     const { data } = response;
     const { is_exist } = data;
     const { phone } = data;
-    onSuccess(is_exist, phone, registerPhone);
+    const onPhoneRegister = phoneRegister(phone);
+    onSuccess(is_exist, phone, onPhoneRegister);
+    console.log("PHONY", phone);
+
   } else {
     onFailed();
   }
-  dispatch(
-    {
-      type: AuthActions.isPhoneNumberExist,
-      payload: phone
-    } & { type: AuthActions.savePhoneNumber, payload: phone }
-  );
+  dispatch({
+    type: AuthActions.isPhoneNumberExist,
+    payload: phone
+  });
 };
 
-export const isPasswordCorrect = dispatch => async (
+const phoneRegister = dispatch => async (phone): void => {
+  const response = await API.phoneRegister(phone);
+  console.log("PHONE", phone);
+  if (response.status === true) {
+    await sendOTP(phone);
+  } else {
+  }
+  dispatch({ type: AuthActions.phoneRegister, payload: phone });
+};
+
+const isPasswordCorrect = dispatch => async (
   phone,
   password,
   onSuccess,
@@ -128,16 +134,6 @@ const changePassword = dispatch => async (
     onFailed();
   }
   dispatch({ type: AuthActions.changePassword, payload: password });
-};
-
-const phoneRegister = dispatch => async (phone): void => {
-  const response = await API.phoneRegister(phone);
-  if (response.status === true) {
-    await sendOTP(phone);
-    // console.log("PHONEREG STATUS", response.status);
-  } else {
-  }
-  dispatch({ type: AuthActions.phoneRegister, payload: phone });
 };
 
 const sendOTP = dispatch => async (phone): void => {
