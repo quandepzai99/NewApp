@@ -14,7 +14,6 @@ export default function InputNewPassword(props) {
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
-          changeNewPassword={changeNewPassword}
           onFulfill={() => {
             setFulfill(true);
           }}
