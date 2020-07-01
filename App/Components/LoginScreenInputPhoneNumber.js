@@ -27,8 +27,8 @@ export default function LoginScreenInputPhoneNumber() {
     isActive,
     isPhoneNumberExist,
     text,
-    phoneRegister,
-    regPhone
+    phoneRegister(),
+    regPhone()
   );
 
   return (
@@ -60,7 +60,7 @@ export default function LoginScreenInputPhoneNumber() {
 const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
-        isPhoneNumberExist(phone, onSuccess, onFailed);
+        isPhoneNumberExist(phone, onSuccess(), onFailed());
       }
     : () => {};
 };
