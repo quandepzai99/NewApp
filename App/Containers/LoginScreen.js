@@ -24,21 +24,20 @@ function LoginScreen() {
   // };
 
   const authContext = useContext(AuthContext);
-  const {isTokenValidated} = authContext;
+  const { isTokenValidated } = authContext;
   // console.log('validated_token', isTokenValidated )
 
   const handleAppStateChange = nextAppState => {
-    if (nextAppState === 'active') {
-      LocalStorage.get('access_token').then(token => {
+    if (nextAppState === "active") {
+      LocalStorage.get("access_token").then(token => {
         // console.log('tokennn', token)
         if (token !== null) {
           API.setAccessToken(token);
-          isTokenValidated(token, onSuccess, onFailed)
+          isTokenValidated(token, onSuccess, onFailed);
         }
-      })
+      });
     }
-  }
-
+  };
 
   useEffect(() => {
     AppState.addEventListener("change", handleAppStateChange);
@@ -63,11 +62,11 @@ function LoginScreen() {
 
 const onSuccess = is_alive => {
   if (is_alive) {
-    navigate('PasswordScreen')
+    navigate("PasswordScreen");
   } else {
-    navigate('LoginScreen')
+    navigate("LoginScreen");
   }
-}
+};
 const onFailed = () => {};
 // const onFailed = () => {};
 

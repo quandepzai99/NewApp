@@ -9,16 +9,15 @@ function navigate(name) {
 }
 
 export default function GlobalChatPopUpIcon() {
-    return (
-      <View style={{ alignItems: "flex-end", marginRight: 16 }}>
-        <TouchableOpacity
-          style={styles.container}
-          onPress={() => navigate("LoginScreen")}>
-          <View style={styles.ellipse608}>
-            <Image source={images.chat} style={styles.chat} />
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-
+  return (
+    <View style={{ alignItems: "flex-end", marginRight: 16 }}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => navigate("LoginScreen")}>
+        <View style={styles.ellipse608}>
+          <Image source={images.chat} style={styles.chat} />
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
 }

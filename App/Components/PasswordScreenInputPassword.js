@@ -26,19 +26,19 @@ export default function PasswordScreenInputPassword() {
   //   isPasswordCorrect(phone, text, onSuccess, onFailed);
   // };
 
-  const authContext= useContext(AuthContext);
-  const {isPasswordCorrect} = authContext;
-  const {phone} = authContext.state;
+  const authContext = useContext(AuthContext);
+  const { isPasswordCorrect } = authContext;
+  const { phone } = authContext.state;
   const isFullFill = text => {
-    isPasswordCorrect(phone, text, onSuccess, onFailed)
-  }
+    isPasswordCorrect(phone, text, onSuccess, onFailed);
+  };
   const { logOut } = authContext;
   const onPress = () => {
     logOut();
-    navigate('LoginScreen')
-  }
+    navigate("LoginScreen");
+  };
 
-  console.log('PAssword', phone, password)
+  console.log("PAssword", phone, password);
 
   return (
     <View style={styles.container}>
@@ -73,10 +73,7 @@ export default function PasswordScreenInputPassword() {
             {content.PasswordScreenForgotPassword}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btSignOut}
-          onPress={onPress}
-        >
+        <TouchableOpacity style={styles.btSignOut} onPress={onPress}>
           <Image source={images.icon_signout} style={{ top: 3, right: 5 }} />
           <Text style={styles.text3}>{content.PasswordScreenSignOut}</Text>
         </TouchableOpacity>
@@ -97,10 +94,10 @@ export default function PasswordScreenInputPassword() {
 // };
 const onSuccess = is_authenticated => {
   if (is_authenticated) {
-    navigate('HomeScreen')
-  }else {
-    Alert.alert('sai mat khau')
+    navigate("HomeScreen");
+  } else {
+    Alert.alert("sai mat khau");
   }
-}
+};
 
 const onFailed = () => {};

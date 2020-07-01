@@ -10,11 +10,11 @@ const en = {
   CurrentPasswordScreenHeader: "Change Password",
   CurrentPasswordScreenInputPassword: "Input Current Password",
   GobackButton: "Back",
-  ChangePasswordScreenHeader :  "Change Password",
+  ChangePasswordScreenHeader: "Change Password",
   ChangePasswordScreenInputNewPassword: "Input New Password",
   CurrentPasswordScreenConfirmNewPassword: "Confirm New Password",
-  OTPScreenHeader: 'Input OTP',
-  OTPScreenStatus: 'OTP sent',
+  OTPScreenHeader: "Input OTP",
+  OTPScreenStatus: "OTP sent"
 };
 
 export default en;

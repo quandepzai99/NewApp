@@ -7,8 +7,7 @@ import styles from "./styles/CurrentPasswordScreenPinInputStyle";
 import { AuthContext } from "../Providers/AuthProvider";
 
 export default function PinInput() {
-
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   // const authContext = useContext(AuthContext);
   // const {checkCurrentPassword} = authContext;
   // const onFullFill = password => {
@@ -16,11 +15,11 @@ export default function PinInput() {
   // }
   // console.log('confirm', password, onSuccess)
   const authContext = useContext(AuthContext);
-  const {checkCurrentPassword} = authContext;
+  const { checkCurrentPassword } = authContext;
   const onFullFill = password => {
     checkCurrentPassword(password, onSuccess, onFailed);
-  }
-  console.log('fullfill', checkCurrentPassword, password, onFullFill)
+  };
+  console.log("fullfill", checkCurrentPassword, password, onFullFill);
   return (
     <View style={styles.container}>
       <View style={styles.section}>

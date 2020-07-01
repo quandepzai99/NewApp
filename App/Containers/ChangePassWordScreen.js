@@ -8,29 +8,29 @@ import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
 import { AuthContext } from "../Providers/AuthProvider";
-import {LocalStorage} from '../Lib/LocalStorage';
+import { LocalStorage } from "../Lib/LocalStorage";
 
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isFulfill, setFulfill] = useState(false);
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
-    const changeNewPassword = dispatch => {
-        const {password, confirmPassword} = dispatch.target;
-        changePassword(password, confirmPassword, onSuccess)
-        if (password === confirmPassword !== isFulfillConfirmPassword) {
-          changeNewPassword;
-          console.log("Please enter current password", changeNewPassword);
-        }
-    };
-    console.log('PASStren', password);
-    console.log('PASSduoi', confirmPassword);
-    // console.log('Change',password, confirmPassword, onSuccess );
-    // console.log('FULLFILL duoi', changePassword);
+  const changeNewPassword = dispatch => {
+    const { password, confirmPassword } = dispatch.target;
+    changePassword(password, confirmPassword, onSuccess);
+    if ((password === confirmPassword) !== isFulfillConfirmPassword) {
+      changeNewPassword;
+      console.log("Please enter current password", changeNewPassword);
+    }
+  };
+  console.log("PASStren", password);
+  console.log("PASSduoi", confirmPassword);
+  // console.log('Change',password, confirmPassword, onSuccess );
+  // console.log('FULLFILL duoi', changePassword);
 
   return (
     <View>
@@ -52,7 +52,7 @@ export default function ChangePassWordScreen() {
         {isFulfill ? (
           <View>
             <Text style={styles.textblock2box2}>
-                {content.CurrentPasswordScreenConfirmNewPassword}
+              {content.CurrentPasswordScreenConfirmNewPassword}
             </Text>
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword
@@ -100,6 +100,5 @@ const onSuccess = event => {
     Alert.alert("Mật khẩu không chính xác");
   }
 };
-
 
 const onFailed = () => {};

@@ -1,5 +1,3 @@
-const actions = (dispatch) => {
-  return {
-
-  }
+const actions = dispatch => {
+  return {};
 };
