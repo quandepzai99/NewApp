@@ -48,13 +48,7 @@ export default function InputOTP() {
         />
       </View>
       <View
-        style={{
-          justifyContent: "space-between",
-          flexDirection: "row",
-          backgroundColor: "white",
-          borderBottomRightRadius: 12,
-          borderBottomLeftRadius: 12
-        }}>
+        style={styles.buttonGoback}>
         <TouchableOpacity
           // onPress={onPress()}
           style={{
