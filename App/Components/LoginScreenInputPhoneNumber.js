@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { LanguageContext } from "../Providers/LanguageProvider";
@@ -59,7 +59,7 @@ export default function LoginScreenInputPhoneNumber() {
   );
 }
 
-const getOnPress = (isActive, isPhoneNumberExist, phone, onSuccessCallback) => {
+const getOnPress = (isActive, isPhoneNumberExist, phone) => {
   return isActive
     ? () => {
         isPhoneNumberExist(phone, onSuccess, onFailed);
