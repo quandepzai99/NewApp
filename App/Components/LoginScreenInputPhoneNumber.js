@@ -22,7 +22,6 @@ export default function LoginScreenInputPhoneNumber() {
   const { isPhoneNumberExist } = authContext;
   const { phoneRegister } = authContext;
   const { phone } = authContext.state;
-
   const regPhone = registerPhone(phone);
   const onPress = getOnPress(
     isActive,
@@ -72,10 +71,11 @@ const registerPhone = (phone, phoneRegister) => {
   };
 };
 
-const onSuccess = (isExist, phone) => {
+const onSuccess = (isExist, phone, regPhone) => {
   if (isExist) {
     navigate("PasswordScreen");
   } else {
+    regPhone();
     navigate("OTPScreen", {
       phone: phone
     });
