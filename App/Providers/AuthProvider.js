@@ -40,17 +40,9 @@ const isPhoneNumberExist = dispatch => async (
   });
 };
 
-// const phoneRegister = dispatch => async (phone): void => {
-//   const response = await API.phoneRegister(phone);
-//   if (response.status === true) {
-//     console.log("REGISTER SUCCESS");
-//     await sendOTP(dispatch)(phone);
-//   } else {
-//   }
-// };
 const phoneRegister = dispatch => async (phone): void => {
   const response = await API.phoneRegister(phone);
-  if (response.status) {
+  if (response.status === true) {
     console.log('Reigister', response.status)
     await sendOTP(dispatch)(phone);
   } else {

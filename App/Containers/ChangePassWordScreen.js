@@ -42,7 +42,6 @@ export default function ChangePassWordScreen() {
             setFulfill={setFulfill}
             password={password}
             setPassword={setPassword}
-            changeNewPassword={changeNewPassword}
           />
         </View>
         {isFulfill ? (
@@ -56,7 +55,6 @@ export default function ChangePassWordScreen() {
                 setFulfillConfirmPassword={setFulfillConfirmPassword}
                 confirmPassword={confirmPassword}
                 setConfirmPassword={setConfirmPassword}
-                changeNewPassword={changeNewPassword}
               />
             </View>
           </View>
