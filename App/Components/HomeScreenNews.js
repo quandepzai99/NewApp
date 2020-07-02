@@ -58,7 +58,7 @@ export default function HomeScreenNews() {
           <View style={styles.divider}>
             <Text style={styles.name}>{item.name}</Text>
             <Image source={item.time} style={{ left: 100 }} />
-            <Text style={styles.name}>11-06-2020</Text>
+            <Text style={styles.name}>02-07-2020</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -66,11 +66,10 @@ export default function HomeScreenNews() {
   }
 
   {
-    // const { isVisible } = this.state
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          Tin tức{" "}
+          Tin tức{""}
           <Text
             style={{
               color: colors.tangerine,
