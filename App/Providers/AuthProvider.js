@@ -18,26 +18,70 @@ export default function Wrapper(props) {
   );
 }
 
-const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
+const isPhoneNumberExist = dispatch => async (
+  phone,
+  onSuccess,
+  onFailed,
+) => {
   const response = await API.phoneCheckExist(phone);
+  if (response.status === true) {
+    if (onSuccess) {
+      console.log("EXIST SUCCESS");
+      onSuccess(response);
+    }
+  } else {
+    if (onFailed){
+      onFailed(response);
+    }
+  }
+  await dispatch({
+    type: AuthActions.isPhoneNumberExist,
+    payload: phone
+  });
+};
+
+const phoneRegister = dispatch => async (phone): void => {
+  const response = await API.phoneRegister(phone);
+  if (response.status === true) {
+    console.log("REGISTER SUCCESS");
+    await sendOTP(dispatch)(phone);
+  } else {
+  }
+};
+
+const sendOTP = dispatch => async (phone): void => {
+  const response = await API.sendOTP(phone);
   if (response.status) {
     const { data } = response;
-    const { is_exist } = data;
-    const { phone } = data;
-    dispatch({ type: AuthActions.savePhoneNumber, payload: phone });
-    onSuccess(is_exist, phone);
+    const { otp } = data;
+    const { otp_expired } = data;
+    console.log("SENT OTP", response.status);
+    LocalStorage.set("otp", otp);
+    LocalStorage.set("otp_expired", otp_expired);
+  }
+  dispatch({ type: AuthActions.sendOTP, payload: phone });
+  console.log("AND HERE");
+};
+
+const confirmOTP = dispatch => async (
+  phone,
+  otp,
+  onSuccess,
+  onFailed
+): void => {
+  const response = await API.confirmOTP(phone, otp);
+  if (response.status) {
+    const { data } = response;
+    const { is_match } = data;
+    const { is_expired } = data;
+    onSuccess(is_expired, is_match);
   } else {
     onFailed();
   }
-  dispatch(
-    {
-      type: AuthActions.isPhoneNumberExist,
-      payload: phone
-    } & { type: AuthActions.savePhoneNumber, payload: phone }
-  );
+  dispatch({ type: AuthActions.confirmOTP, payload: otp });
 };
 
-export const isPasswordCorrect = dispatch => async (
+const isPasswordCorrect = dispatch => async (
   phone,
   password,
   onSuccess,
@@ -110,56 +154,21 @@ const checkCurrentPassword = dispatch => async (
   dispatch({ type: AuthActions.confirmPassword, payload: password });
 };
 
-const changePassword = dispatch => async (confirmPassword): void => {
-  const response = await API.changePassword(confirmPassword);
+const changePassword = dispatch => async (
+  password,
+  onSuccess,
+  onFailed
+): void => {
+  const response = await API.changePassword(password);
   if (response.status) {
-    const { data } = response;
-  } else {
-  }
-  dispatch({ type: AuthActions.changePassword, payload: confirmPassword });
-};
-
-const phoneRegister = dispatch => async (phone): void => {
-  const response = await API.phoneRegister(phone);
-  if (response.status) {
-    sendOTP(phone);
-    console.log("PHONEREG STATUS", response.status);
-  } else {
-  }
-  dispatch({ type: AuthActions.phoneRegister, payload: phone });
-};
-
-const sendOTP = dispatch => async (phone): void => {
-  const response = await API.sendOTP(phone);
-  if (response.status) {
-    const { data } = response;
-    console.log('data', data)
-    const { otp } = data;
-    const { otp_expired } = data;
-    console.log("SENT OTP", data);
-
-    LocalStorage.set("phone", phone);
-    LocalStorage.set("otp", otp);
-    LocalStorage.set("otp_expired", otp_expired);
-  }
-  dispatch({ type: AuthActions.sendOTP, payload: phone });
-};
-
-const confirmOTP = dispatch => async (phone, otp, onSuccess, onFailed): void => {
-  const response = await API.confirmOTP(phone, otp)
-  if (response.status) {
-    const {data} = response;
-    console.log('Otp', data)
-    const {is_match} = data;
-    const {is_expired} = data;
-    onSuccess(is_match, is_expired);
+    const status = response.status;
+    onSuccess(status);
+    console.log("STATUS", status);
   } else {
     onFailed();
   }
-  dispatch({
-    type: AuthActions.confirmOTP, payload: otp
-  })
-}
+  dispatch({ type: AuthActions.changePassword, payload: password });
+};
 
 const mapActionsToDispatch = dispatch => {
   return {
@@ -174,4 +183,3 @@ const mapActionsToDispatch = dispatch => {
     changePassword: changePassword(dispatch)
   };
 };
-

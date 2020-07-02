@@ -8,7 +8,6 @@ import { navigate } from "../Navigation/RootNavigation";
 import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
 import { AuthContext } from "../Providers/AuthProvider";
-import { LocalStorage } from "../Lib/LocalStorage";
 
 export default function ChangePassWordScreen() {
   const languageContext = useContext(LanguageContext);
@@ -19,17 +18,15 @@ export default function ChangePassWordScreen() {
   const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
-  const changeNewPassword = (isFulfillConfirmPassword, confirmPassword) => {
-    changePassword(confirmPassword, onSuccess, onFailed);
-    if (password === confirmPassword && isFulfillConfirmPassword) {
-      changeNewPassword;
-      // console.log("Please enter current password", changeNewPassword);
-    }
+
+  const changeNewPassword = (isFulfillConfirmPassword, password) => {
+    changePassword(password, onSuccess, onFailed);
   };
-  console.log("PASStren", password);
+  if (password === confirmPassword && isFulfillConfirmPassword) {
+    changeNewPassword(password);
+  }
+
   console.log("PASSduoi", confirmPassword);
-  // console.log('Change',password, confirmPassword, onSuccess );
-  // console.log('FULLFILL duoi', changePassword);
 
   return (
     <View>
@@ -90,11 +87,11 @@ export default function ChangePassWordScreen() {
   );
 }
 
-const onSuccess = event => {
-  if (event) {
-    event.preventDefault();
+const onSuccess = status => {
+  if (status) {
     Alert.alert("Mật khẩu đã đc đổi");
-    // navigate("HomeScreen");
+    console.log("STATUS", status);
+    navigate("HomeScreen");
   } else {
     Alert.alert("Mật khẩu không chính xác");
   }
