@@ -32,7 +32,6 @@ export default function LoginScreenInputPhoneNumber() {
       });
     }
   };
-
   const onFailed = () => {};
 
   const getOnPress = () => {
@@ -64,7 +63,6 @@ export default function LoginScreenInputPhoneNumber() {
         ]
       : styles.floatButton;
   };
-
   const floatStyle = getButtonStyle(isActive);
 
   return (

@@ -19,6 +19,18 @@ export default function ChangePassWordScreen() {
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
 
+  const onSuccess = response => {
+    const status = response.status;
+    if (status === true) {
+      console.log("SUCCESS CHANGE PASSWORD", status);
+      navigate("HomeScreen");
+    } else {
+      Alert.alert("PASSWORD HAS NOT CHANGE");
+    }
+  };
+
+  const onFailed = () => {};
+
   const changeNewPassword = (isFulfillConfirmPassword, password) => {
     changePassword(password, onSuccess, onFailed);
   };
@@ -26,7 +38,6 @@ export default function ChangePassWordScreen() {
     changeNewPassword(password);
   }
 
-  console.log("PASSduoi", confirmPassword);
 
   return (
     <View>
@@ -86,15 +97,3 @@ export default function ChangePassWordScreen() {
     </View>
   );
 }
-
-const onSuccess = status => {
-  if (status) {
-    Alert.alert("Mật khẩu đã đc đổi");
-    console.log("STATUS", status);
-    navigate("HomeScreen");
-  } else {
-    Alert.alert("Mật khẩu không chính xác");
-  }
-};
-
-const onFailed = () => {};
