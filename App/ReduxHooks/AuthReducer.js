@@ -16,6 +16,9 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.isPhoneNumberExist) {
     const phone = action.payload;
     return { ...state, phone: phone };
+  } else if (action.type === AuthActions.phoneRegister) {
+    const phone = action.payload;
+    return {...state, phone: phone};
   } else if (action.type === AuthActions.logout) {
     const phone = action.payload;
     return { ...state, phone: phone };
@@ -28,12 +31,10 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.sendOTP) {
     const phone = action.payload;
     return { ...state, phone: phone };
-  }
-  // else if (action.type === AuthActions.confirmOTP) {
-  //   const otp = action.payload;
-  //   return { ...state, otp: otp };
-  // }
-  else if (action.type === AuthActions.activeAccount) {
+  } else if (action.type === AuthActions.confirmOTP) {
+    const otp = action.payload;
+    return { ...state, otp: otp };
+  } else if (action.type === AuthActions.activeAccount) {
     const password = action.payload;
     return { ...state, password: password };
   } else {

@@ -32,6 +32,7 @@ export default function LoginScreenInputPhoneNumber() {
       });
     }
   };
+  console.log('PHOE', phoneRegister)
 
   const onFailed = () => {};
 
@@ -43,16 +44,26 @@ export default function LoginScreenInputPhoneNumber() {
     } catch (e) {}
   };
 
+  // const registerPhone = phone => {
+  //   try {
+  //     (async function() {
+  //       console.log("REGISTERPHONE");
+  //       await phoneRegister(phone);
+  //     })();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   const registerPhone = phone => {
     try {
       (async function() {
-        console.log("REGISTERPHONE");
+        console.log('asdfjk')
         await phoneRegister(phone);
       })();
-    } catch (e) {
-      console.log(e);
+    }catch (e) {
+
     }
-  };
+  }
 
   const getButtonStyle = isActive => {
     return isActive
