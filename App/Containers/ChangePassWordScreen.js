@@ -34,6 +34,7 @@ export default function ChangePassWordScreen() {
   const changeNewPassword = (isFulfillConfirmPassword, password) => {
     changePassword(password, onSuccess, onFailed);
   };
+
   if (password === confirmPassword && isFulfillConfirmPassword) {
     changeNewPassword(password);
   }
