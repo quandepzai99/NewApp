@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { View, Text, StatusBar, TouchableOpacity, Alert } from "react-native";
 import ChangePasswordScreenHeader from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -15,7 +15,6 @@ export default function ChangePassWordScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFulfill, setFulfill] = useState(false);
-  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
 
@@ -23,7 +22,7 @@ export default function ChangePassWordScreen() {
     const status = response.status;
     if (status === true) {
       console.log("SUCCESS CHANGE PASSWORD", status);
-      navigate("HomeScreen");
+      navigate("LoginScreen");
     } else {
       Alert.alert("PASSWORD HAS NOT CHANGE");
     }
@@ -31,12 +30,12 @@ export default function ChangePassWordScreen() {
 
   const onFailed = () => {};
 
-  const changeNewPassword = (isFulfillConfirmPassword, password) => {
+  const changeNewPassword = password => {
     changePassword(password, onSuccess, onFailed);
   };
 
-  if (password === confirmPassword && isFulfillConfirmPassword) {
-    changeNewPassword(password);
+  if (password === confirmPassword && confirmPassword.length >= 6) {
+    return useEffect(() => changeNewPassword);
   }
 
   return (
@@ -62,8 +61,6 @@ export default function ChangePassWordScreen() {
             </Text>
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword
-                isFulfillConfirmPassword={isFulfillConfirmPassword}
-                setFulfillConfirmPassword={setFulfillConfirmPassword}
                 confirmPassword={confirmPassword}
                 setConfirmPassword={setConfirmPassword}
               />
@@ -83,8 +80,7 @@ export default function ChangePassWordScreen() {
           style={{
             flexDirection: "row",
             justifyContent: "center",
-            padding: 5,
-
+            padding: 5
           }}
           onPress={() => navigate("CurrentPasswordScreen")}>
           <AntDesign
@@ -94,7 +90,7 @@ export default function ChangePassWordScreen() {
             style={{
               paddingTop: 10,
               paddingBottom: 10,
-              paddingLeft: 10,
+              paddingLeft: 10
             }}
           />
           <Text style={styles.goBackButton}>{content.GobackButton}</Text>

@@ -8,8 +8,8 @@ export default function InputConfirmPassword(props) {
   const {
     confirmPassword,
     setConfirmPassword,
-    setFulfillConfirmPassword
   } = props;
+
   // console.log("PASSduoi", confirmPassword);
   // console.log("FULLFILL duoi");
 
@@ -17,9 +17,9 @@ export default function InputConfirmPassword(props) {
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
-          onFulfill={() => {
-            setFulfillConfirmPassword(true);
-          }}
+          // onFulfill={() => {
+          //   setFulfillConfirmPassword(true);
+          // }}
           mask=<View
             style={{
               width: 20,
