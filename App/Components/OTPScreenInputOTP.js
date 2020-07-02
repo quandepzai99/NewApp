@@ -11,10 +11,12 @@ import { navigate } from "../Navigation/RootNavigation";
 export default function InputOTP(props) {
   const { phone } = props;
   const languageContext = useContext(LanguageContext);
+  const { content } = languageContext.state;
+
+  const [otp, setOTP] = useState("");
   const authContext = useContext(AuthContext);
   const { confirmOTP } = authContext;
-  const { content } = languageContext.state;
-  const [otp, setOTP] = useState("");
+
   const onSuccess = (is_match, is_expired) => {
     if (is_match === true && is_expired === false) {
       navigate("HomeScreen");
@@ -24,8 +26,12 @@ export default function InputOTP(props) {
   };
   const onFailed = () => {};
 
-  const onFullfill = text => {
-    confirmOTP(phone, otp, onSuccess, onFailed);
+  const onFullfill = () => {
+    try {
+      (async function() {
+        await confirmOTP(phone, otp, onSuccess, onFailed);
+      })();
+    } catch (e) {}
   };
 
   return (
