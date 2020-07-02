@@ -10,23 +10,17 @@ export default function InputConfirmPassword(props) {
     setConfirmPassword,
     setFulfillConfirmPassword
   } = props;
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const firstRender = useRef("true");
-  // useEffect(() => {
-  //   console.log("isFirstRender", firstRender.current);
-  //   console.log("pass", confirmPassword);
-  //   if (firstRender.current) {
-  //     firstRender.current = false;
-  //   }
-  //   setConfirmPassword({ ...confirmPassword });
-  // });
+  // console.log("PASSduoi", confirmPassword);
+  // console.log("FULLFILL duoi");
 
   return (
     <View style={styles.container1}>
       <View style={styles.section}>
-        <SmoothPinCodeInput>
-          mask=
-          <View
+        <SmoothPinCodeInput
+          onFulfill={() => {
+            setFulfillConfirmPassword(true);
+          }}
+          mask=<View
             style={{
               width: 20,
               height: 20,
@@ -34,23 +28,17 @@ export default function InputConfirmPassword(props) {
               backgroundColor: "rgb(114, 13, 93)"
             }}
           />
-          cellStyleFocused=
-          {{
+          cellStyleFocused={{
             borderColor: colors.blueGrey
           }}
-          password cellSize=
-          {28}
-          codeLength=
-          {6}
-          value=
-          {confirmPassword}
-          onTextChange=
-          {setConfirmPassword}
-          cellStyle=
-          {styles.cellStyle}
-          autoFocus=
-          {true}
-        </SmoothPinCodeInput>
+          password
+          cellSize={28}
+          codeLength={6}
+          value={confirmPassword}
+          onTextChange={setConfirmPassword}
+          cellStyle={styles.cellStyle}
+          autoFocus={true}
+        />
       </View>
     </View>
   );

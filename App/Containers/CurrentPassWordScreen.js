@@ -22,27 +22,29 @@ export default function CurrentPassWordScreen() {
           <PinInputCurrent />
         </View>
       </View>
-      <TouchableOpacity
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          marginTop: 26
-        }}
-        onPress={() => navigate("PasswordScreen")}>
-        <AntDesign
-          name={"left"}
-          size={20}
-          color={"gray"}
+      <View>
+        <TouchableOpacity
           style={{
-            paddingTop: 8,
-            paddingBottom: 10,
-            paddingLeft: 10
+            flexDirection: "row",
+            justifyContent: "center",
+            marginTop: 26
           }}
-        />
-        <Text style={StyleHeaderCurrentPassword.goBackButton}>
-          {content.GobackButton}
-        </Text>
-      </TouchableOpacity>
+          onPress={() => navigate("PasswordScreen")}>
+          <AntDesign
+            name={"left"}
+            size={20}
+            color={"gray"}
+            style={{
+              paddingTop: 10,
+              paddingBottom: 10,
+              paddingLeft: 10
+            }}
+          />
+          <Text style={StyleHeaderCurrentPassword.goBackButton}>
+            {content.GobackButton}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

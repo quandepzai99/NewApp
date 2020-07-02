@@ -100,16 +100,17 @@ const screenResetPw = StyleSheet.create({
     zIndex: 1
   },
   goBackButton: {
-    fontSize: 15,
+    marginTop: -1,
+    fontSize: 16,
     fontWeight: "normal",
     paddingTop: 10,
     paddingBottom: 10,
     fontStyle: "normal",
-    lineHeight: 17,
+    lineHeight: 22,
     letterSpacing: 0,
     textAlign: "center",
-    marginLeft: -5,
-    color: "grey"
+    color: "grey",
+    paddingRight: 10
   }
 });
 

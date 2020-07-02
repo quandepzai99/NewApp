@@ -73,25 +73,33 @@ export default function ChangePassWordScreen() {
           <View />
         )}
       </View>
-      <TouchableOpacity
+      <View
         style={{
-          flexDirection: "row",
           justifyContent: "center",
+          alignItems: "center",
           marginTop: 26
-        }}
-        onPress={() => navigate("CurrentPasswordScreen")}>
-        <AntDesign
-          name={"left"}
-          size={20}
-          color={"gray"}
+        }}>
+        <TouchableOpacity
           style={{
-            paddingTop: 10,
-            paddingBottom: 10,
-            paddingLeft: 10
+            flexDirection: "row",
+            justifyContent: "center",
+            padding: 5,
+
           }}
-        />
-        <Text style={styles.goBackButton}>{content.GobackButton}</Text>
-      </TouchableOpacity>
+          onPress={() => navigate("CurrentPasswordScreen")}>
+          <AntDesign
+            name={"left"}
+            size={20}
+            color={"gray"}
+            style={{
+              paddingTop: 10,
+              paddingBottom: 10,
+              paddingLeft: 10,
+            }}
+          />
+          <Text style={styles.goBackButton}>{content.GobackButton}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
