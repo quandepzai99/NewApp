@@ -39,7 +39,6 @@ export default function ChangePassWordScreen() {
     changeNewPassword(password);
   }
 
-
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
@@ -54,7 +53,6 @@ export default function ChangePassWordScreen() {
             setFulfill={setFulfill}
             password={password}
             setPassword={setPassword}
-            changeNewPassword={changeNewPassword}
           />
         </View>
         {isFulfill ? (
@@ -68,7 +66,6 @@ export default function ChangePassWordScreen() {
                 setFulfillConfirmPassword={setFulfillConfirmPassword}
                 confirmPassword={confirmPassword}
                 setConfirmPassword={setConfirmPassword}
-                changeNewPassword={changeNewPassword}
               />
             </View>
           </View>
@@ -88,7 +85,7 @@ export default function ChangePassWordScreen() {
           size={20}
           color={"gray"}
           style={{
-            paddingTop: 8,
+            paddingTop: 10,
             paddingBottom: 10,
             paddingLeft: 10
           }}
