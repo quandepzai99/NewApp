@@ -89,8 +89,8 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    LocalStorage.set("access_token", access_token);
     API.setAccessToken(access_token);
+    LocalStorage.set("access_token", access_token);
   } else {
     onFailed();
   }
