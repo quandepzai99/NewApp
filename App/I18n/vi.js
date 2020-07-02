@@ -2,7 +2,7 @@ const vi = {
   LoginScreenHeader: "Chào mừng quý khách đến với UrBox",
   LoginScreenEnterPhoneNumber: "Nhập số điện thoại",
   LoginScreenPhoneNumber: "Số điện thoại",
-  PasswordScreenHeader: "Chào mừng bạn tở lại với UrBox",
+  PasswordScreenHeader: "Chào mừng bạn trở lại với UrBox",
   PasswordScreenInputPassword: " Nhập mật khẩu ",
   PasswordScreenForgotPassword: "Bạn quên mật khẩu?",
   PasswordScreenSignOut: "Đăng xuất",
