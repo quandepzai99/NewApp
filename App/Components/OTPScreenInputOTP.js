@@ -42,7 +42,7 @@ export default function InputOTP(props) {
       </View>
       <View style={styles.buttonGoback}>
         <TouchableOpacity
-          // onPress={onPress()}
+          onPress={() => navigate("LoginScreen")}
           style={{
             flexDirection: "row",
             alignItems: "center",
