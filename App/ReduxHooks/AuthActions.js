@@ -10,5 +10,5 @@ export const AuthActions = {
   phoneRegister: "PHONE_REGISTER",
   sendOTP: "SEND_OTP",
   confirmOTP: "CONFIRM_OTP",
-  activeAccount: "ACTIVE_ACCOUNT",
+  activeAccount: "ACTIVE_ACCOUNT"
 };

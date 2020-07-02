@@ -15,14 +15,57 @@ export default function LoginScreenInputPhoneNumber() {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
 
-  const [text, setText] = useState("");
-  const isActive = text.length >= 10;
-  const floatStyle = getButtonStyle(isActive);
+  const [phone, setPhone] = useState("");
+  const isActive = phone.length >= 10;
   const authContext = useContext(AuthContext);
-  // console.log("CONTEXT", authContext);
-  const { isPhoneNumberExist } = authContext;
-  const { phoneRegister } = authContext;
-  const onPress = getOnPress(isActive, isPhoneNumberExist, text, phoneRegister);
+  const { phoneRegister, isPhoneNumberExist } = authContext;
+
+  const onSuccess = response => {
+    const { is_exist, phone } = response.data;
+    if (is_exist === true) {
+      navigate("PasswordScreen");
+    } else {
+      console.log("NOT EXIST");
+      registerPhone(phone);
+      navigate("OTPScreen", {
+        phone: phone
+      });
+    }
+  };
+
+  const onFailed = () => {};
+
+  const getOnPress = () => {
+    try {
+      (async function() {
+        await isPhoneNumberExist(phone, onSuccess, onFailed);
+      })();
+    } catch (e) {}
+  };
+
+  const registerPhone = phone => {
+    try {
+      (async function() {
+        console.log("REGISTERPHONE");
+        await phoneRegister(phone);
+      })();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getButtonStyle = isActive => {
+    return isActive
+      ? [
+          styles.floatButton,
+          {
+            backgroundColor: colors.velvet
+          }
+        ]
+      : styles.floatButton;
+  };
+
+  const floatStyle = getButtonStyle(isActive);
 
   return (
     <View style={styles.container}>
@@ -32,7 +75,10 @@ export default function LoginScreenInputPhoneNumber() {
       </View>
       <Text style={styles.text2}>{content.LoginScreenPhoneNumber}</Text>
       <TextInput
-        onChangeText={setText}
+        onChangeText={text => {
+          setPhone(text);
+        }}
+        value={phone}
         placeholder={"0901234567"}
         style={styles.input}
         maxLength={20}
@@ -41,7 +87,11 @@ export default function LoginScreenInputPhoneNumber() {
         dataDetectorTypes="phoneNumber"
         keyboardType="phone-pad"
       />
-      <TouchableOpacity onPress={onPress} style={floatStyle}>
+      <TouchableOpacity
+        onPress={() => {
+          getOnPress();
+        }}
+        style={floatStyle}>
         <View style={styles.ellipse531}>
           <AntDesign name="arrowright" size={28} style={styles.icon} />
         </View>
@@ -49,41 +99,3 @@ export default function LoginScreenInputPhoneNumber() {
     </View>
   );
 }
-
-const registerPhone = (phone, phoneRegister) => {
-    return () => {
-    phoneRegister(phone);
-  };
-};
-
-const getOnPress = (isActive, isPhoneNumberExist, phone) => {
-  return isActive
-    ? () => {
-        isPhoneNumberExist(phone, onSuccess, onFailed, registerPhone(phone));
-      }
-    : () => {};
-};
-
-const onSuccess = (isExist, phone, onPhoneRegister) => {
-  if (isExist) {
-    navigate("PasswordScreen");
-  } else {
-    onPhoneRegister();
-    navigate("OTPScreen", {
-      phone: phone
-    });
-  }
-};
-
-const onFailed = () => {};
-
-const getButtonStyle = isActive => {
-  return isActive
-    ? [
-        styles.floatButton,
-        {
-          backgroundColor: colors.velvet
-        }
-      ]
-    : styles.floatButton;
-};

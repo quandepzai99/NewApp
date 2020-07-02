@@ -25,9 +25,6 @@ export const AuthReducer = (state, action) => {
   } else if (action.type === AuthActions.changePassword) {
     const password = action.payload;
     return { ...state, password: password };
-  } else if (action.type === AuthActions.phoneRegister) {
-    const phone = action.payload;
-    return { ...state, phone: phone };
   } else if (action.type === AuthActions.sendOTP) {
     const phone = action.payload;
     return { ...state, phone: phone };
