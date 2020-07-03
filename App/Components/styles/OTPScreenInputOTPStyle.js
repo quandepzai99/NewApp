@@ -29,22 +29,24 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.paleGreyFour
   },
   textStyle: {
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: "400",
     fontStyle: "normal",
-    lineHeight: 34,
+    lineHeight: 36,
     letterSpacing: 0,
     textAlign: "center",
-    color: "rgba(71, 71, 71,0.9)"
+    color: "rgba(71, 71, 71,0.9)",
+    opacity: 0.7
   },
   focusedText: {
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: "normal",
     fontStyle: "normal",
-    lineHeight: 38,
+    lineHeight: 40,
     letterSpacing: 0,
     textAlign: "center",
-    color: colors.greyishBrown
+    color: colors.greyishBrown,
+    opacity: 1
   },
   cellStyle: {
     borderWidth: 1,

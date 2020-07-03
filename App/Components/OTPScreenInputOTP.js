@@ -12,13 +12,26 @@ export default function InputOTP(props) {
   const { phone } = props;
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
+
   const [otp, setOTP] = useState("");
   const authContext = useContext(AuthContext);
   const { confirmOTP } = authContext;
-  const isFullfill = otp.length >= 6;
+
+  const onSuccess = (is_match, is_expired) => {
+    if (is_match === true && is_expired === false) {
+      navigate("HomeScreen");
+    } else {
+      Alert.alert("OTP không chính xác");
+    }
+  };
+  const onFailed = () => {};
 
   const onFullfill = () => {
-    confirmOTP(phone, otp, onSuccess, onFailed);
+    try {
+      (async function() {
+        await confirmOTP(phone, otp, onSuccess, onFailed);
+      })();
+    } catch (e) {}
   };
 
   return (
@@ -34,15 +47,17 @@ export default function InputOTP(props) {
           cellStyleFocused={{ borderColor: "rgba(114, 13, 93, 0.4)" }}
           autoFocus={true}
           textStyleFocused={styles.focusedText}
-          animated={false}
+          animated={true}
           editable={true}
           restrictToNumbers={true}
-          onFulfill={onFullfill}
+          onFulfill={() => {
+            onFullfill();
+          }}
         />
       </View>
       <View style={styles.buttonGoback}>
         <TouchableOpacity
-          // onPress={onPress()}
+          onPress={() => navigate("LoginScreen")}
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -70,20 +85,17 @@ export default function InputOTP(props) {
           </Text>
         </TouchableOpacity>
         <Text
-          style={{ paddingRight: 10, paddingTop: 10, color: colors.blueGrey }}>
+          style={{
+            fontSize: 16,
+            lineHeight: 16,
+            padding: 10,
+            color: colors.blueGrey,
+            justifyContent: "center",
+            alignSelf: "center"
+          }}>
           {content.OTPScreenStatus}
         </Text>
       </View>
     </View>
   );
 }
-
-const onSuccess = (is_match, is_expired) => {
-  if (is_match === true && is_expired === false) {
-    navigate("HomeScreen");
-  } else {
-    Alert.alert("OTP không chính xác");
-  }
-};
-
-const onFailed = () => {};

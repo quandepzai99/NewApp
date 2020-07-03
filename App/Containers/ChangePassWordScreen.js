@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { View, Text, StatusBar, TouchableOpacity, Alert } from "react-native";
 import ChangePasswordScreenHeader from "../Components/ChangePasswordScreenHeader";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -9,39 +9,60 @@ import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
 import { AuthContext } from "../Providers/AuthProvider";
 
-export default function ChangePassWordScreen() {
+export default function ChangePassWordScreen(style = styles.viewBlock2) {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFulfill, setFulfill] = useState(false);
-  const [isFulfillConfirmPassword, setFulfillConfirmPassword] = useState(false);
   const authContext = useContext(AuthContext);
   const { changePassword } = authContext;
 
-  const changeNewPassword = (isFulfillConfirmPassword, password) => {
-    changePassword(password, onSuccess, onFailed);
+  const onSuccess = response => {
+    const status = response.status;
+    if (status === true) {
+      console.log("SUCCESS CHANGE PASSWORD", status);
+      navigate("LoginScreen");
+    } else {
+      Alert.alert("PASSWORD HAS NOT CHANGE");
+    }
   };
-  if (password === confirmPassword && isFulfillConfirmPassword) {
-    changeNewPassword(password);
-  }
 
-  console.log("PASSduoi", confirmPassword);
+  const onFailed = () => {};
+
+  const changeNewPassword = (password) => {
+      try {
+          (async function() {
+              await changePassword(password, onSuccess, onFailed);
+          })();
+      } catch (e) {
+
+      }
+  };
+
+  useEffect(() => {
+      if (password === confirmPassword && confirmPassword.length >= 6) {
+          changeNewPassword(password);
+      }
+  }, [password, confirmPassword]);
 
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
       <ChangePasswordScreenHeader />
-      <View style={styles.viewBlock2}>
+      <View style={style}>
         <Text style={styles.textblock2box1}>
           {content.ChangePasswordScreenInputNewPassword}
         </Text>
         <View style={styles.viewBlock2box1}>
           <InputNewPassword
-            isFulfill={isFulfill}
-            setFulfill={setFulfill}
             password={password}
-            setPassword={setPassword}
+            onPasswordChange={(text) => {
+                setPassword(text);
+                if (text.length === 6) {
+                    setFulfill(true);
+                }
+            }}
           />
         </View>
         {isFulfill ? (
@@ -51,10 +72,10 @@ export default function ChangePassWordScreen() {
             </Text>
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword
-                isFulfillConfirmPassword={isFulfillConfirmPassword}
-                setFulfillConfirmPassword={setFulfillConfirmPassword}
                 confirmPassword={confirmPassword}
-                setConfirmPassword={setConfirmPassword}
+                onConfirmPasswordChange={(text)=>{
+                    setConfirmPassword(text);
+                }}
               />
             </View>
           </View>
@@ -62,37 +83,32 @@ export default function ChangePassWordScreen() {
           <View />
         )}
       </View>
-      <TouchableOpacity
+      <View
         style={{
-          flexDirection: "row",
           justifyContent: "center",
+          alignItems: "center",
           marginTop: 26
-        }}
-        onPress={() => navigate("CurrentPasswordScreen")}>
-        <AntDesign
-          name={"left"}
-          size={20}
-          color={"gray"}
+        }}>
+        <TouchableOpacity
           style={{
-            paddingTop: 8,
-            paddingBottom: 10,
-            paddingLeft: 10
+            flexDirection: "row",
+            justifyContent: "center",
+            padding: 5
           }}
-        />
-        <Text style={styles.goBackButton}>{content.GobackButton}</Text>
-      </TouchableOpacity>
+          onPress={() => navigate("CurrentPasswordScreen")}>
+          <AntDesign
+            name={"left"}
+            size={20}
+            color={"gray"}
+            style={{
+              paddingTop: 10,
+              paddingBottom: 10,
+              paddingLeft: 10
+            }}
+          />
+          <Text style={styles.goBackButton}>{content.GobackButton}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
-
-const onSuccess = status => {
-  if (status) {
-    Alert.alert("Mật khẩu đã đc đổi");
-    console.log("STATUS", status);
-    navigate("HomeScreen");
-  } else {
-    Alert.alert("Mật khẩu không chính xác");
-  }
-};
-
-const onFailed = () => {};

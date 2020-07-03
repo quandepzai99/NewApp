@@ -18,11 +18,7 @@ export default function Wrapper(props) {
   );
 }
 
-const isPhoneNumberExist = dispatch => async (
-  phone,
-  onSuccess,
-  onFailed,
-) => {
+const isPhoneNumberExist = dispatch => async (phone, onSuccess, onFailed) => {
   const response = await API.phoneCheckExist(phone);
   if (response.status === true) {
     if (onSuccess) {
@@ -30,7 +26,7 @@ const isPhoneNumberExist = dispatch => async (
       onSuccess(response);
     }
   } else {
-    if (onFailed){
+    if (onFailed) {
       onFailed(response);
     }
   }
@@ -60,7 +56,7 @@ const sendOTP = dispatch => async (phone): void => {
     LocalStorage.set("otp_expired", otp_expired);
   }
   dispatch({ type: AuthActions.sendOTP, payload: phone });
-  console.log("AND HERE");
+  // console.log("AND HERE");
 };
 
 const confirmOTP = dispatch => async (
@@ -93,8 +89,8 @@ const isPasswordCorrect = dispatch => async (
     const { is_authenticated } = data;
     onSuccess(is_authenticated);
     const { access_token } = data.access_token;
-    LocalStorage.set("access_token", access_token);
     API.setAccessToken(access_token);
+    LocalStorage.set("access_token", access_token);
   } else {
     onFailed();
   }
@@ -161,11 +157,9 @@ const changePassword = dispatch => async (
 ): void => {
   const response = await API.changePassword(password);
   if (response.status) {
-    const status = response.status;
-    onSuccess(status);
-    console.log("STATUS", status);
+    onSuccess(response);
   } else {
-    onFailed();
+    onFailed(response);
   }
   dispatch({ type: AuthActions.changePassword, payload: password });
 };

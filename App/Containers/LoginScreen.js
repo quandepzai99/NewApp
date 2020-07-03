@@ -15,7 +15,7 @@ function LoginScreen() {
   const handleAppStateChange = nextAppState => {
     if (nextAppState === "active") {
       LocalStorage.get("access_token").then(token => {
-        console.log("tokennn", token);
+        console.log("TOKEN", token);
         if (token !== null) {
           API.setAccessToken(token);
           isTokenValidated(token, onSuccess, onFailed);
@@ -47,7 +47,7 @@ function LoginScreen() {
 
 const onSuccess = is_alive => {
   if (is_alive) {
-    navigate("PasswordScreen");
+    // navigate("PasswordScreen");
   } else {
     navigate("LoginScreen");
   }

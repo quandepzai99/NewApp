@@ -1,5 +1,5 @@
-import React from "react";
-import { Alert, View } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { View } from "react-native";
 import SmoothPinCodeInput from "react-native-smooth-pincode-input";
 import colors from "../Themes/Colors";
 import styles from "./styles/ChangePassWordScreenStyle";
@@ -7,9 +7,9 @@ import styles from "./styles/ChangePassWordScreenStyle";
 export default function InputConfirmPassword(props) {
   const {
     confirmPassword,
-    setConfirmPassword,
-    setFulfillConfirmPassword
+      onConfirmPasswordChange
   } = props;
+
   // console.log("PASSduoi", confirmPassword);
   // console.log("FULLFILL duoi");
 
@@ -17,9 +17,6 @@ export default function InputConfirmPassword(props) {
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
-          onFulfill={() => {
-            setFulfillConfirmPassword(true);
-          }}
           mask=<View
             style={{
               width: 20,
@@ -35,7 +32,7 @@ export default function InputConfirmPassword(props) {
           cellSize={28}
           codeLength={6}
           value={confirmPassword}
-          onTextChange={setConfirmPassword}
+          onTextChange={onConfirmPasswordChange}
           cellStyle={styles.cellStyle}
           autoFocus={true}
         />

@@ -100,16 +100,17 @@ const styles = StyleSheet.create({
     color: colors.blueGrey
   },
   goBackButton: {
-    fontSize: 15,
+    marginTop : -1,
+    fontSize: 16,
     fontWeight: "normal",
     paddingTop: 10,
     paddingBottom: 10,
     fontStyle: "normal",
-    lineHeight: 17,
+    lineHeight: 22,
     letterSpacing: 0,
     textAlign: "center",
-    marginLeft: -5,
-    color: "grey"
+    color: "grey",
+    paddingRight: 10
   },
   container1: {
     flex: 1,
