@@ -35,7 +35,7 @@ export default function ChangePassWordScreen() {
   };
 
   if (password === confirmPassword && confirmPassword.length >= 6) {
-    return useEffect(changeNewPassword(password));
+    return changeNewPassword(password);
   }
 
   return (
