@@ -9,7 +9,7 @@ import { LanguageContext } from "../Providers/LanguageProvider";
 import styles from "../Components/styles/ChangePassWordScreenStyle";
 import { AuthContext } from "../Providers/AuthProvider";
 
-export default function ChangePassWordScreen() {
+export default function ChangePassWordScreen(style = styles.viewBlock2) {
   const languageContext = useContext(LanguageContext);
   const { content } = languageContext.state;
   const [password, setPassword] = useState("");
@@ -30,28 +30,39 @@ export default function ChangePassWordScreen() {
 
   const onFailed = () => {};
 
-  const changeNewPassword = password => {
-    changePassword(password, onSuccess, onFailed);
+  const changeNewPassword = (password) => {
+      try {
+          (async function() {
+              await changePassword(password, onSuccess, onFailed);
+          })();
+      } catch (e) {
+
+      }
   };
 
-  if (password === confirmPassword && confirmPassword.length >= 6) {
-    return changeNewPassword(password);
-  }
+  useEffect(() => {
+      if (password === confirmPassword && confirmPassword.length >= 6) {
+          changeNewPassword(password);
+      }
+  }, [password, confirmPassword]);
 
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
       <ChangePasswordScreenHeader />
-      <View style={styles.viewBlock2}>
+      <View style={style}>
         <Text style={styles.textblock2box1}>
           {content.ChangePasswordScreenInputNewPassword}
         </Text>
         <View style={styles.viewBlock2box1}>
           <InputNewPassword
-            isFulfill={isFulfill}
-            setFulfill={setFulfill}
             password={password}
-            setPassword={setPassword}
+            onPasswordChange={(text) => {
+                setPassword(text);
+                if (text.length === 6) {
+                    setFulfill(true);
+                }
+            }}
           />
         </View>
         {isFulfill ? (
@@ -62,7 +73,9 @@ export default function ChangePassWordScreen() {
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword
                 confirmPassword={confirmPassword}
-                setConfirmPassword={setConfirmPassword}
+                onConfirmPasswordChange={(text)=>{
+                    setConfirmPassword(text);
+                }}
               />
             </View>
           </View>

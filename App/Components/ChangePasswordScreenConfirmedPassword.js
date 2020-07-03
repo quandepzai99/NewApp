@@ -7,7 +7,7 @@ import styles from "./styles/ChangePassWordScreenStyle";
 export default function InputConfirmPassword(props) {
   const {
     confirmPassword,
-    setConfirmPassword,
+      onConfirmPasswordChange
   } = props;
 
   // console.log("PASSduoi", confirmPassword);
@@ -17,9 +17,6 @@ export default function InputConfirmPassword(props) {
     <View style={styles.container1}>
       <View style={styles.section}>
         <SmoothPinCodeInput
-          // onFulfill={() => {
-          //   setFulfillConfirmPassword(true);
-          // }}
           mask=<View
             style={{
               width: 20,
@@ -35,7 +32,7 @@ export default function InputConfirmPassword(props) {
           cellSize={28}
           codeLength={6}
           value={confirmPassword}
-          onTextChange={setConfirmPassword}
+          onTextChange={onConfirmPasswordChange}
           cellStyle={styles.cellStyle}
           autoFocus={true}
         />
