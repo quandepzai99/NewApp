@@ -30,38 +30,36 @@ export default function ChangePassWordScreen(style = styles.viewBlock2) {
 
   const onFailed = () => {};
 
-  const changeNewPassword = (password) => {
-      try {
-          (async function() {
-              await changePassword(password, onSuccess, onFailed);
-          })();
-      } catch (e) {
-
-      }
+  const changeNewPassword = password => {
+    try {
+      (async function() {
+        await changePassword(password, onSuccess, onFailed);
+      })();
+    } catch (e) {}
   };
 
   useEffect(() => {
-      if (password === confirmPassword && confirmPassword.length >= 6) {
-          changeNewPassword(password);
-      }
+    if (password === confirmPassword && confirmPassword.length >= 6) {
+      changeNewPassword(password);
+    }
   }, [password, confirmPassword]);
 
   return (
     <View>
       <StatusBar barStyle={"light-content"} />
       <ChangePasswordScreenHeader />
-      <View style={style}>
+      <View style={styles.viewBlock2}>
         <Text style={styles.textblock2box1}>
           {content.ChangePasswordScreenInputNewPassword}
         </Text>
         <View style={styles.viewBlock2box1}>
           <InputNewPassword
             password={password}
-            onPasswordChange={(text) => {
-                setPassword(text);
-                if (text.length === 6) {
-                    setFulfill(true);
-                }
+            onPasswordChange={text => {
+              setPassword(text);
+              if (text.length === 6) {
+                setFulfill(true);
+              }
             }}
           />
         </View>
@@ -73,8 +71,8 @@ export default function ChangePassWordScreen(style = styles.viewBlock2) {
             <View style={styles.viewBlock2box2}>
               <InputConfirmedPassword
                 confirmPassword={confirmPassword}
-                onConfirmPasswordChange={(text)=>{
-                    setConfirmPassword(text);
+                onConfirmPasswordChange={text => {
+                  setConfirmPassword(text);
                 }}
               />
             </View>

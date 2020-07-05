@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     backgroundColor: "white",
     fontSize: 15,
-    color: colors.blueGrey
+    color: colors.blueGrey,
   },
   viewBlock2box2: {
     marginLeft: 16,
